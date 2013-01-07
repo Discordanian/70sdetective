@@ -81,7 +81,7 @@ Scenerio = function() {
         var popID =  suspectPopulationID(suspectID);
         var sceneID = populationMap[popID].sceneID;
 
-        return (sceneID === weaponLocationIDs[eaponID]);
+        return (sceneID === weaponLocationIDs[weaponID]);
     }
 
     // 
@@ -120,7 +120,7 @@ Scenerio = function() {
                     }
                     break;
                 case 13:
-                    if (populationMap[suspectPopulationID(suspectID)].sceneID === weaponLocationIDs[0]) {
+                    if(suspectWithWeapon(suspectID,0)){
                         if (((killerID < 11) && (suspectID < 11)) || ((killerID > 10) && (suspectID > 10))) {
                             // suspect is where the weapon was and is the same gender as the killer.  TRUTH.
                             if (killerID %2 == 0) {
@@ -139,20 +139,20 @@ Scenerio = function() {
                     }
                     break;
                 case 14:
-                    if (populationMap[suspectPopulationID(suspectID)].sceneID === weaponLocationIDs[1]) {
+                    if(suspectWithWeapon(suspectID,1)){
                         if (((killerID < 11) && (suspectID < 11)) || ((killerID > 10) && (suspectID > 10))) {
                             // suspect is where the weapon was and is the same gender as the killer.  TRUTH.
                             if (killerID %2 == 0) {
-                                answer = "The fingerprints on the " + weapons[0] + " were LEFT handed.";
+                                answer = "The fingerprints on the " + weapons[1] + " were LEFT handed.";
                             } else {
-                                answer = "The fingerprints on the " + weapons[0] + " were RIGHT handed.";
+                                answer = "The fingerprints on the " + weapons[1] + " were RIGHT handed.";
                             }
                         } else {
                             // suspect is where the weapon was but is a different gender.  LIE.
                             if (killerID %2 == 0) {
-                                answer = "The fingerprints on the " + weapons[0] + " were RIGHT handed.";
+                                answer = "The fingerprints on the " + weapons[1] + " were RIGHT handed.";
                             } else {
-                                answer = "The fingerprints on the " + weapons[0] + " were LEFT handed.";
+                                answer = "The fingerprints on the " + weapons[1] + " were LEFT handed.";
                             }
                         }
                     }
@@ -161,6 +161,32 @@ Scenerio = function() {
         
         return answer;
     } // end suspectAnswer
+
+
+    // If the given suspect is at a location with any other suspect that has the answer to Q 10
+    function withSomeoneWithUpMidDown(suspectID) {
+        var retVal = false;
+        var suspects = population[suspectPopulationID(suspectID)];
+        for (var i = 0; i < suspects.length; i++) {
+            // See if any suspect has Q 10 in their list.
+            if (Suspect.getQuestions(suspects[i]).indexOf(10,0)) { retVal = true; }
+        }
+
+        return retVal;
+    };
+
+    // If the given suspect is at a location with any other suspect that has the answer to Q 9
+    function withSomeoneWithEastWest(suspectID) {
+        var retVal = false;
+        // get the array of suspects that are together
+        var suspects = population[suspectPopulationID(suspectID)];
+        for (var i = 0; i < suspects.length; i++) {
+            // See if any suspect has Q 9 in their list.
+            if (Suspect.getQuestions(suspects[i]).indexOf(9,0)) { retVal = true; }
+        }
+
+        return retVal;
+    };
 
     function suspectAlibi(suspectID) {
         var popID            = suspectPopulationID(suspectID);
@@ -178,10 +204,18 @@ Scenerio = function() {
         switch ( (popID + indexID) % 4)
             {
             case 0:
-                reply = "I was on the " + ewInfo + " side with " + withName;
+                if (withSomeoneWithEastWest(suspectID)) {
+                    reply = "I was with " + withName;
+                } else {
+                    reply = "I was on the " + ewInfo + " side with " + withName;
+                }
                 break;
             case 1:
-                reply = "I was " + umdInfo + " with " + withName;
+                if (withSomeoneWithUpMidDown(suspectID)) {
+                    reply = "I was with " + withName;
+                } else {
+                    reply = "I was " + umdInfo + " with " + withName;
+                }
                 break;
             case 2:
                 reply = "I was with " + withName;
