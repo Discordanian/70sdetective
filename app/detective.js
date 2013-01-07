@@ -10,8 +10,8 @@ Detective = function() {
     // Create a registration form
     var registerForm = Ext.create('Ext.form.Panel', {
         // url:'save-form.php',
-        frame:true,
-        title: 'Detective Registration',
+        frame:false,
+        // title: 'Detective Registration',
         bodyStyle:'padding:5px 5px 0',
         width: 350,
         fieldDefaults: {
@@ -47,6 +47,19 @@ Detective = function() {
             }
         }]
     });
+
+    var regWin = Ext.create('widget.window', {
+        height: 200,
+        width: 400,
+        x: 450,
+        y: 450,
+        title: 'Detective Registration',
+        closable: true,
+        plain: true,
+        layout: 'fit',
+        border: true,
+        items: [ registerForm ]
+    });
     
     // ---------------------- Some private methods ----------------------------------
     function clearCookies() {
@@ -74,7 +87,7 @@ Detective = function() {
         register: function() {
             // Pop up a window with registration.  
             getCookies();
-            registerForm.render(document.body);
+            regWin.show();
             
         },
         getName: function() {
