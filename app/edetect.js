@@ -38,7 +38,22 @@ Ext.onReady(function () {
             columns: 4,
             title: 'Suspects',
             defaults: { align: 'center' },
-            items: [{
+            items: [
+            {
+                text: 'New Game',
+                id:  'init',
+                // scope: this,
+                handler: function() { 
+                    reset_game();
+                    }
+            }, {
+                text: 'Re-Register',
+                id:  'register',
+                // scope: this,
+                handler: function() { 
+                    registerDetective();
+                    }
+            },{
                 text: '1',
                 id:  'nav01',
                 // scope: this,
@@ -164,6 +179,8 @@ Ext.onReady(function () {
         items: [ suspect_picture ]
     }); // end suspect_nav
 
+    var registerDetective = function() {
+    }
 
 
     // Utility function to get ext-id based on a suspect id
@@ -429,6 +446,7 @@ Ext.onReady(function () {
     });
 
     // Scenerio.spam();
+    registerDetective();
     reset_game();
 
     
