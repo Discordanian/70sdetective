@@ -5,6 +5,49 @@ Detective = function() {
     var difficultySetting;
     var wins = 0;
     var losses = 0;
+
+
+    // Create a registration form
+    var registerForm = Ext.create('Ext.form.Panel', {
+        // url:'save-form.php',
+        frame:true,
+        title: 'Detective Registration',
+        bodyStyle:'padding:5px 5px 0',
+        width: 350,
+        fieldDefaults: {
+            msgTarget: 'side',
+            labelWidth: 75
+        },
+        defaultType: 'textfield',
+        defaults: {
+            anchor: '100%'
+        },
+
+        items: [
+                {
+                    fieldLabel: 'Detective Name',
+                    name: 'detective_name',
+                    allowBlank:false
+                },{
+                    fieldLabel: 'Difficulty Setting',
+                    name: 'difficulty_setting',
+                    xtype: 'numberfield'
+                }
+            ],
+        buttons: [{
+            text: 'Register',
+            handler: function() {
+                Ext.Msg.alert("Information","Register Selected");
+            }
+        },{
+            text: 'Clear',
+            handler: function() {
+                clearCookies();
+                Ext.Msg.alert("Information","Clear Selected");
+            }
+        }]
+    });
+    
     // ---------------------- Some private methods ----------------------------------
     function clearCookies() {
         Ext.util.Cookies.clear("Detective_Name");
@@ -31,6 +74,8 @@ Detective = function() {
         register: function() {
             // Pop up a window with registration.  
             getCookies();
+            registerForm.render(document.body);
+            
         },
         getName: function() {
             return name;
