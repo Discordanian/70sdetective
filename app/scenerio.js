@@ -86,7 +86,7 @@ Scenerio = function() {
 
     // 
     function suspectAnswer(suspectID, questionID) {
-        var answer = "An Answer";
+        var answer = "I have no idea."; // This should only be returned IFF it's Q 13 or 14 and the suspect wasn't where the weapon was located.
         if(suspectID === victimID) {
             return "The dead have no answers.";
         }
@@ -99,10 +99,65 @@ Scenerio = function() {
         // Questions specific to the person 
         if (questionID > 8) {
             switch(questionID) {
-                case 9:
+                case  9:
+                    answer = "I was on the " + populationMap[suspectPopulationID(suspectID)].eastWest + " side.";
                     break;
-            }
-        }
+                case 10:
+                    answer = "I was on the " + populationMap[suspectPopulationID(suspectID)].upMidDown;
+                    break;
+                case 11:
+                    if (populationMap[suspectPopulationID(suspectID)].sceneID < 3) {
+                        answer = "I was at (" + scenes[0].name + " or " + scenes[1].name + " or " + scenes[2].name + ")";
+                    } else {
+                        answer = "I was at (" + scenes[3].name + " or " + scenes[4].name + " or " + scenes[5].name + ")";
+                    }
+                    break;
+                case 12:
+                    if ((populationMap[suspectPopulationID(suspectID)].sceneID === weaponLocationIDs[0]) || (populationMap[suspectPopulationID(suspectID)].sceneID === weaponLocationIDs[0])) {
+                        answer = "A weapon was found at my location."
+                    } else {
+                        answer = "No weapon was found at my location."
+                    }
+                    break;
+                case 13:
+                    if (populationMap[suspectPopulationID(suspectID)].sceneID === weaponLocationIDs[0]) {
+                        if (((killerID < 11) && (suspectID < 11)) || ((killerID > 10) && (suspectID > 10))) {
+                            // suspect is where the weapon was and is the same gender as the killer.  TRUTH.
+                            if (killerID %2 == 0) {
+                                answer = "The fingerprints on the " + weapons[0] + " were LEFT handed.";
+                            } else {
+                                answer = "The fingerprints on the " + weapons[0] + " were RIGHT handed.";
+                            }
+                        } else {
+                            // suspect is where the weapon was but is a different gender.  LIE.
+                            if (killerID %2 == 0) {
+                                answer = "The fingerprints on the " + weapons[0] + " were RIGHT handed.";
+                            } else {
+                                answer = "The fingerprints on the " + weapons[0] + " were LEFT handed.";
+                            }
+                        }
+                    }
+                    break;
+                case 14:
+                    if (populationMap[suspectPopulationID(suspectID)].sceneID === weaponLocationIDs[1]) {
+                        if (((killerID < 11) && (suspectID < 11)) || ((killerID > 10) && (suspectID > 10))) {
+                            // suspect is where the weapon was and is the same gender as the killer.  TRUTH.
+                            if (killerID %2 == 0) {
+                                answer = "The fingerprints on the " + weapons[0] + " were LEFT handed.";
+                            } else {
+                                answer = "The fingerprints on the " + weapons[0] + " were RIGHT handed.";
+                            }
+                        } else {
+                            // suspect is where the weapon was but is a different gender.  LIE.
+                            if (killerID %2 == 0) {
+                                answer = "The fingerprints on the " + weapons[0] + " were RIGHT handed.";
+                            } else {
+                                answer = "The fingerprints on the " + weapons[0] + " were LEFT handed.";
+                            }
+                        }
+                    }
+            } // end switch on question ID
+        } // end if questionID > 8
         
         return answer;
     } // end suspectAnswer
