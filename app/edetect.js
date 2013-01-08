@@ -5,7 +5,7 @@ Ext.Loader.setConfig({
 });
 
 Ext.require('Ext.ux.Spotlight');
-
+Ext.require('Edetect.card');
 
 
 Ext.onReady(function () {
@@ -15,14 +15,49 @@ Ext.onReady(function () {
 
     var about_html = undefined;
     var rules_html = undefined;
+    var suspect_cards = [];
 
+    var tb_items = [
+            {
+                text: 'New Game',
+                id:  'init',
+                handler: function() {
+                    reset_game();
+                }
+            }, {
+                text: 'Re-Register',
+                id:  'register',
+                // scope: this,
+                handler: function() {
+                    registerDetective();
+                }
+            }
+    ];
+
+    for ( var s = 1; s <= 20; s++ ) {
+        tb_items.push({
+            text: s,
+            id:  'nav' + Number(s).zeroPad(2),
+            handler: function() {
+                Ext.getCmp(getSuspectExtID(this.text)).setValue(Scenerio.getSuspectAlibi(this.text));
+                suspect_picture.getLayout().setActiveItem(Number(this.text)-1);
+            }
+        });
+
+        suspect_cards.push(Ext.create('Edetect.card', {
+            id: 'card' + Number(s).zeroPad(2),
+            suspectId: s
+        }));
+    }
 
     // Suspect Navigation, Alibi and Bio
     var suspect_picture = Ext.create('Ext.panel.Panel', {
+        layout: 'card',
         title: 'suspect_picture',
         width: 510,
         height: 200,
-        html: '<img src="resources/images/male_silhouette_x.png"></img>'
+        html: '<h1>Choose a suspect!</h1>',
+        items: suspect_cards
     }); // end suspect_picture
 
     var suspect_nav = Ext.create('Ext.panel.Panel', {
@@ -38,144 +73,8 @@ Ext.onReady(function () {
             columns: 4,
             title: 'Suspects',
             defaults: { align: 'center' },
-            items: [
-            {
-                text: 'New Game',
-                id:  'init',
-                // scope: this,
-                handler: function() { 
-                    reset_game();
-                    }
-            }, {
-                text: 'Re-Register',
-                id:  'register',
-                // scope: this,
-                handler: function() { 
-                    Detective.register();
-                    }
-            },{
-                text: '1',
-                id:  'nav01',
-                // scope: this,
-                handler: function() { 
-                    Ext.getCmp(getSuspectExtID(1)).setValue(Scenerio.getSuspectAlibi(1));
-                    }
-            },{
-                text: '2',
-                id:  'nav02',
-                handler: function() { 
-                    Ext.getCmp(getSuspectExtID(2)).setValue(Scenerio.getSuspectAlibi(2));
-                    }
-            },{
-                text: '3',
-                id:  'nav03',
-                handler: function() { 
-                    Ext.getCmp(getSuspectExtID(3)).setValue(Scenerio.getSuspectAlibi(3));
-                    }
-            },{
-                text: '4',
-                id:  'nav04',
-                handler: function() { 
-                    Ext.getCmp(getSuspectExtID(4)).setValue(Scenerio.getSuspectAlibi(4));
-                    }
-            },{
-                text: '5',
-                id:  'nav05',
-                handler: function() { 
-                    Ext.getCmp(getSuspectExtID(5)).setValue(Scenerio.getSuspectAlibi(5));
-                    }
-            },{
-                text: '6',
-                id:  'nav06',
-                handler: function() { 
-                    Ext.getCmp(getSuspectExtID(6)).setValue(Scenerio.getSuspectAlibi(6));
-                    }
-            },{
-                text: '7',
-                id:  'nav07',
-                handler: function() { 
-                    Ext.getCmp(getSuspectExtID(7)).setValue(Scenerio.getSuspectAlibi(7));
-                    }
-            },{
-                text: '8',
-                id:  'nav08',
-                handler: function() { 
-                    Ext.getCmp(getSuspectExtID(8)).setValue(Scenerio.getSuspectAlibi(8));
-                    }
-            },{
-                text: '9',
-                id:  'nav09',
-                handler: function() { 
-                    Ext.getCmp(getSuspectExtID(9)).setValue(Scenerio.getSuspectAlibi(9));
-                    }
-            },{
-                text: '10',
-                id:  'nav10',
-                handler: function() { 
-                    Ext.getCmp(getSuspectExtID(10)).setValue(Scenerio.getSuspectAlibi(10));
-                    }
-            },{
-                text: '11',
-                id:  'nav11',
-                handler: function() { 
-                    Ext.getCmp(getSuspectExtID(11)).setValue(Scenerio.getSuspectAlibi(11));
-                    }
-            },{
-                text: '12',
-                id:  'nav12',
-                handler: function() { 
-                    Ext.getCmp(getSuspectExtID(12)).setValue(Scenerio.getSuspectAlibi(12));
-                    }
-            },{
-                text: '13',
-                id:  'nav13',
-                handler: function() { 
-                    Ext.getCmp(getSuspectExtID(13)).setValue(Scenerio.getSuspectAlibi(13));
-                    }
-            },{
-                text: '14',
-                id:  'nav14',
-                handler: function() { 
-                    Ext.getCmp(getSuspectExtID(14)).setValue(Scenerio.getSuspectAlibi(14));
-                    }
-            },{
-                text: '15',
-                id:  'nav15',
-                handler: function() { 
-                    Ext.getCmp(getSuspectExtID(15)).setValue(Scenerio.getSuspectAlibi(15));
-                    }
-            },{
-                text: '16',
-                id:  'nav16',
-                handler: function() { 
-                    Ext.getCmp(getSuspectExtID(16)).setValue(Scenerio.getSuspectAlibi(16));
-                    }
-            },{
-                text: '17',
-                id:  'nav17',
-                handler: function() { 
-                    Ext.getCmp(getSuspectExtID(17)).setValue(Scenerio.getSuspectAlibi(17));
-                    }
-            },{
-                text: '18',
-                id:  'nav18',
-                handler: function() { 
-                    Ext.getCmp(getSuspectExtID(18)).setValue(Scenerio.getSuspectAlibi(18));
-                    }
-            },{
-                text: '19',
-                id:  'nav19',
-                handler: function() { 
-                    Ext.getCmp(getSuspectExtID(19)).setValue(Scenerio.getSuspectAlibi(19));
-                    }
-            },{
-                text: '20',
-                id:  'nav20',
-                handler: function() { 
-                    Ext.getCmp(getSuspectExtID(20)).setValue(Scenerio.getSuspectAlibi(20));
-                    }
-            }]
-        }], 
+            items: tb_items
+        }],
         items: [ suspect_picture ]
     }); // end suspect_nav
 
