@@ -327,6 +327,11 @@ Scenerio = function() {
             return suspectAnswer(suspectID, questionID);
         },
         getSuspectAlibi: function(suspectID) {
+            if (killerID === 0) {
+                // This condition can only be true if we are not initialized.
+                Ext.log("Accessing getSuspectAlibi before init so returning an empty string.");
+                return "";
+            }
             if (suspectID === victimID) { 
                 return deadMessage;
             } else {

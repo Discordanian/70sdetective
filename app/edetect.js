@@ -19,13 +19,13 @@ Ext.onReady(function () {
 
     var tb_items = [
             {
-                text: 'New Game',
+                text: 'Get Assignment',
                 id:  'init',
                 handler: function() {
                     reset_game();
                 }
             }, {
-                text: 'Re-Register',
+                text: 'Register',
                 id:  'register',
                 // scope: this,
                 handler: function() {
@@ -345,12 +345,7 @@ Ext.onReady(function () {
         }
     });
 
-    // Scenerio.spam();
-    reset_game();
-
-    
-
-
+    registerDetective();
 
     // Test stuff.
     if(1===0) {

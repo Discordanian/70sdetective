@@ -72,8 +72,8 @@ Detective = function() {
     var regWin = Ext.create('widget.window', {
         height: 400,
         width: 400,
-        x: 550,
-        y: 550,
+        x: 150,
+        y: 150,
         title: 'Detective Registration',
         closable: false,
         plain: true,
@@ -96,7 +96,7 @@ Detective = function() {
             nameField.setValue(name);
             Ext.log("Retrieved Cookie for name " + name);
             difficultySetting   = Ext.util.Cookies.get("Detective_DifficultySetting");
-            difficultySetting   = (difficultySetting)? difficultySetting : 0;
+            difficultySetting   = (difficultySetting)? difficultySetting : '0';
             Ext.log("Retrieved Cookie for difficulty " + difficultySetting);
             difficultyCombo.setValue(difficultySetting);
             wins                = Ext.util.Cookies.get("Detective_Wins");
