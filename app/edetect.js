@@ -353,7 +353,7 @@ Ext.onReady(function () {
 
 
     // Test stuff.
-    if(1===1) {
+    if(1===0) {
         console.groupCollapsed("Alibis");
         for (var suspectID = 1; suspectID < 21; suspectID++) {
             Ext.log("Get Alibi for " + suspectID);
