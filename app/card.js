@@ -4,7 +4,7 @@ Ext.define('Edetect.card', {
     bodyPadding: 5,
     frame: true,
     height: 300,
-    width: 'auto',
+    isInit: false,
 
     suspectId: 0,
     data: {
@@ -16,6 +16,12 @@ Ext.define('Edetect.card', {
     },
 
     initComponent: function () {
+        this.reset();
+        this.isInit = true;
+        this.callParent();
+    },
+
+    reset: function() {
         this.data = {
             name: Suspect.getName(this.suspectId),
             bio: Suspect.getBio(this.suspectId),
@@ -26,18 +32,21 @@ Ext.define('Edetect.card', {
         };
 
         this.renderHTML();
-
-        this.callParent();
     },
 
     renderHTML: function () {
         var self = this;
+
+        if (self.isInit === true ) {
+            self.remove('suspectBox' + self.suspectId);
+        }
 
         var html = "<div><img style=\"width: 75px; height: 71px; float: left;\" src=\"" + this.data.image + "\" /></div>";
         html += "<div style=\"float: right\"><h1>" + this.suspectId.zeroPad(2) + "</h1></div>";
         html += "<div><h1>" + this.data.name + "</h1></div>";
         html += "<div>" + this.data.occupation + "</div>";
         html += "<div>" + this.data.bio + "</div>";
+        html += "<div>" + this.data.handness + " handed</div>";
 
         var suspectInfo = Ext.create('Ext.container.Container', {
             width: 600,
@@ -46,8 +55,12 @@ Ext.define('Edetect.card', {
         });
 
         var questions = [];
-        Ext.each(this.data.questions, function(key, value, array) {
-            if ( value > 0 ) {
+        if ( Scenerio.victim() === self.suspectId ) {
+            questions.push(Ext.create('Ext.container.Container', {
+                html: '<h1>' + self.data.name + ' is DEAD!  Click the numbers above to interrogate suspects.</h1>'
+            }));
+        } else {
+            Ext.each(this.data.questions, function(key, value, array) {
                 questions.push(Ext.create('Ext.container.Container', {
                     layout: 'hbox',
                     width: 600,
@@ -69,8 +82,25 @@ Ext.define('Edetect.card', {
                         }
                     }]
                 }));
-            }
-        });
+            });
+
+            questions.push(Ext.create('Ext.container.Container', {
+                layout: 'hbox',
+                width: 600,
+                items: [{
+                    xtype: 'label',
+                    text: '',
+                    flex: 1
+                }, {
+                    xtype: 'button',
+                    text: 'Accuse!',
+                    flex: 0,
+                    handler: function() {
+                        Scenerio.solve(self.suspectId);
+                    }
+                }]
+            }));
+        }
 
         var suspectQuestions = Ext.create('Ext.container.Container', {
             layout: 'vbox',
@@ -79,15 +109,17 @@ Ext.define('Edetect.card', {
 
         var suspectBox = Ext.create('Ext.container.Container', {
             layout: 'vbox',
+            id: 'suspectBox' + self.suspectId,
             width: '600',
             flex: 1,
             items: [suspectInfo, suspectQuestions]
         });
 
-        Ext.apply(this, { items: suspectBox});
-    },
-
-    askQuestion: function(questionId) {
+        if (self.isInit === true) {
+            self.add(suspectBox);
+        } else {
+            Ext.apply(self, { items: [suspectBox] });
+        }
     }
 });
 

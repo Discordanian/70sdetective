@@ -301,6 +301,19 @@ Scenerio = function() {
         victim: function() {
             return victimID;
         },
+        solve: function(suspectID) {
+            if (killerID === suspectID) {
+                Ext.Msg.show({
+                    modal: true,
+                    msg: 'Book \'em!  Congratulations, you solved the case!'
+                });
+            } else {
+                Ext.Msg.show({
+                    modal: true,
+                    msg: this.suspectName(killerID) + ' murders you for being wrong.'
+                }); 
+            }
+        },
         suspectName: function(suspectID) {
             return Suspect.getName(suspectID);
         },
