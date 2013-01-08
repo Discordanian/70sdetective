@@ -224,6 +224,9 @@ Suspect = function() {
         getHandness: function(id) {
             return suspects[safeID(id)].handness;
         },
+        getImage: function(id) {
+            return suspects[safeID(id)].image;
+        }
     } // end return of public object
 
 }();

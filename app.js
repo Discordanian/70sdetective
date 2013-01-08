@@ -10,8 +10,13 @@ Array.prototype.shuffle = function (){
     for(var rnd, tmp, i=this.length; i; rnd=parseInt(Math.random()*i), tmp=this[--i], this[i]=this[rnd], this[rnd]=tmp);
 };
 
+// Add zeroPad to all numbers
+Number.prototype.zeroPad = function (zeros){
+    var str = String(this); for(var n = str.length; n < zeros; n++) {str = '0' + str;} return str;
+};
+
 // Application specific components and extensions
-Ext.Loader.setPath('KURT', 'app');
+Ext.Loader.setPath('Edetect', 'app');
 
 /* Define a 'console' object for IE */
 if (typeof console !== 'object') {
