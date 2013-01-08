@@ -28,7 +28,6 @@ Detective = function() {
         defaults: {
             anchor: '100%'
         },
-
         items: [
                 nameField
             ],
@@ -39,7 +38,7 @@ Detective = function() {
                     Ext.util.Cookies.set("Detective_Name", nameField.getValue());
                     regWin.hide();
                 } else {
-                    var msg = "The desk sergant bellows, \"I'm not sure how they do things where you're from, but here we do it by the book.  Sign your name and get your assignment.\"";
+                    var msg = "The desk sergant bellows, \"I'm not sure how they do things where you're from, but here we do it by the book!  Sign your name and get your assignment.\"";
                     Ext.Msg.alert("GUMSHOE!", msg);
                 }
             }
@@ -48,15 +47,6 @@ Detective = function() {
             handler: function() {
                 clearCookies();
                 nameField.setValue("");
-                // Ext.getCmp('detective_name').setValue("");
-                // Ext.getCmp('difficulty_setting').setValue("");
-                
-            }
-        },{
-            text: 'Close',
-            handler: function() {
-                regWin.hide(); // 'Hide the window'
-                
             }
         }]
     });
@@ -71,6 +61,13 @@ Detective = function() {
         plain: true,
         layout: 'fit',
         border: true,
+        afterlayout: function() {
+            console.log("Before getCookies()");
+            getCookies();
+            console.log("After getCookies()");
+            console.log("Render:  nameField.setValue("+name+")");
+            nameField.setValue(name);
+        },
         items: [ registerForm ]
     });
     
@@ -102,7 +99,7 @@ Detective = function() {
         },
         register: function() {
             // Pop up a window with registration.  
-            getCookies();
+            // getCookies();
             regWin.show();
             
         },
