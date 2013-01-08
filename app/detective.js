@@ -61,13 +61,6 @@ Detective = function() {
         plain: true,
         layout: 'fit',
         border: true,
-        afterlayout: function() {
-            console.log("Before getCookies()");
-            getCookies();
-            console.log("After getCookies()");
-            console.log("Render:  nameField.setValue("+name+")");
-            nameField.setValue(name);
-        },
         items: [ registerForm ]
     });
     
@@ -82,6 +75,7 @@ Detective = function() {
 
     function getCookies() {
             name                = Ext.util.Cookies.get("Detective_Name");
+            nameField.setValue(name);
             console.log("Retrieved Cookie for name " + name);
             difficultySetting   = Ext.util.Cookies.get("Detective_DifficultySetting");
             wins                = Ext.util.Cookies.get("Detective_Wins");
@@ -99,7 +93,7 @@ Detective = function() {
         },
         register: function() {
             // Pop up a window with registration.  
-            // getCookies();
+            getCookies();
             regWin.show();
             
         },
