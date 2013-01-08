@@ -76,12 +76,12 @@ Detective = function() {
     function getCookies() {
             name                = Ext.util.Cookies.get("Detective_Name");
             nameField.setValue(name);
-            console.log("Retrieved Cookie for name " + name);
+            Ext.log("Retrieved Cookie for name " + name);
             difficultySetting   = Ext.util.Cookies.get("Detective_DifficultySetting");
             wins                = Ext.util.Cookies.get("Detective_Wins");
-            console.log("Retrieved Cookie for wins " + wins);
+            Ext.log("Retrieved Cookie for wins " + wins);
             losses              = Ext.util.Cookies.get("Detective_Losses");
-            console.log("Retrieved Cookie for losses " + losses);
+            Ext.log("Retrieved Cookie for losses " + losses);
     }
 
 

@@ -353,10 +353,10 @@ Ext.onReady(function () {
 
 
     // Test stuff.
-    if(1===0) {
+    if(1===1) {
         console.groupCollapsed("Alibis");
         for (var suspectID = 1; suspectID < 21; suspectID++) {
-            console.log("Get Alibi for " + suspectID);
+            Ext.log("Get Alibi for " + suspectID);
             Ext.getCmp(getSuspectExtID(suspectID)).setValue(Scenerio.getSuspectAlibi(suspectID));
         }
         console.groupEnd(); // end Alibis
@@ -370,9 +370,9 @@ Ext.onReady(function () {
             
             Ext.getCmp(getSuspectExtID(suspectID)).setValue(Scenerio.getSuspectAlibi(suspectID));
             var questions = Suspect.getQuestions(suspectID);
-            console.log("Interview suspect " + Scenerio.suspectName(suspectID));
+            Ext.log("Interview suspect " + Scenerio.suspectName(suspectID));
             for (var j = 0; j < questions.length; j++) {
-                console.log("The answer to [" + Scenerio.questionText(questions[j]) + "] was [" + Scenerio.getSuspectAnswer(suspectID,questions[j]) + "]");
+                Ext.log("The answer to [" + Scenerio.questionText(questions[j]) + "] was [" + Scenerio.getSuspectAnswer(suspectID,questions[j]) + "]");
             } // for each question in their ID list
             
         } // for 5 suspects
