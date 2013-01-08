@@ -100,6 +100,16 @@ Ext.onReady(function () {
         return suspect;
     }
 
+
+    // Function to convert difficulty Setting to a question count.
+    var level2questions = function(level) {
+        // At the EASIEST setting, you can ask EVERYONE EVERY question that they have.  So that's 20 people at 5 questions.   (less 1 person who's dead).
+        // 95 -> total number of people/questions available
+        // In the original game the levels were lowest (3 Qs per suspect) to highest (1 Q per suspect).  
+        var questions = 60  - (level * 20);  // levels are 0,1,2
+        return questions;
+    }
+
     // Kill off this suspect.  It will disable there statements box and have a small animation
     var kill_suspect = function(id) {
        var spot = Ext.create('Ext.ux.Spotlight', {
@@ -159,6 +169,7 @@ Ext.onReady(function () {
         kill_suspect(Scenerio.victim());
         Ext.Msg.alert("(ALERT)  Incoming SMS message for the Detective! (ALERT)", Scenerio.getScenerioMessage()); 
         Scenerio.solution();
+        Scenerio.setQuestionLimit(level2questions(Detective.getDifficultySetting()));
     }
 
 

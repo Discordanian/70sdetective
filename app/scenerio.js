@@ -315,6 +315,9 @@ Scenerio = function() {
             questionLimit = qLimit;
             return true;
         },
+        getQuestionLimit: function() {
+            return questionLimit;
+        },
         getQuestionCount: function() {
             return questionCount;
         },
