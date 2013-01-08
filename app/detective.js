@@ -6,8 +6,14 @@ Detective = function() {
     var wins = 0;
     var losses = 0;
 
-    var NameLabel 
 
+    // Being a bit pedantic here and declaring the field
+    var nameField = Ext.create('Ext.form.field.Text', {
+        name: 'detective_name',
+        fieldLabel: 'Detective Name',
+        allowBlank: false,
+        defaultText: 'Enter Your Name Here, Gumshoe'
+    });
 
     // Create a registration form
     var registerForm = Ext.create('Ext.form.Panel', {
@@ -24,35 +30,31 @@ Detective = function() {
         },
 
         items: [
-                {
-                    fieldLabel: 'Detective Name',
-                    name: 'detective_name',
-                    allowBlank:false
-                },{
-                    fieldLabel: 'Difficulty Setting',
-                    name: 'difficulty_setting',
-                    xtype: 'numberfield'
-                }
+                nameField
             ],
         buttons: [{
             text: 'Register',
             handler: function() {
-                Ext.util.Cookies.set("Detective_Name", Ext.getCmp('detective_name'));
-                Ext.Msg.alert("Information","Register Selected");
+                if (nameField.isValid()) {
+                    Ext.util.Cookies.set("Detective_Name", nameField.getValue());
+                    regWin.hide();
+                } else {
+                    var msg = "The desk sergant bellows, \"I'm not sure how they do things where you're from, but here we do it by the book.  Sign your name and get your assignment.\"";
+                    Ext.Msg.alert("GUMSHOE!", msg);
+                }
             }
         },{
             text: 'Clear',
             handler: function() {
                 clearCookies();
-                Ext.getCmp('detective_name').setValue("");
-                Ext.getCmp('difficulty_setting').setValue("");
-                Ext.Msg.alert("Information","Clear Selected");
+                nameField.setValue("");
+                // Ext.getCmp('detective_name').setValue("");
+                // Ext.getCmp('difficulty_setting').setValue("");
                 
             }
         },{
             text: 'Close',
             handler: function() {
-                Ext.Msg.alert("Information","Close Selected");
                 regWin.hide(); // 'Hide the window'
                 
             }
