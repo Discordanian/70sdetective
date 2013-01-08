@@ -6,6 +6,23 @@ Detective = function() {
     var wins = 0;
     var losses = 0;
 
+    var difficultyStore = Ext.create('Ext.data.Store', {
+        fields : [ 'level','desc' ],
+        data: [
+            {"level": "0", "desc": "Cadet"},
+            {"level": "1", "desc": "Detective"},
+            {"level": "2", "desc": "Master Sleuth"}
+        ]
+    });
+
+    var difficultyCombo = Ext.create('Ext.form.ComboBox', {
+        fieldLabel: 'Choose Difficulty',
+        store: difficultyStore,
+        queryMode: 'local',
+        displayField: 'desc',
+        valueField: 'level',
+        emptyValue: 0
+    });
 
     // Being a bit pedantic here and declaring the field
     var nameField = Ext.create('Ext.form.field.Text', {
@@ -29,13 +46,14 @@ Detective = function() {
             anchor: '100%'
         },
         items: [
-                nameField
+                nameField, difficultyCombo
             ],
         buttons: [{
-            text: 'Register',
+            text: 'Register/Close',
             handler: function() {
                 if (nameField.isValid()) {
                     Ext.util.Cookies.set("Detective_Name", nameField.getValue());
+                    Ext.util.Cookies.set("Detective_DifficultySetting", difficultyCombo.getValue());
                     regWin.hide();
                 } else {
                     var msg = "The desk sergant bellows, \"I'm not sure how they do things where you're from, but here we do it by the book!  Sign your name and get your assignment.\"";
@@ -78,6 +96,9 @@ Detective = function() {
             nameField.setValue(name);
             Ext.log("Retrieved Cookie for name " + name);
             difficultySetting   = Ext.util.Cookies.get("Detective_DifficultySetting");
+            difficultySetting   = (difficultySetting)? difficultySetting : 0;
+            Ext.log("Retrieved Cookie for difficulty " + difficultySetting);
+            difficultyCombo.setValue(difficultySetting);
             wins                = Ext.util.Cookies.get("Detective_Wins");
             Ext.log("Retrieved Cookie for wins " + wins);
             losses              = Ext.util.Cookies.get("Detective_Losses");
