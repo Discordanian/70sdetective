@@ -31,8 +31,60 @@ Ext.define('Edetect.card', {
     },
 
     renderHTML: function () {
-        this.html = "<div><img style=\"float: left;\" src=\"" + this.data.image + "\" /></div>";
-        this.html += "<div><h1>" + this.data.name + "</h1></div>";
+        var self = this;
+
+        var html = "<div><img style=\"width: 75px; height: 71px; float: left;\" src=\"" + this.data.image + "\" /></div>";
+        html += "<div style=\"float: right\"><h1>" + this.suspectId.zeroPad(2) + "</h1></div>";
+        html += "<div><h1>" + this.data.name + "</h1></div>";
+        html += "<div>" + this.data.occupation + "</div>";
+        html += "<div>" + this.data.bio + "</div>";
+
+        var suspectInfo = Ext.create('Ext.container.Container', {
+            width: 600,
+            height: 71,
+            html: html
+        });
+
+        var questions = [];
+        Ext.each(this.data.questions, function(key, value, array) {
+            if ( value > 0 ) {
+                questions.push(Ext.create('Ext.container.Container', {
+                    layout: 'hbox',
+                    width: 600,
+                    items: [{
+                        xtype: 'label',
+                        text: Scenerio.questionText(key),
+                        flex: 1
+                    }, {
+                        xtype: 'button',
+                        text: 'Ask',
+                        flex: 0,
+                        handler: function() {
+                            var answer = Scenerio.getSuspectAnswer(self.suspectId, key);
+                            this.hide();
+                            this.up('container').add(Ext.create('Ext.form.Label', {
+                                text: answer,
+                                flex: 0
+                            }));
+                        }
+                    }]
+                }));
+            }
+        });
+
+        var suspectQuestions = Ext.create('Ext.container.Container', {
+            layout: 'vbox',
+            items: questions
+        });
+
+        var suspectBox = Ext.create('Ext.container.Container', {
+            layout: 'vbox',
+            width: '600',
+            flex: 1,
+            items: [suspectInfo, suspectQuestions]
+        });
+
+        Ext.apply(this, { items: suspectBox});
     },
 
     askQuestion: function(questionId) {
