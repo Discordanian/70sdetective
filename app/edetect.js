@@ -51,7 +51,7 @@ Ext.onReady(function () {
                 id:  'register',
                 // scope: this,
                 handler: function() { 
-                    registerDetective();
+                    Detective.register();
                     }
             },{
                 text: '1',
@@ -180,6 +180,7 @@ Ext.onReady(function () {
     }); // end suspect_nav
 
     var registerDetective = function() {
+        Detective.register();
     }
 
 
@@ -446,7 +447,6 @@ Ext.onReady(function () {
     });
 
     // Scenerio.spam();
-    registerDetective();
     reset_game();
 
     

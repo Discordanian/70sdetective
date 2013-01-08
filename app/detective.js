@@ -6,12 +6,12 @@ Detective = function() {
     var wins = 0;
     var losses = 0;
 
+    var NameLabel 
+
 
     // Create a registration form
     var registerForm = Ext.create('Ext.form.Panel', {
-        // url:'save-form.php',
         frame:false,
-        // title: 'Detective Registration',
         bodyStyle:'padding:5px 5px 0',
         width: 350,
         fieldDefaults: {
@@ -37,24 +37,35 @@ Detective = function() {
         buttons: [{
             text: 'Register',
             handler: function() {
+                Ext.util.Cookies.set("Detective_Name", Ext.getCmp('detective_name'));
                 Ext.Msg.alert("Information","Register Selected");
             }
         },{
             text: 'Clear',
             handler: function() {
                 clearCookies();
+                Ext.getCmp('detective_name').setValue("");
+                Ext.getCmp('difficulty_setting').setValue("");
                 Ext.Msg.alert("Information","Clear Selected");
+                
+            }
+        },{
+            text: 'Close',
+            handler: function() {
+                Ext.Msg.alert("Information","Close Selected");
+                regWin.hide(); // 'Hide the window'
+                
             }
         }]
     });
 
     var regWin = Ext.create('widget.window', {
-        height: 200,
+        height: 400,
         width: 400,
-        x: 450,
-        y: 450,
+        x: 550,
+        y: 550,
         title: 'Detective Registration',
-        closable: true,
+        closable: false,
         plain: true,
         layout: 'fit',
         border: true,
@@ -72,9 +83,12 @@ Detective = function() {
 
     function getCookies() {
             name                = Ext.util.Cookies.get("Detective_Name");
+            console.log("Retrieved Cookie for name " + name);
             difficultySetting   = Ext.util.Cookies.get("Detective_DifficultySetting");
             wins                = Ext.util.Cookies.get("Detective_Wins");
+            console.log("Retrieved Cookie for wins " + wins);
             losses              = Ext.util.Cookies.get("Detective_Losses");
+            console.log("Retrieved Cookie for losses " + losses);
     }
 
 
