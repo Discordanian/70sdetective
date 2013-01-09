@@ -55,7 +55,7 @@ Ext.onReady(function () {
     // Suspect Navigation, Alibi and Bio
     var suspect_picture = Ext.create('Ext.panel.Panel', {
         layout: 'card',
-        title: 'suspect_picture',
+        // title: 'suspect_picture',
         width: 510,
         height: 200,
         html: '<h1>Choose a suspect!</h1>',
@@ -63,7 +63,7 @@ Ext.onReady(function () {
     }); // end suspect_picture
 
     var suspect_nav = Ext.create('Ext.panel.Panel', {
-        title: 'suspect_nav',
+        // title: 'suspect_nav',
         // width: 300,
         layout :'fit',
         // renderTo: document.body,
@@ -108,7 +108,7 @@ Ext.onReady(function () {
         // At the EASIEST setting, you can ask EVERYONE EVERY question that they have.  So that's 20 people at 5 questions.   (less 1 person who's dead).
         // 95 -> total number of people/questions available
         // In the original game the levels were lowest (3 Qs per suspect) to highest (1 Q per suspect).  
-        var questions = 60  - (level * 20);  // levels are 0,1,2
+        var questions = 60  - (level * 23);  // levels are 0,1,2
         return questions;
     }
 
@@ -302,6 +302,7 @@ Ext.onReady(function () {
             height: 340,
             bodyPadding: 10,
             html: about_html,
+            autoScroll: true,
             autoHeight: true,
             border: true,
             margins: '0 0 5 0'
@@ -313,6 +314,7 @@ Ext.onReady(function () {
             title: 'How to Play',
             bodyPadding: 10,
             html: rules_html,
+            autoScroll: true,
             border: true,
             width: 450
             // could use a TreePanel or AccordionLayout for navigational items
@@ -323,16 +325,9 @@ Ext.onReady(function () {
             items: [ statements_form ],
             layout: 'fit'
         }, {
-            region: 'east',
-            title: 'East Panel',
-            collapsible: true,
-            split: true,
-            width: 150
-        }, {
             region: 'center',
             layout: 'fit',
-            items: [  suspect_nav 
-            ]
+            items: [  suspect_nav ]
         }]
     });
 
