@@ -303,15 +303,11 @@ Scenerio = function() {
         },
         solve: function(suspectID) {
             if (killerID === suspectID) {
-                Ext.Msg.show({
-                    modal: true,
-                    msg: 'Book \'em!  Congratulations, you solved the case!'
-                });
+                // Ext.Msg.show({ modal: true, msg: 'Book \'em!  Congratulations, you solved the case!' });
+                Ext.Msg.alert("Screeching tires","Book \'em!  Congratulations!  You have solved the case and another criminal pays for their crimes.");
             } else {
-                Ext.Msg.show({
-                    modal: true,
-                    msg: this.suspectName(killerID) + ' murders you for being wrong.'
-                }); 
+                // Ext.Msg.show({ modal: true, msg: this.suspectName(killerID) + ' murders you for being wrong.' }); 
+                Ext.Msg.alert("(Sad Trombone)", "The desk sergeant has just finished ripping you a new one for accusing an innocent person of murder.  You are dejectedly walking to your vehicle when " + this.suspectName(killerID) + " steps out from the shadows and puts two bullets in your chest.");
             }
         },
         suspectName: function(suspectID) {
