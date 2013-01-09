@@ -15,7 +15,9 @@ Ext.onReady(function () {
 
     var about_html = undefined;
     var rules_html = undefined;
-    var suspect_cards = [];
+    var suspect_cards = [{
+        html: "Take an assignment already!"
+    }];
 
     var tb_items = [
             {
@@ -40,7 +42,7 @@ Ext.onReady(function () {
             id:  'nav' + Number(s).zeroPad(2),
             handler: function() {
                 Ext.getCmp(getSuspectExtID(this.text)).setValue(Scenerio.getSuspectAlibi(this.text));
-                suspect_picture.getLayout().setActiveItem(Number(this.text)-1);
+                suspect_picture.getLayout().setActiveItem(Number(this.text));
             }
         });
 
@@ -161,12 +163,14 @@ Ext.onReady(function () {
     }
 
     var reset_game = function() {
+        Scenerio.init();
         for (var i = 1; i < 21; i++) {
             reset_suspect(i);
+            suspect_cards[i].reset();
         }
 
-        Scenerio.init();
         kill_suspect(Scenerio.victim());
+        suspect_picture.getLayout().setActiveItem(Scenerio.victim());
         Ext.Msg.alert("(ALERT)  Incoming SMS message for the Detective! (ALERT)", Scenerio.getScenerioMessage()); 
         Scenerio.solution();
         Scenerio.setQuestionLimit(level2questions(Detective.getDifficultySetting()));
