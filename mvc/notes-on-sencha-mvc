@@ -1,0 +1,25 @@
+notes on sencha mvc
+
+0. install sencha cmd 3.0 on your machine
+1. unzip extjs 4.1.1a or greater and cd into it
+2. $ sencha generate app SeventiesDetective ../ 
+3. this creates folder structure. cd ../ into your application root
+4. now to build a production version: sencha app build production
+5. it will tell you where it deployed (build/myapp/)
+
+
+
+
+
+
+notes on mvc
+it looks like edective.js 
+is going to be broken out into the Main view and controller
+
+card = view + controller 
+edetect = view + controller 
+scenario = not the gameplay, but everything about this scenario, lot of stores (maybe subclass scenario.questions)
+and public methods for game
+
+detective = controllers + stores/model 
+suspect = store+model w validator[safeid]
