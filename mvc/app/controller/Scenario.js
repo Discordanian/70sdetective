@@ -1,4 +1,9 @@
-Scenerio = function() {
+Ext.define('SeventiesDetective.controller.Scenario', {
+	extend:'Ext.app.Controller',
+	launch:function(){
+
+
+
 
     // Private vars
     var victimID =0;
@@ -11,55 +16,8 @@ Scenerio = function() {
     var questionCount = 0;
     var questionLimit = 0;
     var deadMessage = "( - - = = D E A D = = - - )";
-    var answers = [];
-    var weapons = [
-                    ".38 revolver",
-                    ".45 automatic"
-                  ];
-    var questions = [   
-                        "Blank",
-                        "Which side of town did the murderer flee to? (East/West)",
-                        "What gender was the murderer? (Male/Female)",
-                        "What part of town did the murderer flee to? (Uptown/Midtown/Downtown)",
-                        "Was the murder weapon a .38? (Yes/No)",
-                        "Where was the .38 hidden? (Location)",
-                        "Where was the .45 hidden? (Location)",
-                        "Which location has only 3 suspects? (Location)",
-                        "Did the murderer flee to one of 3 locations? (Yes/No)",
-                        "What side of town were you on? (East/West)",
-                        "Which part of town were you in? (Uptown/Midtown/Downtown)",
-                        "Were you in one of 3 locations? (Yes/No)",
-                        "Were you where a weapon was hidden? (Yes/No)",
-                        "Are the prints on the .38 left or right handed? (Left/Right)",
-                        "Are the prints on the .45 left or right handed? (Left/Right)"
-                    ];
-    var scenes = [
-                    {
-                        id : 0,
-                        name: 'the Art Show'
-                    },
-                    {
-                        id : 1,
-                        name: 'a Box at Theatre'
-                    },
-                    {
-                        id : 2,
-                        name: 'a Card Party'
-                    },
-                    {
-                        id : 3,
-                        name: 'the Docks'
-                    },
-                    {
-                        id : 4,
-                        name: 'the Embassy'
-                    },
-                    {
-                        id : 5,
-                        name: 'a Factory'
-                    }
-                    
-                    ];
+
+
     // ---------------------- Some private methods ----------------------------------
 
     // Given a suspectID, where are they?
@@ -447,4 +405,14 @@ Scenerio = function() {
         } // end init
     } // end return of public object
 
-}();
+
+
+
+
+
+
+
+		
+	}
+
+})

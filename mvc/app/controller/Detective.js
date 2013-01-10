@@ -1,4 +1,6 @@
-Detective = function() {
+Ext.define('SeventiesDetective.controller.Detective', {
+    extend: 'Ext.app.Controller',
+    launch: function(){
 
     // Private vars
     var name;
@@ -154,5 +156,6 @@ Detective = function() {
         }
         
     } // end return of public object
-
-}();
+    	
+    }
+ });

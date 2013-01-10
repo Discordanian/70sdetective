@@ -1,6 +1,7 @@
-Ext.define('Edetect.card', {
+Ext.define('SeventiesDetective.view.card', {
     extend: 'Ext.panel.Panel',
     layout: 'fit',
+    xtype:'card',
     bodyPadding: 5,
     frame: true,
     height: 300,

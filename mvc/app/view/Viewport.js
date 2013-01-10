@@ -4,36 +4,60 @@ Ext.define('SeventiesDetective.view.Viewport', {
     requires:[
         'Ext.tab.Panel',
         'Ext.layout.container.Border',
-        'SeventiesDetective.view.Main'
+        'SeventiesDetective.view.Main',
+        'SeventiesDetective.view.StatementsForm',
+        'SeventiesDetective.view.SuspectNav',
+        'SeventiesDetective.view.Rules',
+        'SeventiesDetective.view.About'
     ],
-
-    layout: {
-        type: 'border'
-    },
-
+    layout: 'border',
     items: [{
-        region: 'west',
+        region: 'north',
+        id: 'north',
+        title: '70s Detective',
         xtype: 'panel',
-        title: 'west',
-        width: 150
-    },{
-        region: 'center',
-        xtype: 'tabpanel',
-        items:[{
-            title: 'Center Tab 1',
-            xtype:'panel',
-            items:[
+        collapsed: true,
+        collapsible: true,
+        height: 340,
+        bodyPadding: 10,
+        items: [
+            { xtype: 'about'}
+        ],
+        autoScroll: true,
+        autoHeight: true,
+        border: true,
+        margins: '0 0 5 0'
+    }, {
+        region: 'west',
+        id: 'west',
+        collapsible: true,
+        collapsed: true,
+        title: 'How to Play',
+        bodyPadding: 10,
+          items: [
+            { xtype: 'rules'}
+        ],
+        autoScroll: true,
+        border: true,
+        width: 450
+        // could use a TreePanel or AccordionLayout for navigational items
+    }, {
+        region: 'south',
+        title: 'Statements from Suspects',
+        collapsible: true,
+        items: [ 
             {
-                xtype:'button',
-                text:'loadview',
-                height:'50px',
-                width:'50px',
-                listeners:{
-                    click: function(){
-                        Ext.Viewport.add(Ext.create('SeventiesDetective.view.Main'))
-                    }
-                }
-            }]
-        }]
+                xtype: 'StatementsForm' 
+            }
+        ],
+        layout: 'fit'
+    }, {
+        region: 'center',
+        layout: 'fit',
+        items: [  
+            { 
+                xtype: 'SuspectNav'
+            }
+        ]
     }]
 });
