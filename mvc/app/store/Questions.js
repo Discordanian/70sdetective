@@ -1,9 +1,7 @@
 Ext.define('SeventiesDetective.store.Questions',{
     extend: 'Ext.data.Store',
     requires: 'SeventiesDetective.model.Questions',
-    config:{
-            model:'SeventiesDetective.model.Questions'
-    },
+    model:'SeventiesDetective.model.Questions',
     data:[
         { question:"Blank" },
         { question:"Which side of town did the murderer flee to? (East/West)" },

@@ -1,7 +1,7 @@
 Ext.define('SeventiesDetective.view.SuspectNav',{
 	extend:'Ext.panel.Panel',
 	xtype:'SuspectNav',
-	requires:'SeventiesDetective.view.Card',
+	// requires:'SeventiesDetective.view.Card',
 	config:{
 	    layout :'fit',
 	    dockedItems: [{
@@ -28,7 +28,7 @@ Ext.define('SeventiesDetective.view.SuspectNav',{
        		]
 	    }],
 	    items: [ 
-	    	{
+	    	/*{
 	    		xtype: 'panel',
 	    		layout: 'card',
 	            width: 510,
@@ -40,11 +40,11 @@ Ext.define('SeventiesDetective.view.SuspectNav',{
 	            		html:"Take an assignment already!"
 	            	}
 	            ]
-	    	}
+	    	}*/
 
 	     ],
 	     applyItems:function(){
-	     	    for ( var s = 1; s <= 20; s++ ) {
+     	    for ( var s = 1; s <= 20; s++ ) {
             tb_items.push({
                 text: s,
                 id:  'nav' + Number(s).zeroPad(2),

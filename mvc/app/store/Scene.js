@@ -1,9 +1,7 @@
 Ext.define('SeventiesDetective.store.Scene',{
     extend: 'Ext.data.Store',
     requires: 'SeventiesDetective.model.Scene',
-    config:{
-            model:'SeventiesDetective.model.Scene'
-    },
+    model:'SeventiesDetective.model.Scene',
     data:[
                     {
                         id : 0,

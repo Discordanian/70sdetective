@@ -10,7 +10,7 @@ Ext.define('SeventiesDetective.model.Suspect',{
 			{ name:'image',      type:'string'},
 			{ name:'handness',   type:'string'}
 		],
-		hasMany:{ model:'Questions', name: 'questions'}
+		// hasMany:{ model:'Questions', name: 'questions'},
 		idProperty: 'id',
 		proxy:{
             type: 'memory',
@@ -20,6 +20,5 @@ Ext.define('SeventiesDetective.model.Suspect',{
             }
 		}
 	}
-
 })
 

@@ -5,18 +5,36 @@ Ext.define('SeventiesDetective.view.StatementsForm',{
 		   // Utility function to make the field labels
 		   //TODO
         this.suspectFieldLabel = function(id) {
-            var retVal;
-            var did; // 'display id' should have used 'smoke'
-            if(id < 10) {
-                did = '0' + id;
-            } else {
-                did = id;
-            }
-            retVal = did + " : " + Suspect.getName(id);
-            return retVal;
+           
         }
 	}*/
+	// constructor:function(){
+	// 	debugger
+	// },
+
 	config:{
+			generateSuspect:function(from,to){
+		debugger;
+
+		for (var i=from;i<to;i++){
+			 // var retVal;
+	   //          var did; // 'display id' should have used 'smoke'
+	   //          if(id < 10) {
+	   //              did = '0' + id;
+	   //          } else {
+	   //              did = id;
+	   //          }
+	   //          retVal = did + " : " + Suspect.getName(id);
+
+	            return {
+	            	xtype:'textareafield',
+	            	//TODO BETTER WAY THAN USING .RAW BUT get not working
+	                fieldLabel: Ext.getStore('Suspect').getAt(i).raw['name'],
+	                name: 'suspect'+i,
+	                id: 'suspect'+i
+	            };
+            }
+	},
         fieldDefaults: {
             labelWidth: 110, // label settings here cascade unless overridden
         },
@@ -26,6 +44,7 @@ Ext.define('SeventiesDetective.view.StatementsForm',{
         defaults: {
             bodyPadding: 1
         },
+
         items: [{
             // Fieldset in Column 1 - collapsible via toggle button
             xtype:'fieldset',
@@ -35,7 +54,12 @@ Ext.define('SeventiesDetective.view.StatementsForm',{
             defaultType: 'textareafield',
             defaults: {height: 20, anchor: '100%'},
             layout: 'anchor',
-            items :[{
+            items :[
+            	// Ext.getView('StatementsForm').getSuspect(0,10)()
+        	
+            	// app.getStatementsFormView().
+
+        /*	{
                 fieldLabel: suspectFieldLabel(1),
                 name: 'suspect01',
                 id: 'suspect01'
@@ -75,7 +99,7 @@ Ext.define('SeventiesDetective.view.StatementsForm',{
                 fieldLabel: suspectFieldLabel(10),
                 name: 'suspect10',
                 id: 'suspect10'
-            } ]
+            }*/ ]
         }, {
             xtype:'fieldset',
             columnWidth: 0.5,
@@ -85,7 +109,7 @@ Ext.define('SeventiesDetective.view.StatementsForm',{
             defaults: {height: 20, anchor: '100%'},
             layout: 'anchor',
             xtype:'fieldset',
-            items :[{
+            items :[/*{
                 fieldLabel: suspectFieldLabel(11),
                 name: 'suspect11',
                 id: 'suspect11'
@@ -125,7 +149,7 @@ Ext.define('SeventiesDetective.view.StatementsForm',{
                 fieldLabel: suspectFieldLabel(20),
                 name: 'suspect20',
                 id: 'suspect20'
-            } ]
+            }*/ ]
         }]
 	}
 })

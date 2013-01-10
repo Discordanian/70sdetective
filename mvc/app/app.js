@@ -5,7 +5,7 @@ Ext.Loader.setConfig({
 Ext.Loader.setPath('Ext', 'ext/src');
 Ext.Loader.setPath('Ext.ux', 'ext/examples/ux');
 
-var app; //global
+app = 1; //global
 debug = (window.location.search.indexOf('debug') ==1) ? true : false;
 
 // Add shuffle function to all array objects
@@ -21,11 +21,31 @@ Number.prototype.zeroPad = function (zeros){
 Ext.application({
     name: 'SeventiesDetective',
     // controllers: ["Main", "Card", "Detective", "Main", "Scenario", "Suspect" ],
-    // models: ["Answer","Questions","Scene","Suspect","Weapon"],
-    // stores: ["Answer","Questions","Scene","Suspect","Weapon"],
-    views: ["Main","Card","Viewport", "About", "Rules"],
-    autoCreateViewport: true,
+    models: [
+        // "Answer",
+        // "Questions",
+        // "Scene",
+        "Suspect",
+        "Weapon"
+    ],
+    stores: [
+        // "Answer",
+        // "Questions",
+        // "Scene",
+        "Suspect",
+        "Weapon"
+    ],
+    views: [
+        "Main",
+        // "Card",
+        "About", 
+        "Rules",
+        "StatementsForm",
+        "SuspectNav"
+    ],
+    // autoCreateViewport: true,
     launch: function(){
         app = this;
+        Ext.create('SeventiesDetective.view.Main');
     }
 });

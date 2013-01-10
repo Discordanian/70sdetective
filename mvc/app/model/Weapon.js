@@ -4,7 +4,7 @@ Ext.define('SeventiesDetective.model.Weapon',{
 	config:{
 		fields:[
 			{ name:'name', 		 type:'string'}
-		]
+		],
 		idProperty: 'name',
 		proxy:{
             type: 'memory',
