@@ -20,21 +20,6 @@ Number.prototype.zeroPad = function (zeros){
 
 Ext.application({
     name: 'SeventiesDetective',
-    // controllers: ["Main", "Card", "Detective", "Main", "Scenario", "Suspect" ],
-    models: [
-        // "Answer",
-        // "Questions",
-        // "Scene",
-        "Suspect",
-        "Weapon"
-    ],
-    stores: [
-        // "Answer",
-        // "Questions",
-        // "Scene",
-        "Suspect",
-        "Weapon"
-    ],
     views: [
         "Main",
         // "Card",
@@ -43,6 +28,23 @@ Ext.application({
         "StatementsForm",
         "SuspectNav"
     ],
+    stores: [
+        // "Answer",
+        // "Questions",
+        // "Scene",
+        "Suspect",
+        "Weapon"
+    ], 
+    models: [
+        // "Answer",
+        // "Questions",
+        // "Scene",
+        "Suspect",
+        "Weapon"
+    ],
+    // controllers: ["Main", "Card", "Detective", "Main", "Scenario", "Suspect" ],
+     
+  
     // autoCreateViewport: true,
     launch: function(){
         app = this;

@@ -1,157 +1,58 @@
 Ext.define('SeventiesDetective.view.StatementsForm',{
 	extend:'Ext.form.Panel',
+	requires:'Ext.layout.container.Column',
 	xtype:'StatementsForm',
-	/*constructor:{
-		   // Utility function to make the field labels
-		   //TODO
-        this.suspectFieldLabel = function(id) {
-           
-        }
-	}*/
-	// constructor:function(){
-	// 	debugger
-	// },
-
+    layout: 'column', // layout is NOT on conifg anymore??!
 	config:{
-			generateSuspect:function(from,to){
-		debugger;
-
-		for (var i=from;i<to;i++){
-			 // var retVal;
-	   //          var did; // 'display id' should have used 'smoke'
-	   //          if(id < 10) {
-	   //              did = '0' + id;
-	   //          } else {
-	   //              did = id;
-	   //          }
-	   //          retVal = did + " : " + Suspect.getName(id);
-
-	            return {
-	            	xtype:'textareafield',
-	            	//TODO BETTER WAY THAN USING .RAW BUT get not working
-	                fieldLabel: Ext.getStore('Suspect').getAt(i).raw['name'],
-	                name: 'suspect'+i,
-	                id: 'suspect'+i
-	            };
-            }
-	},
         fieldDefaults: {
             labelWidth: 110, // label settings here cascade unless overridden
         },
+        items:[],
         frame: false,
         bodyStyle: 'padding:5px 5px 0',
-        layout: 'column', // arrange fieldsets side by side
         defaults: {
             bodyPadding: 1
-        },
+        }
+	},
+    constructor: function(config) {
+    	//for loop get name create textfield
+		getItems=function(c){
+			var items=[];
+			var from = c ? 1 : 11;
+			var to = c ? 11 : 21;
+			for (var i=from;i<to;i++){
+				items.push(
+				 	{
+				 		xtype:'textareafield',
+				 		name: 'suspect'+i,
+		                id: 'suspect'+i,
+		                fieldLabel: i + " " + Ext.getStore('Suspect').getAt(i).raw['name']
+			 		}
+		      	)
+			}
+			return items;
+		};
 
-        items: [{
-            // Fieldset in Column 1 - collapsible via toggle button
-            xtype:'fieldset',
-            columnWidth: 0.5,
-            title: 'Men',
-            collapsible: false,
-            defaultType: 'textareafield',
-            defaults: {height: 20, anchor: '100%'},
-            layout: 'anchor',
-            items :[
-            	// Ext.getView('StatementsForm').getSuspect(0,10)()
-        	
-            	// app.getStatementsFormView().
-
-        /*	{
-                fieldLabel: suspectFieldLabel(1),
-                name: 'suspect01',
-                id: 'suspect01'
-            }, {
-                fieldLabel: suspectFieldLabel(2),
-                name: 'suspect02',
-                id: 'suspect02'
-            }, {
-                fieldLabel: suspectFieldLabel(3),
-                name: 'suspect03',
-                id: 'suspect03'
-            }, {
-                fieldLabel: suspectFieldLabel(4),
-                name: 'suspect04',
-                id: 'suspect04'
-            }, {
-                fieldLabel: suspectFieldLabel(5),
-                name: 'suspect05',
-                id: 'suspect05'
-            }, {
-                fieldLabel: suspectFieldLabel(6),
-                name: 'suspect06',
-                id: 'suspect06'
-            }, {
-                fieldLabel: suspectFieldLabel(7),
-                name: 'suspect07',
-                id: 'suspect07'
-            }, {
-                fieldLabel: suspectFieldLabel(8),
-                name: 'suspect08',
-                id: 'suspect08'
-            }, {
-                fieldLabel: suspectFieldLabel(9),
-                name: 'suspect09',
-                id: 'suspect09'
-            }, {
-                fieldLabel: suspectFieldLabel(10),
-                name: 'suspect10',
-                id: 'suspect10'
-            }*/ ]
-        }, {
-            xtype:'fieldset',
-            columnWidth: 0.5,
-            title: 'Women',
-            collapsible: false,
-            defaultType: 'textareafield',
-            defaults: {height: 20, anchor: '100%'},
-            layout: 'anchor',
-            xtype:'fieldset',
-            items :[/*{
-                fieldLabel: suspectFieldLabel(11),
-                name: 'suspect11',
-                id: 'suspect11'
-            }, {
-                fieldLabel: suspectFieldLabel(12),
-                name: 'suspect12',
-                id: 'suspect12'
-            }, {
-                fieldLabel: suspectFieldLabel(13),
-                name: 'suspect13',
-                id: 'suspect13'
-            }, {
-                fieldLabel: suspectFieldLabel(14),
-                name: 'suspect14',
-                id: 'suspect14'
-            }, {
-                fieldLabel: suspectFieldLabel(15),
-                name: 'suspect15',
-                id: 'suspect15'
-            }, {
-                fieldLabel: suspectFieldLabel(16),
-                name: 'suspect16',
-                id: 'suspect16'
-            }, {
-                fieldLabel: suspectFieldLabel(17),
-                name: 'suspect17',
-                id: 'suspect17'
-            }, {
-                fieldLabel: suspectFieldLabel(18),
-                name: 'suspect18',
-                id: 'suspect18'
-            }, {
-                fieldLabel: suspectFieldLabel(19),
-                name: 'suspect19',
-                id: 'suspect19'
-            }, {
-                fieldLabel: suspectFieldLabel(20),
-                name: 'suspect20',
-                id: 'suspect20'
-            }*/ ]
-        }]
-	}
+    	columns=[];
+    	for (var c=0; c<2; c++){
+    		var gender=c ? 'Men' : 'Women';
+			columns.push(
+				{
+				 	xtype:'fieldset',
+		            columnWidth: 0.5,
+		            title: gender,
+		            collapsible: false,
+		            defaultType: 'textareafield',
+		            defaults: {height: 20, anchor: '100%'},
+		            layout: 'anchor',
+		            items: getItems(c)
+		        }
+			)
+		}	
+    	this.setItems(columns);
+        this.callParent(); 
+       	return this.initConfig(config);
+    }
 })
 
 

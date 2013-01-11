@@ -6,4 +6,5 @@ mvc/ext-4.1.1a-gpl.zip
 mvc/ext-4.1.1a-gpl
 mvc/ext
 mvc/ext/
-
+mvc/build/
+mvc/resources/sass/default/.sass-cache/
