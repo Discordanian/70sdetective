@@ -1,22 +1,22 @@
 Ext.define('SeventiesDetective.view.card', {
     extend: 'Ext.panel.Panel',
+    requires: 'SeventiesDetective.controller.Scenario',
     layout: 'fit',
     xtype:'card',
-    bodyPadding: 5,
-    frame: true,
-    height: 300,
-    isInit: false,
-
-    suspectId: 0,
-    data: {
-        name: 'Jon Bishop',
-        bio: 'Sunshine, lolly pops, rainbows, and unicorns. AKA Awesome.',
-        handness: 'ambidextrious',
-        occupation: 'Engineer',
-        questions: []
-    },
+    config:{
+        bodyPadding: 5,
+        frame: true,
+        height: 300,
+        isInit: false,
+        suspectId: 0,
+    },   
 
     initComponent: function () {
+        //loop1-20
+        // suspect_cards.push(Ext.create('Edetect.card', {
+            //     id: 'card' + Number(s).zeroPad(2),
+            //     suspectId: s
+            // }));
         this.reset();
         this.isInit = true;
         this.callParent();
@@ -24,13 +24,20 @@ Ext.define('SeventiesDetective.view.card', {
 
     reset: function() {
         this.data = {
+            name: 'Jon Bishop',
+            bio: 'Sunshine, lolly pops, rainbows, and unicorns. AKA Awesome.',
+            handness: 'ambidextrious',
+            occupation: 'Engineer',
+            questions: []
+        }
+       /* this.data = {
             name: Suspect.getName(this.suspectId),
             bio: Suspect.getBio(this.suspectId),
             handness: Suspect.getHandness(this.suspectId),
             occupation: Suspect.getOccupation(this.suspectId),
             questions: Suspect.getQuestions(this.suspectId),
             image: Suspect.getImage(this.suspectId)
-        };
+        };*/
 
         this.renderHTML();
     },
@@ -54,7 +61,8 @@ Ext.define('SeventiesDetective.view.card', {
             height: 71,
             html: html
         });
-
+        Scenario=app.getController("Scenario");
+        debugger;
         var questions = [];
         if ( Scenerio.victim() === self.suspectId ) {
             questions.push(Ext.create('Ext.container.Container', {

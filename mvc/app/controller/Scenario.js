@@ -1,49 +1,46 @@
 Ext.define('SeventiesDetective.controller.Scenario', {
-	extend:'Ext.app.Controller',
-	launch:function(){
-
-
-
-
-    // Private vars
-    var victimID =0;
-    var weaponID = 0;
-    var murderLocationID = 0;
-    var population = [];
-    var populationMap = [];
-    var weaponLocationIDs = [];
-    var killerID =0;
-    var questionCount = 0;
-    var questionLimit = 0;
-    var deadMessage = "( - - = = D E A D = = - - )";
-
+	extend:'Ext.app.Controller',   
+    config:{
+        victimID :0,
+        weaponID : 0,
+        murderLocationID : 0,
+        population : [],
+        populationMap : [],
+        weaponLocationIDs : [],
+        killerID :0,
+        questionCount : 0,
+        questionLimit : 0,
+        deadMessage : "( - - = = D E A D = = - - )"
+    },
+ 
+   
 
     // ---------------------- Some private methods ----------------------------------
 
     // Given a suspectID, where are they?
-    function suspectPopulationID(suspectID) {
+    suspectPopulationID: function(suspectID) {
         for(var i = 0; i < population.length; i++) {
             if(population[i].indexOf(suspectID,0) > -1) {
                 return i;
             }
         }
         console.error("suspectID ("+suspectID+") was not found in the population groups.");
-    }
+    },
 
-    function suspectSceneID(suspectID) {
+    suspectSceneID: function(suspectID) {
         var populationID = suspectPopulationID(suspectID);
         return populationMap[populationID].sceneID;
-    }
+    },
 
-    function suspectWithWeapon(suspectID, weaponID) {
+    suspectWithWeapon: function(suspectID, weaponID) {
         var popID =  suspectPopulationID(suspectID);
         var sceneID = populationMap[popID].sceneID;
 
         return (sceneID === weaponLocationIDs[weaponID]);
-    }
+    },
 
     // 
-    function suspectAnswer(suspectID, questionID) {
+    suspectAnswer: function(suspectID, questionID) {
         var answer = "I have no idea."; // This should only be returned IFF it's Q 13 or 14 and the suspect wasn't where the weapon was located.
         if(suspectID === victimID) {
             return "The dead have no answers.";
@@ -118,11 +115,11 @@ Ext.define('SeventiesDetective.controller.Scenario', {
         } // end if questionID > 8
         
         return answer;
-    } // end suspectAnswer
+    }, // end suspectAnswer
 
 
     // If the given suspect is at a location with any other suspect that has the answer to Q 10
-    function withSomeoneWithUpMidDown(suspectID) {
+    withSomeoneWithUpMidDown: function(suspectID) {
         var retVal = false;
         var suspects = population[suspectPopulationID(suspectID)];
         for (var i = 0; i < suspects.length; i++) {
@@ -134,10 +131,10 @@ Ext.define('SeventiesDetective.controller.Scenario', {
         }
 
         return retVal;
-    };
+    },
 
     // If the given suspect is at a location with any other suspect that has the answer to Q 9
-    function withSomeoneWithEastWest(suspectID) {
+    withSomeoneWithEastWest: function(suspectID) {
         var retVal = false;
         // get the array of suspects that are together
         var suspects = population[suspectPopulationID(suspectID)];
@@ -150,9 +147,9 @@ Ext.define('SeventiesDetective.controller.Scenario', {
         }
 
         return retVal;
-    };
+    },
 
-    function suspectAlibi(suspectID) {
+    suspectAlibi: function(suspectID) {
         var popID            = suspectPopulationID(suspectID);
         var indexID          = population[popID].indexOf(suspectID,0);
         var withSuspectIndex = population[popID][((indexID + population[popID].length - 1) % population[popID].length)]; // Mention the 'previous' suspect in the same group.
@@ -192,9 +189,9 @@ Ext.define('SeventiesDetective.controller.Scenario', {
 
         return reply;
 
-    } // end suspectAlibi
+    }, // end suspectAlibi
 
-    function setAnswers() {
+    setAnswers: function() {
         answers[1] = "The murderer fled to the " + populationMap[suspectPopulationID(killerID)].eastWest + " side" ;
         if(killerID < 11) {
         answers[2] = "The murderer was MALE.";
@@ -214,11 +211,11 @@ Ext.define('SeventiesDetective.controller.Scenario', {
 
         // answers 9-> are unique to each suspect
         
-    }
+    },
 
 
     // Return public interface
-    return {
+    // return {
         getDeadMessage: function() {
             return deadMessage;
         },
@@ -381,8 +378,8 @@ Ext.define('SeventiesDetective.controller.Scenario', {
             // Scenes have been assigned.  Populations have been assigned to every scene except murder location.
             // Now we randomly take two more IDs from the remaining available sceneIDs
             sceneIDs.shuffle();  // If we didn't do this, it'd always map to population IDs 3 and 4.
-            weaponLocationIDs[0] = sceneIDs.pop(); // .38
-            weaponLocationIDs[1] = sceneIDs.pop(); // .45
+            this.weaponLocationIDs[0] = sceneIDs.pop(); // .38
+            this.weaponLocationIDs[1] = sceneIDs.pop(); // .45
 
             // For each populationMap push suspects on there if the sceneID is still in the available sceneIDs array.
             // In other words.  Suspects come from locations other than the murder location or where a weapon was found.
@@ -401,18 +398,7 @@ Ext.define('SeventiesDetective.controller.Scenario', {
             killerID = shortlist.pop();
 
             weaponID = Math.floor((Math.random() * 2));
-            setAnswers(); // set up all the answers for the given scenerio.
+            this.setAnswers(); // set up all the answers for the given scenerio.
         } // end init
-    } // end return of public object
-
-
-
-
-
-
-
-
-		
-	}
-
+    // } // end return of public object*/
 })

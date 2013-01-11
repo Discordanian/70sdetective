@@ -22,7 +22,7 @@ Ext.application({
     name: 'SeventiesDetective',
     views: [
         "Main",
-        // "Card",
+        "Card",
         "About", 
         "Rules",
         "StatementsForm",
@@ -39,10 +39,17 @@ Ext.application({
         // "Answer",
         // "Questions",
         // "Scene",
+        "SuspectToolbar",
         "Suspect",
         "Weapon"
     ],
-    // controllers: ["Main", "Card", "Detective", "Main", "Scenario", "Suspect" ],
+    controllers: [
+        // "Main", 
+        // "Card", 
+        // "Detective", 
+        "Scenario", 
+        // "Suspect" 
+    ],
      
   
     // autoCreateViewport: true,

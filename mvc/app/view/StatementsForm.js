@@ -36,7 +36,7 @@ Ext.define('SeventiesDetective.view.StatementsForm',{
     	columns=[];
     	for (var c=0; c<2; c++){
     		var gender=c ? 'Men' : 'Women';
-			columns.push(
+			columns.unshift(
 				{
 				 	xtype:'fieldset',
 		            columnWidth: 0.5,
