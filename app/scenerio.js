@@ -1,23 +1,25 @@
 Scenerio = function() {
 
     // Private vars
-    var victimID =0;
-    var weaponID = 0;
-    var murderLocationID = 0;
-    var population = [];
-    var populationMap = [];
-    var weaponLocationIDs = [];
-    var killerID =0;
-    var questionCount = 0;
-    var questionLimit = 0;
-    var deadMessage = "( - - = = D E A D = = - - )";
-    var answers = [];
+    var victimID            = 0;  // Who Died
+    var weaponID            = 0;  // Which weapon
+    var murderLocationID    = 0;  // Where the victim died
+    var killerID            = 0;  // Who the killer is
+    var questionCount       = 0;  // How many questions has the detective used
+    var questionLimit       = 0;  // How many questions is the detective allowed
+    var alibiLimit          = 0;  // How many suspects can be interrogated
+    var alibiCount          = 0;  // How many suspects have been interrogated
+    var population          = []; // An array of arrays where suspects are put into groups of 4 (or 3)
+    var populationMap       = []; // The mapping between the populations and the locations
+    var weaponLocationIDs   = []; // An array holding the location of the two weapons
+    var deadMessage         = "( - - = = D E A D = = - - )";
+    var answers             = []; // An array of default answers related to the killer
     var weapons = [
                     ".38 revolver",
                     ".45 automatic"
                   ];
     var questions = [   
-                        "Blank",
+                        "What is the air-speed velocity of an unladen swallow?",
                         "Which side of town did the murderer flee to? (East/West)",
                         "What gender was the murderer? (Male/Female)",
                         "What part of town did the murderer flee to? (Uptown/Midtown/Downtown)",
@@ -237,6 +239,7 @@ Scenerio = function() {
     } // end suspectAlibi
 
     function setAnswers() {
+        answers[0] = "African or European?";
         answers[1] = "The murderer fled to the " + populationMap[suspectPopulationID(killerID)].eastWest + " side" ;
         if(killerID < 11) {
         answers[2] = "The murderer was MALE.";
@@ -327,6 +330,16 @@ Scenerio = function() {
         getQuestionLimit: function() {
             return questionLimit;
         },
+        setAlibiLimit: function(aLimit) {
+            alibiLimit = aLimit;
+            return aLimit;
+        },
+        getAlibiLimit: function() {
+            return alibiLimit;
+        },
+        getAlibiCount: function() {
+            return alibiCount;
+        },
         getQuestionCount: function() {
             return questionCount;
         },
@@ -339,6 +352,7 @@ Scenerio = function() {
             return suspectAnswer(suspectID, questionID);
         },
         getSuspectAlibi: function(suspectID) {
+            alibiCount++;
             if (killerID === 0) {
                 // This condition can only be true if we are not initialized.
                 Ext.log("Accessing getSuspectAlibi before init so returning an empty string.");
@@ -355,6 +369,8 @@ Scenerio = function() {
             victimID = Math.floor((Math.random() * 20) + 1);
             questionCount = 0;
             questionLimit = 20;
+            alibiLimit    = 19
+            alibiCount    = 0;
 
             var r_males   = [];
             var l_males   = [];

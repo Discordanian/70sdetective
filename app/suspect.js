@@ -188,7 +188,43 @@ Suspect = function() {
                         bio        : 'Married to Frank Ling (10)',
                         image      : 'resources/images/female_silhouette_x.png',
                         handness   : 'Left'
-                    }
+                    },
+                    { 
+                        id         : 21,
+                        name       : 'Kurt Schwind',
+                        questions  : [0],
+                        occupation : 'Software Engineer',
+                        bio        : 'When not dutifully obeying his corporate overlords, he writes online adaptations of games he played as a child. ',
+                        image      : 'resources/images/kurt_schwind.png',
+                        handness   : 'right'
+                    },
+                    { 
+                        id         : 22,
+                        name       : 'Jon Bishop',
+                        questions  : [0],
+                        occupation : 'Software Engineer',
+                        bio        : 'Jon Bishop Bio',
+                        image      : 'resources/images/male_silhouette_x.png',
+                        handness   : 'right'
+                    },
+                    { 
+                        id         : 23,
+                        name       : 'Dan Salmo',
+                        questions  : [0],
+                        occupation : 'Bass Player',
+                        bio        : 'Dan Salmo Bio ',
+                        image      : 'resources/images/male_silhouette_x.png',
+                        handness   : 'right'
+                    },
+                    { 
+                        id         : 24,
+                        name       : 'David Atchley',
+                        questions  : [0],
+                        occupation : 'Graphic Artist',
+                        bio        : 'I art graphics',
+                        image      : 'resources/images/male_silhouette_x.png',
+                        handness   : 'right'
+                    },
                     ];
 
     // ---------------------- Some private methods ----------------------------------
@@ -199,7 +235,7 @@ Suspect = function() {
         if (id < 0) {
             return 0;
         }
-        if (id > 20) {
+        if (id > 24) {
             return 0;
         }
         return id;

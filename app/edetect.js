@@ -52,8 +52,27 @@ Ext.onReady(function () {
         }));
     }
 
+    // Easter Egg
+    suspect_cards.push(Ext.create('Edetect.card', {
+        id: 'KurtEaster',
+        suspectId: 21
+    }));
+    suspect_cards.push(Ext.create('Edetect.card', {
+        id: 'JonEaster',
+        suspectId: 22
+    }));
+    suspect_cards.push(Ext.create('Edetect.card', {
+        id: 'DanEaster',
+        suspectId: 23
+    }));
+    suspect_cards.push(Ext.create('Edetect.card', {
+        id: 'DavidEaster',
+        suspectId: 24
+    }));
+
     // Suspect Navigation, Alibi and Bio
     var suspect_picture = Ext.create('Ext.panel.Panel', {
+        id: 'suspect_picture',
         layout: 'card',
         // title: 'suspect_picture',
         width: 510,
@@ -111,6 +130,15 @@ Ext.onReady(function () {
         var questions = 60  - (level * 23);  // levels are 0,1,2
         return questions;
     }
+    
+    // Function to convert difficulty Setting to an alibi limit
+    var level2alibis = function(level) {
+        // At the EASIEST setting, you can ask EVERYONE EVERY question that they have.  So that's 20 people at 5 questions.   (less 1 person who's dead).
+        // 95 -> total number of people/questions available
+        // In the original game the levels were lowest (3 Qs per suspect) to highest (1 Q per suspect).  
+        var alibis = 30 - (level * 9); 
+        return questions;
+    }
 
     // Kill off this suspect.  It will disable there statements box and have a small animation
     var kill_suspect = function(id) {
@@ -137,7 +165,6 @@ Ext.onReady(function () {
         Ext.getCmp(suspect).disable();
         Ext.getCmp(getNavExtID(id)).disable();
         spot.hide();
-        // console.dir(spot);
         
     }
 
@@ -173,7 +200,8 @@ Ext.onReady(function () {
         suspect_picture.getLayout().setActiveItem(Scenerio.victim());
         Ext.Msg.alert("(ALERT)  Incoming SMS message for the Detective! (ALERT)", Scenerio.getScenerioMessage()); 
         Scenerio.solution();
-        Scenerio.setQuestionLimit(level2questions(Detective.getDifficultySetting()));
+        Scenerio.setQuestionLimit(level2questions(Detective.getDifficultySetting())); // set question limit
+        Scenerio.setAlibiLimit(level2alibis(Detective.getDifficultySetting())); // set alibi limit
     }
 
 
