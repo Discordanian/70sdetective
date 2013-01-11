@@ -10,7 +10,7 @@ Ext.define('SeventiesDetective.model.Questions',{
 			{ name:'image',      type:'string'},
 			{ name:'handness',   type:'string'}
 		],
-		belongsTo:'Suspect'
+		belongsTo:'Suspect',
 		idProperty: 'id',
 		proxy:{
             type: 'memory',
