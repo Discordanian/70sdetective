@@ -6,4 +6,11 @@ Target Audience for this Document
 
 This document is mostly meant for the developers.  
 
+Software Stack
+--------------
+* Extjs 4.2
+* Sencha Cmd v3.1.2.342
+* SenseOfHumor v1.337
+* Camel_back_naming_convention v1.ronic
+
 
