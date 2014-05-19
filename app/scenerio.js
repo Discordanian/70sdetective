@@ -9,6 +9,10 @@ Scenerio = function() {
     var questionLimit       = 0;  // How many questions is the detective allowed
     var alibiLimit          = 0;  // How many suspects can be interrogated
     var alibiCount          = 0;  // How many suspects have been interrogated
+    // -> These variables determine if the game was even solvable based on questions asked
+    var murderWeaponKnown   = false; // The detective does not know yet which weapon was used.
+    var handednessKnown     = false; // The detective does not know left/right handedness of murder
+    // End solvable flags.
     var population          = []; // An array of arrays where suspects are put into groups of 4 (or 3)
     var populationMap       = []; // The mapping between the populations and the locations
     var weaponLocationIDs   = []; // An array holding the location of the two weapons
@@ -86,6 +90,11 @@ Scenerio = function() {
         return (sceneID === weaponLocationIDs[weaponID]);
     }
 
+    // This function returns 'true' if the case was not solvable 
+    function smartDetective() {
+        return (murderWeaponKnown && handednessKnown);
+    }
+
     // 
     function suspectAnswer(suspectID, questionID) {
         var answer = "I have no idea."; // This should only be returned IFF it's Q 13 or 14 and the suspect wasn't where the weapon was located.
@@ -96,6 +105,8 @@ Scenerio = function() {
         // General question about the murderer
         if (questionID < 9) {
             answer = answers[questionID];
+            // If the question is #4, then the detective knows which murder weapon was used.
+            if(questionID == 4) { murderWeaponKnown = true; } 
         }
 
         // Questions specific to the person 
@@ -123,6 +134,7 @@ Scenerio = function() {
                     break;
                 case 13:
                     if(suspectWithWeapon(suspectID,0)){
+			handednessKnown = true;
                         if (((killerID < 11) && (suspectID < 11)) || ((killerID > 10) && (suspectID > 10))) {
                             // suspect is where the weapon was and is the same gender as the killer.  TRUTH.
                             if (killerID %2 == 0) {
@@ -142,6 +154,7 @@ Scenerio = function() {
                     break;
                 case 14:
                     if(suspectWithWeapon(suspectID,1)){
+			handednessKnown = true;
                         if (((killerID < 11) && (suspectID < 11)) || ((killerID > 10) && (suspectID > 10))) {
                             // suspect is where the weapon was and is the same gender as the killer.  TRUTH.
                             if (killerID %2 == 0) {
@@ -306,10 +319,12 @@ Scenerio = function() {
         },
         solve: function(suspectID) {
             if (killerID === suspectID) {
-                // Ext.Msg.show({ modal: true, msg: 'Book \'em!  Congratulations, you solved the case!' });
-                Ext.Msg.alert("Screeching tires","Book \'em!  Congratulations!  You have solved the case and another criminal pays for their crimes.");
+		if (smartDetective()) {
+                    Ext.Msg.alert("Screeching tires","Book \'em!  Congratulations!  You have solved the case and another criminal pays for their crimes.");
+		} else {
+                    Ext.Msg.alert("Screeching tires","The murderer smirks at you and requests a lawyer. Since you had inssufficent evidence to accuse, they are free to leave.  Everyone knows you had the right person but sloppy detective work has let a criminal walk free.  The desk sergeant suspends you without pay.");
+		}
             } else {
-                // Ext.Msg.show({ modal: true, msg: this.suspectName(killerID) + ' murders you for being wrong.' }); 
                 Ext.Msg.alert("(Sad Trombone)", "The desk sergeant has just finished ripping you a new one for accusing an innocent person of murder.  You are dejectedly walking to your vehicle when " + this.suspectName(killerID) + " steps out from the shadows and puts two bullets in your chest.");
             }
         },
@@ -460,6 +475,9 @@ Scenerio = function() {
 
             weaponID = Math.floor((Math.random() * 2));
             setAnswers(); // set up all the answers for the given scenerio.
+            // clear 'known' variables for the detective.
+            murderWeaponKnown = false;
+            handednessKnown   = false;
         } // end init
     } // end return of public object
 
