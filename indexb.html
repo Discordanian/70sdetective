@@ -6,7 +6,7 @@
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<div class="container container-tablet">
+<!-- <div class="container container-tablet"> -->
 	<div class="row clearfix">
 		<div class="col-md-12 column">
 			<ul class="nav nav-tabs">
@@ -34,8 +34,8 @@
 					</ul>
 				</li>
 			</ul>
-		</div>
-	</div>
+		</div> <!-- col-md-12 -->
+	</div> <!-- row -->
 	<div class="row clearfix">
 		<div class="col-md-2 column">
 			<form role="form">
@@ -54,7 +54,7 @@
 					 <label><input type="checkbox" /> Check me out</label>
 				</div> 
 			</form>
-		</div>
+		</div> 
 		<div class="col-md-2 column">
 			<form role="form">
 				<div class="form-group">
@@ -145,10 +145,82 @@
 				</div> 
 			</form>
 		</div>
-	</div>
+	</div> <!-- row -->
 	<div class="row clearfix">
 		<div class="col-md-8 column">
-		</div>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>
+							Question #
+						</th>
+						<th>
+							Question
+						</th>
+						<th>
+							Response
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							1
+						</td>
+						<td>
+							Question 1 looks like this.
+						</td>
+						<td>
+							Yes
+						</td>
+					</tr>
+					<tr class="active">
+						<td>
+							2
+						</td>
+						<td>
+							Question 2 looks like this.
+						</td>
+						<td>
+							Eastside.
+						</td>
+					</tr>
+					<tr class="success">
+						<td>
+							3
+						</td>
+						<td>
+							TB - Monthly
+						</td>
+						<td>
+							02/04/2012
+						</td>
+					</tr>
+					<tr class="warning">
+						<td>
+							4
+						</td>
+						<td>
+							TB - Monthly
+						</td>
+						<td>
+							03/04/2012
+						</td>
+					</tr>
+					<tr class="danger">
+						<td>
+							5
+						</td>
+						<td>
+							TB - Monthly
+						</td>
+						<td>
+							04/04/2012
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div><!-- col-md-8 -->
 		<div class="col-md-4 column">
 			<div class="carousel slide" id="carousel-604642">
 				<ol class="carousel-indicators">
@@ -166,9 +238,6 @@
 							<h4>
 								First Thumbnail label
 							</h4>
-							<p>
-								Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-							</p>
 						</div>
 					</div>
 					<div class="item active">
@@ -177,9 +246,6 @@
 							<h4>
 								Second Thumbnail label
 							</h4>
-							<p>
-								Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-							</p>
 						</div>
 					</div>
 					<div class="item">
@@ -188,15 +254,12 @@
 							<h4>
 								Third Thumbnail label
 							</h4>
-							<p>
-								Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-							</p>
 						</div>
 					</div>
 				</div> <a class="left carousel-control" href="#carousel-604642" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#carousel-604642" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
 			</div>
-		</div>
-	</div>
+		</div><!-- col-md-4 -->
+	</div><!-- row -->
 	<div class="row clearfix">
 		<div class="col-md-6 column">
 			<table class="table">
@@ -289,7 +352,7 @@
 					</tr>
 				</tbody>
 			</table>
-		</div>
+		</div><!-- col-md-6 -->
 		<div class="col-md-6 column">
 			<table class="table">
 				<thead>
@@ -381,9 +444,9 @@
 					</tr>
 				</tbody>
 			</table>
-		</div>
-	</div>
-</div>
+		</div><!-- col-md-6 -->
+	</div><!-- row  -->
+<!-- </div> --> <!-- container -->
     <!-- Javascript for the applications -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
