@@ -480,6 +480,7 @@ Scenerio = function() {
             // clear 'known' variables for the detective.
             murderWeaponKnown = false;
             handednessKnown   = false;
+            genderKnown       = false;
         } // end init
     } // end return of public object
 
