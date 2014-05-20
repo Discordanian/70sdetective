@@ -11,7 +11,8 @@ Scenerio = function() {
     var alibiCount          = 0;  // How many suspects have been interrogated
     // -> These variables determine if the game was even solvable based on questions asked
     var murderWeaponKnown   = false; // The detective does not know yet which weapon was used.
-    var handednessKnown     = false; // The detective does not know left/right handedness of murder
+    var handednessKnown     = false; // The detective does not know left/right handedness of murderer
+    var genderKnown         = false; // The detective does not know gender of the murderer
     // End solvable flags.
     var population          = []; // An array of arrays where suspects are put into groups of 4 (or 3)
     var populationMap       = []; // The mapping between the populations and the locations
@@ -92,7 +93,7 @@ Scenerio = function() {
 
     // This function returns 'true' if the case was not solvable 
     function smartDetective() {
-        return (murderWeaponKnown && handednessKnown);
+        return (murderWeaponKnown && handednessKnown && genderKnown);
     }
 
     // 
@@ -107,6 +108,7 @@ Scenerio = function() {
             answer = answers[questionID];
             // If the question is #4, then the detective knows which murder weapon was used.
             if(questionID == 4) { murderWeaponKnown = true; } 
+            if(questionID == 2) { genderKnown       = true; } 
         }
 
         // Questions specific to the person 
