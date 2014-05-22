@@ -1,3 +1,4 @@
+// Detective Singleton
 Detective = function() {
 
     // Private vars
