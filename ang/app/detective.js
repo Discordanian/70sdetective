@@ -2,7 +2,7 @@
 Detective = function() {
 
     // Private vars
-    var name;
+    var name = "Jane Gumshoe";
     var difficultySetting;
     var wins = 0;
     var losses = 0;
