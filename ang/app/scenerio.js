@@ -189,7 +189,7 @@ Scenerio = function() {
         for (var i = 0; i < suspects.length; i++) {
             // See if any suspect has Q 10 in their list.
             if (Suspect.getQuestions(suspects[i]).indexOf(10,0)) { 
-                Ext.log("Suspect " + suspectID + " is with " + suspects[i] + " so no U/M/D");
+                console.log("Suspect " + suspectID + " is with " + suspects[i] + " so no U/M/D");
                 retVal = true; 
                 }
         }
@@ -205,7 +205,7 @@ Scenerio = function() {
         for (var i = 0; i < suspects.length; i++) {
             // See if any suspect has Q 9 in their list.
             if (Suspect.getQuestions(suspects[i]).indexOf(9,0) > -1) { 
-                Ext.log("Suspect " + suspectID + " is with " + suspects[i] + " so no E/W");
+                console.log("Suspect " + suspectID + " is with " + suspects[i] + " so no E/W");
                 retVal = true; 
                 }
         }
@@ -230,7 +230,7 @@ Scenerio = function() {
             {
             case 0:
                 if (Suspect.getQuestions(suspectID).indexOf(9,0) > -1) {
-                    Ext.log("Suspect " + suspectID + " is with-holding E/W information.");
+                    console.log("Suspect " + suspectID + " is with-holding E/W information.");
                     reply = "I was with " + withName;
                 } else {
                     reply = "I was on the " + ewInfo + " side with " + withName;
@@ -238,7 +238,7 @@ Scenerio = function() {
                 break;
             case 1:
                 if (Suspect.getQuestions(suspectID).indexOf(10,0) > -1) {
-                    Ext.log("Suspect " + suspectID + " is with-holding U/M/D information.");
+                    console.log("Suspect " + suspectID + " is with-holding U/M/D information.");
                     reply = "I was with " + withName;
                 } else {
                     reply = "I was " + umdInfo + " with " + withName;
@@ -297,25 +297,25 @@ Scenerio = function() {
             answer = answer + " to " + scenes[suspectSceneID(killerID)].name ; 
             answer = answer + " on the " + populationMap[suspectPopulationID(killerID)].eastWest + " side" ;
             console.groupCollapsed('Cheat');
-            Ext.log(answer);
+            console.log(answer);
             console.groupEnd();
         },
         spam: function() {
             console.groupCollapsed("SPAM");
-            Ext.log({dump: population} , "Population");
-            Ext.log({dump : populationMap}, 'Population Map');
-            Ext.log({dump : answers} , 'Answers');
-            Ext.log("The Murder Location is " + murderLocationID);
+            console.log({dump: population} , "Population");
+            console.log({dump : populationMap}, 'Population Map');
+            console.log({dump : answers} , 'Answers');
+            console.log("The Murder Location is " + murderLocationID);
             for(var i = 0; i < population.length; i++) {
-                Ext.log("Population Group["+i+"] consists of ("+ population[i].join() +") at " + populationMap[i].sceneID + " " + scenes[populationMap[i].sceneID].name);
+                console.log("Population Group["+i+"] consists of ("+ population[i].join() +") at " + populationMap[i].sceneID + " " + scenes[populationMap[i].sceneID].name);
             }
             console.groupEnd();
             /*
-            Ext.log("The victim is " + victimID);
-            Ext.log("The killer is " + killerID);
-            Ext.log("The weapon is " + weaponID);
-            Ext.log("The " + weapons[0] + " is at Location " + weaponLocationIDs[0]);
-            Ext.log("The " + weapons[1] + " is at Location " + weaponLocationIDs[1]);
+            console.log("The victim is " + victimID);
+            console.log("The killer is " + killerID);
+            console.log("The weapon is " + weaponID);
+            console.log("The " + weapons[0] + " is at Location " + weaponLocationIDs[0]);
+            console.log("The " + weapons[1] + " is at Location " + weaponLocationIDs[1]);
             */
         },
         victim: function() {
@@ -324,12 +324,12 @@ Scenerio = function() {
         solve: function(suspectID) {
             if (killerID === suspectID) {
 		if (smartDetective()) {
-                    Ext.Msg.alert("Screeching tires","Book \'em!  Congratulations!  You have solved the case and another criminal pays for their crimes.");
+                    alert("Screeching tires","Book \'em!  Congratulations!  You have solved the case and another criminal pays for their crimes.");
 		} else {
-                    Ext.Msg.alert("Screeching tires","The murderer smirks at you and requests a lawyer. Since you had inssufficent evidence to accuse, they are free to leave.  Everyone knows you had the right person but sloppy detective work has let a criminal walk free.  The desk sergeant suspends you without pay.");
+                    alert("Screeching tires","The murderer smirks at you and requests a lawyer. Since you had inssufficent evidence to accuse, they are free to leave.  Everyone knows you had the right person but sloppy detective work has let a criminal walk free.  The desk sergeant suspends you without pay.");
 		}
             } else {
-                Ext.Msg.alert("(Sad Trombone)", "The desk sergeant has just finished ripping you a new one for accusing an innocent person of murder.  You are dejectedly walking to your vehicle when " + this.suspectName(killerID) + " steps out from the shadows and puts two bullets in your chest.");
+                alert("(Sad Trombone)", "The desk sergeant has just finished ripping you a new one for accusing an innocent person of murder.  You are dejectedly walking to your vehicle when " + this.suspectName(killerID) + " steps out from the shadows and puts two bullets in your chest.");
             }
         },
         suspectName: function(suspectID) {
@@ -367,14 +367,14 @@ Scenerio = function() {
                 return "I'm done answering questions. [Question Limit exceeded]";
             }
             questionCount++;
-            Ext.log("Questions asked: " + questionCount + " / " + questionLimit);
+            console.log("Questions asked: " + questionCount + " / " + questionLimit);
             return suspectAnswer(suspectID, questionID);
         },
         getSuspectAlibi: function(suspectID) {
             alibiCount++;
             if (killerID === 0) {
                 // This condition can only be true if we are not initialized.
-                Ext.log("Accessing getSuspectAlibi before init so returning an empty string.");
+                console.log("Accessing getSuspectAlibi before init so returning an empty string.");
                 return "";
             }
             if (suspectID === victimID) { 
@@ -466,7 +466,7 @@ Scenerio = function() {
             var shortlist = []; //shortlist will hold the remaining eligible suspects.  (can't be found where there is a weapon).
             for (var i = 0; i < populationMap.length; i++) {
                 if (sceneIDs.indexOf(populationMap[i].sceneID,0) > -1) {
-                    // Ext.log("No murder or weapon at location " + populationMap[i].sceneID + " so load suspects from this group in shortlist");
+                    // console.log("No murder or weapon at location " + populationMap[i].sceneID + " so load suspects from this group in shortlist");
                     for (var j = 0; j< population[i].length;j++) {
                         shortlist.push(population[i][j]);
                     }
