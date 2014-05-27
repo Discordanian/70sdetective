@@ -20,3 +20,6 @@ detectiveApp.controller('locationCtrl', function($scope) {
     $scope.locations  = Location.getLocations();
 });
 
+detectiveApp.controller('questionCtrl', function($scope) {
+    $scope.questions  = Question.getQuestions([1,2,3,4,5]);
+});

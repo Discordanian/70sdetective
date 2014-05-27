@@ -49,7 +49,7 @@ Scenerio = function() {
                     },
                     {
                         id : 1,
-                        name: 'a Box at Theatre'
+                        name: 'a Ball Game'
                     },
                     {
                         id : 2,
