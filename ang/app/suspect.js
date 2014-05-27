@@ -1,4 +1,5 @@
 // Singleton 'Suspect'
+// Image paths should be relative to index.html location
 Suspect = function() {
     var suspects = [
                     { 
@@ -7,7 +8,7 @@ Suspect = function() {
                         questions  : [],
                         occupation : 'Software Engineer',
                         bio        : 'Works as a software engineer for a large soulless corporation.<br/>When not dutifully obeying his corporate overlords, he writes online adaptations of games he played as a child. ',
-                        image      : 'resources/images/kurt_schwind.png',
+                        image      : 'images/kurt_schwind.png',
                         handness   : 'right'
                     },
                     { 
@@ -16,7 +17,7 @@ Suspect = function() {
                         questions  : [1,2,9,13,14],
                         occupation : 'Bartender',
                         bio        : 'Married to Ivy Little (11)',
-                        image      : 'resources/images/male_silhouette_x.png',
+                        image      : 'images/male_silhouette_x.png',
                         handness   : 'Right'
                     },
                     { 
@@ -25,7 +26,7 @@ Suspect = function() {
                         questions  : [2,3,9,13,14],
                         occupation : 'Web Developer',
                         bio        : 'Determinedly Single',
-                        image      : 'resources/images/male_silhouette_x.png',
+                        image      : 'images/male_silhouette_x.png',
                         handness   : 'Left'
                     },
                     { 
@@ -34,7 +35,7 @@ Suspect = function() {
                         questions  : [3,4,5,13,14],
                         occupation : 'Flamenco Dancer',
                         bio        : 'Married to Piper Perez (13)',
-                        image      : 'resources/images/male_silhouette_x.png',
+                        image      : 'images/male_silhouette_x.png',
                         handness   : 'Right'
                     },
                     { 
@@ -43,7 +44,7 @@ Suspect = function() {
                         questions  : [4,5,9,13,14],
                         occupation : 'Promoter',
                         bio        : 'Married to Dina Racheti (14)',
-                        image      : 'resources/images/male_silhouette_x.png',
+                        image      : 'images/male_silhouette_x.png',
                         handness   : 'Left'
                     },
                     { 
@@ -52,7 +53,7 @@ Suspect = function() {
                         questions  : [1,4,9,13,14],
                         occupation : 'Retired Cop',
                         bio        : 'Single',
-                        image      : 'resources/images/male_silhouette_x.png',
+                        image      : 'images/male_silhouette_x.png',
                         handness   : 'Right'
                     },
                     { 
@@ -61,7 +62,7 @@ Suspect = function() {
                         questions  : [5,6,12,13,14],
                         occupation : 'Producer',
                         bio        : 'Married to Joan Fineflugle (16)',
-                        image      : 'resources/images/male_silhouette_x.png',
+                        image      : 'images/male_silhouette_x.png',
                         handness   : 'Left'
                     },
                     { 
@@ -70,7 +71,7 @@ Suspect = function() {
                         questions  : [2,5,12,13,14],
                         occupation : 'Baker',
                         bio        : 'Engaged',
-                        image      : 'resources/images/male_silhouette_x.png',
+                        image      : 'images/male_silhouette_x.png',
                         handness   : 'Right'
                     },
                     { 
@@ -79,7 +80,7 @@ Suspect = function() {
                         questions  : [3,5,12,13,14],
                         occupation : 'Basketball Player',
                         bio        : 'Single',
-                        image      : 'resources/images/male_silhouette_x.png',
+                        image      : 'images/male_silhouette_x.png',
                         handness   : 'Left'
                     },
                     { 
@@ -88,7 +89,7 @@ Suspect = function() {
                         questions  : [1,5,12,13,14],
                         occupation : 'Musician',
                         bio        : 'Married to Candy Roll (19)',
-                        image      : 'resources/images/male_silhouette_x.png',
+                        image      : 'images/male_silhouette_x.png',
                         handness   : 'Right'
                     },
                     { 
@@ -97,7 +98,7 @@ Suspect = function() {
                         questions  : [7,8,12,13,14],
                         occupation : 'Executive Chef',
                         bio        : 'Married to Samantha Ling (20)',
-                        image      : 'resources/images/male_silhouette_x.png',
+                        image      : 'images/male_silhouette_x.png',
                         handness   : 'Left'
                     },
                     { 
@@ -106,7 +107,7 @@ Suspect = function() {
                         questions  : [6,7,11,13,14],
                         occupation : 'Landlady',
                         bio        : 'Married to Lenny Little (1)',
-                        image      : 'resources/images/female_silhouette_x.png',
+                        image      : 'images/female_silhouette_x.png',
                         handness   : 'Right'
                     },
                     { 
@@ -115,7 +116,7 @@ Suspect = function() {
                         questions  : [2,6,11,13,14],
                         occupation : 'Engineer',
                         bio        : 'Single',
-                        image      : 'resources/images/female_silhouette_x.png',
+                        image      : 'images/female_silhouette_x.png',
                         handness   : 'Left'
                     },
                     { 
@@ -124,7 +125,7 @@ Suspect = function() {
                         questions  : [3,7,11,13,14],
                         occupation : 'Latin Singer',
                         bio        : 'Married to Pepe Perez (3)',
-                        image      : 'resources/images/female_silhouette_x.png',
+                        image      : 'images/female_silhouette_x.png',
                         handness   : 'Right'
                     },
                     { 
@@ -133,7 +134,7 @@ Suspect = function() {
                         questions  : [1,6,11,13,14],
                         occupation : 'Doctor',
                         bio        : 'Married to Tony Racheti (4)',
-                        image      : 'resources/images/female_silhouette_x.png',
+                        image      : 'images/female_silhouette_x.png',
                         handness   : 'Left'
                     },
                     { 
@@ -142,7 +143,7 @@ Suspect = function() {
                         questions  : [4,7,11,13,14],
                         occupation : 'Actress',
                         bio        : 'Single',
-                        image      : 'resources/images/female_silhouette_x.png',
+                        image      : 'images/female_silhouette_x.png',
                         handness   : 'Right'
                     },
                     { 
@@ -151,7 +152,7 @@ Suspect = function() {
                         questions  : [6,8,10,13,14],
                         occupation : 'Accountant',
                         bio        : 'Married to Max Fineflugle (6)',
-                        image      : 'resources/images/female_silhouette_x.png',
+                        image      : 'images/female_silhouette_x.png',
                         handness   : 'Left'
                     },
                     { 
@@ -160,7 +161,7 @@ Suspect = function() {
                         questions  : [2,7,10,13,14],
                         occupation : 'Sportscaster',
                         bio        : 'Unattached',
-                        image      : 'resources/images/female_silhouette_x.png',
+                        image      : 'images/female_silhouette_x.png',
                         handness   : 'Right'
                     },
                     { 
@@ -169,7 +170,7 @@ Suspect = function() {
                         questions  : [1,8,10,13,14],
                         occupation : 'Delivery Driver',
                         bio        : 'Not Looking',
-                        image      : 'resources/images/female_silhouette_x.png',
+                        image      : 'images/female_silhouette_x.png',
                         handness   : 'Left'
                     },
                     { 
@@ -178,7 +179,7 @@ Suspect = function() {
                         questions  : [3,8,10,13,14],
                         occupation : 'Musician',
                         bio        : 'Married to Rocky Roll (9)',
-                        image      : 'resources/images/female_silhouette_x.png',
+                        image      : 'images/female_silhouette_x.png',
                         handness   : 'Right'
                     },
                     { 
@@ -187,7 +188,7 @@ Suspect = function() {
                         questions  : [4,8,10,13,14],
                         occupation : 'Restaurant Owner',
                         bio        : 'Married to Frank Ling (10)',
-                        image      : 'resources/images/female_silhouette_x.png',
+                        image      : 'images/female_silhouette_x.png',
                         handness   : 'Left'
                     },
                     { 
@@ -196,7 +197,7 @@ Suspect = function() {
                         questions  : [0],
                         occupation : 'Software Engineer',
                         bio        : 'When not dutifully obeying his corporate overlords, he writes online adaptations of games he played as a child. ',
-                        image      : 'resources/images/kurt_schwind.png',
+                        image      : 'images/kurt_schwind.png',
                         handness   : 'right'
                     },
                     { 
@@ -205,7 +206,7 @@ Suspect = function() {
                         questions  : [0],
                         occupation : 'Software Engineer',
                         bio        : 'Jon Bishop Bio',
-                        image      : 'resources/images/male_silhouette_x.png',
+                        image      : 'images/male_silhouette_x.png',
                         handness   : 'right'
                     },
                     { 
@@ -214,7 +215,7 @@ Suspect = function() {
                         questions  : [0],
                         occupation : 'Bass Player',
                         bio        : 'Dan Salmo Bio ',
-                        image      : 'resources/images/male_silhouette_x.png',
+                        image      : 'images/male_silhouette_x.png',
                         handness   : 'right'
                     },
                     { 
@@ -223,12 +224,13 @@ Suspect = function() {
                         questions  : [0],
                         occupation : 'Graphic Artist',
                         bio        : 'I art graphics',
-                        image      : 'resources/images/male_silhouette_x.png',
+                        image      : 'images/male_silhouette_x.png',
                         handness   : 'right'
                     },
                     ];
 
     // ---------------------- Some private methods ----------------------------------
+    // safeID provides safe array bounds checking.
     function safeID(id) {
         if (typeof id === 'undefined') {
             return 0;
@@ -246,6 +248,28 @@ Suspect = function() {
 
     // Return public interface
     return {
+        /*  
+        getSuspectArray takes a gender of "males", "females" or anything else 
+        and returns the relevant slice of the suspect array.  If not male or 
+        female then it returns all GAME suspects 
+        */
+        getSuspectArray: function(gender) {
+            /* List of male game suspects   */
+            var males       = males    || suspects.splice(1,11);  
+            /* List of female game suspects */
+            var females     = females  || suspects.splice(11,21); 
+            /* List of all game suspects    */
+            var allsuspects = allsuspects || suspects.splice(1,21);  
+            var retval;
+            if (gender === "males") {
+                retval = males;
+            } else if (gender === "females") {
+                retval = females;
+            } else {
+                retval = allsuspects;
+            }
+            return suspects;
+        },
         getName: function(id) {
             return suspects[safeID(id)].name;
         },
