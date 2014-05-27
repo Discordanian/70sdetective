@@ -93,36 +93,14 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th width="30"> # </th>
-                        <th width="200"> Question </th>
+                        <th width="600"> Question </th>
                         <th> Response </th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td> <a href="#">1</a> </td> 
-                        <td> Question 1 looks like this.  </td> 
-                        <td> Yes </td>
-                    </tr>
-                    <tr>
-                        <td> <a href="#">2</a> </td>
-                        <td> Question 2 looks like this.  </td>
-                        <td> Eastside.  </td>
-                    </tr>
-                    <tr>
-                        <td> <a href="#">3</a> </td>
-                        <td> Question 3 looks like this.  </td>
-                        <td>  </td>
-                    </tr>
-                    <tr>
-                        <td> <a href="#">4</a> </td>
-                        <td> Question 4 looks like this.  </td>
-                        <td>  </td>
-                    </tr>
-                    <tr>
-                        <td> <a href="#">5</a> </td>
-                        <td> Question 5 looks like this.  </td>
-                        <td>  </td>
+                <tbody ng-controller="questionCtrl">
+                    <tr ng-repeat="question in questions">
+                        <td><a href="#">{{question.q}}</a></td> 
+                        <td>{{question.a}}</td>
                     </tr>
                 </tbody>
             </table>
