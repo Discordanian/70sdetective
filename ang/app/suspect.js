@@ -255,18 +255,18 @@ Suspect = function() {
         */
         getSuspectArray: function(gender) {
             /* List of male game suspects   */
-            var males       = males    || suspects.splice(1,11);  
+            var males       = males       ||  suspects.slice(1,11);  
             /* List of female game suspects */
-            var females     = females  || suspects.splice(10,20); 
+            var females     = females     || suspects.slice(11,21); 
             /* List of all game suspects    */
-            var allsuspects = allsuspects || suspects.splice(1,20);  
+            var allsuspects = allsuspects || suspects.slice(1,20);  
             var retval;
             if (gender === "males") {
-                retval = males;
+                return males;
             } else if (gender === "females") {
-                retval = females;
+                return females;
             } else {
-                retval = allsuspects;
+                return allsuspects;
             }
             return retval;
         },

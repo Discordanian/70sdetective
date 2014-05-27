@@ -5,11 +5,11 @@ detectiveApp.controller('detectiveCtrl', function($scope) {
 });
 
 detectiveApp.controller('maleSuspectCtrl', function($scope) {
-    $scope.males    = Suspect.getSuspectArray('male');
+    $scope.males    = Suspect.getSuspectArray('males');
 });
 
 detectiveApp.controller('femaleSuspectCtrl', function($scope) {
-    $scope.females  = Suspect.getSuspectArray('female');
+    $scope.females  = Suspect.getSuspectArray('females');
 });
 
 detectiveApp.controller('allSuspectCtrl', function($scope) {

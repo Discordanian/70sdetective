@@ -373,12 +373,12 @@
                 <thead>
                     <tr>
                         <th width="25"> # </th>
-                        <th width="150"> Male Name </th>
+                        <th width="180"> Name </th>
                         <th width="900"> Statement </th>
                     </tr>
                 </thead>
-                <tbody >
-                    <tr >
+                <tbody ng-controller="maleSuspectCtrl" >
+                    <tr ng-repeat="male in males">
                         <td> <a href="#">{{male.id}}</a> </td>
                         <td>{{male.name}}</td>
                         <td> Don't blame me. </td>
@@ -391,11 +391,11 @@
                 <thead>
                     <tr>
                         <th width="25"> # </th>
-                        <th width="180"> Female Name </th>
+                        <th width="180"> Name </th>
                         <th width="900"> Statement </th>
                     </tr>
                 </thead>
-                <tbody ng-controller="femaleSuspectCtrl" >
+                    <tbody ng-controller="femaleSuspectCtrl" >
                     <tr ng-repeat="female in females">
                         <td> <a href="#">{{female.id}}</a> </td>
                         <td>{{female.name}}</td>
