@@ -257,9 +257,9 @@ Suspect = function() {
             /* List of male game suspects   */
             var males       = males    || suspects.splice(1,11);  
             /* List of female game suspects */
-            var females     = females  || suspects.splice(11,21); 
+            var females     = females  || suspects.splice(10,20); 
             /* List of all game suspects    */
-            var allsuspects = allsuspects || suspects.splice(1,21);  
+            var allsuspects = allsuspects || suspects.splice(1,20);  
             var retval;
             if (gender === "males") {
                 retval = males;
@@ -268,7 +268,7 @@ Suspect = function() {
             } else {
                 retval = allsuspects;
             }
-            return suspects;
+            return retval;
         },
         getName: function(id) {
             return suspects[safeID(id)].name;

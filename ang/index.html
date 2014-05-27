@@ -4,6 +4,17 @@
     <title>70s Detective</title>
     <!-- Stylesheets to handle CSS -->
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Javascript for the applications -->
+    <script src="app/app.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-cookies.js"></script>
+    <script src="app/suspect.js"></script>
+    <script src="app/detective.js"></script>
+    <script src="app/scenerio.js"></script>
+    <script src="app/edetect.js"></script>
+    <script src="app/controllers.js"></script>
 </head>
 <body ng-controller="detectiveCtrl">
 <div class="container"> 
@@ -420,7 +431,7 @@
                 </tbody>
             </table>
         </div><!-- col-md-6 -->
-        <div class="col-md-6 column">
+        <div class="col-md-6 column" >
             <table class="table table-bordered">
                 <thead>
                     <tr>
@@ -429,12 +440,13 @@
                         <th width="900"> Statement </th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td> <a href="#">11</a> </td>
-                        <td> Suspect 11 </td>
+                <tbody ng-controller="femaleSuspectCtrl" >
+                    <tr ng-repeat="female in females">
+                        <td> <a href="#">{{female.id}}</a> </td>
+                        <td>{{female.name}}</td>
                         <td> It was someone else. </td>
                     </tr>
+<!--
                     <tr>
                         <td> <a href="#">12</a> </td>
                         <td> Suspect 12 </td>
@@ -480,21 +492,11 @@
                         <td> Suspect 20 </td>
                         <td> I R Innocent! </td>
                     </tr>
+-->
                 </tbody>
             </table>
         </div><!-- col-md-6 -->
     </div><!-- row  -->
 </div> <!-- container -->
-    <!-- Javascript for the applications -->
-    <script src="app/app.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-cookies.js"></script>
-    <script src="app/suspect.js"></script>
-    <script src="app/detective.js"></script>
-    <script src="app/scenerio.js"></script>
-    <script src="app/edetect.js"></script>
-    <script src="app/controllers.js"></script>
 </body>
 </html>
