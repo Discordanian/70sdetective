@@ -16,3 +16,7 @@ detectiveApp.controller('allSuspectCtrl', function($scope) {
     $scope.suspects  = Suspect.getSuspectArray('all');
 });
 
+detectiveApp.controller('locationCtrl', function($scope) {
+    $scope.locations  = Location.getLocations();
+});
+

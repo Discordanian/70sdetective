@@ -226,7 +226,7 @@ Suspect = function() {
                         bio        : 'I art graphics',
                         image      : 'images/male_silhouette_x.png',
                         handness   : 'right'
-                    },
+                    }
                     ];
 
     // ---------------------- Some private methods ----------------------------------
