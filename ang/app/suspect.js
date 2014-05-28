@@ -5,6 +5,7 @@ Suspect = function() {
                     { 
                         id         : 0,
                         name       : 'Kurt Schwind',
+                        alibi      : 'I was with David Atchley, Jon Bishop, Dan Salmo and Jim Relling',
                         questions  : [],
                         occupation : 'Software Engineer',
                         bio        : 'Works as a software engineer for a large soulless corporation.<br/>When not dutifully obeying his corporate overlords, he writes online adaptations of games he played as a child. ',
@@ -13,6 +14,7 @@ Suspect = function() {
                     },
                     { 
                         id         : 1,
+                        alibi      : '',
                         name       : 'Lenny Little',
                         questions  : [1,2,9,13,14],
                         occupation : 'Bartender',
@@ -22,6 +24,7 @@ Suspect = function() {
                     },
                     { 
                         id         : 2,
+                        alibi      : '',
                         name       : 'Al Farook',
                         questions  : [2,3,9,13,14],
                         occupation : 'Web Developer',
@@ -31,6 +34,7 @@ Suspect = function() {
                     },
                     { 
                         id         : 3,
+                        alibi      : '',
                         name       : 'Pepe Perez',
                         questions  : [3,4,5,13,14],
                         occupation : 'Flamenco Dancer',
@@ -40,6 +44,7 @@ Suspect = function() {
                     },
                     { 
                         id         : 4,
+                        alibi      : '',
                         name       : 'Tony Racheti',
                         questions  : [4,5,9,13,14],
                         occupation : 'Promoter',
@@ -49,6 +54,7 @@ Suspect = function() {
                     },
                     { 
                         id         : 5,
+                        alibi      : '',
                         name       : 'Mickey O\'Malley',
                         questions  : [1,4,9,13,14],
                         occupation : 'Retired Cop',
@@ -58,6 +64,7 @@ Suspect = function() {
                     },
                     { 
                         id         : 6,
+                        alibi      : '',
                         name       : 'Max Fineflugle',
                         questions  : [5,6,12,13,14],
                         occupation : 'Producer',
@@ -67,6 +74,7 @@ Suspect = function() {
                     },
                     { 
                         id         : 7,
+                        alibi      : '',
                         name       : 'Ripp Rapp',
                         questions  : [2,5,12,13,14],
                         occupation : 'Baker',
@@ -76,6 +84,7 @@ Suspect = function() {
                     },
                     { 
                         id         : 8,
+                        alibi      : '',
                         name       : 'Buster Bailey',
                         questions  : [3,5,12,13,14],
                         occupation : 'Basketball Player',
@@ -85,6 +94,7 @@ Suspect = function() {
                     },
                     { 
                         id         : 9,
+                        alibi      : '',
                         name       : 'Rocky Roll',
                         questions  : [1,5,12,13,14],
                         occupation : 'Musician',
@@ -94,6 +104,7 @@ Suspect = function() {
                     },
                     { 
                         id         : 10,
+                        alibi      : '',
                         name       : 'Frank Ling',
                         questions  : [7,8,12,13,14],
                         occupation : 'Executive Chef',
@@ -103,6 +114,7 @@ Suspect = function() {
                     },
                     { 
                         id         : 11,
+                        alibi      : '',
                         name       : 'Ivy Little',
                         questions  : [6,7,11,13,14],
                         occupation : 'Landlady',
@@ -112,6 +124,7 @@ Suspect = function() {
                     },
                     { 
                         id         : 12,
+                        alibi      : '',
                         name       : 'Lucy Tumble',
                         questions  : [2,6,11,13,14],
                         occupation : 'Engineer',
@@ -121,6 +134,7 @@ Suspect = function() {
                     },
                     { 
                         id         : 13,
+                        alibi      : '',
                         name       : 'Piper Perez',
                         questions  : [3,7,11,13,14],
                         occupation : 'Latin Singer',
@@ -130,6 +144,7 @@ Suspect = function() {
                     },
                     { 
                         id         : 14,
+                        alibi      : '',
                         name       : 'Dina Racheti',
                         questions  : [1,6,11,13,14],
                         occupation : 'Doctor',
@@ -139,6 +154,7 @@ Suspect = function() {
                     },
                     { 
                         id         : 15,
+                        alibi      : '',
                         name       : 'Eileen Stellar',
                         questions  : [4,7,11,13,14],
                         occupation : 'Actress',
@@ -148,6 +164,7 @@ Suspect = function() {
                     },
                     { 
                         id         : 16,
+                        alibi      : '',
                         name       : 'Joan Fineflugle',
                         questions  : [6,8,10,13,14],
                         occupation : 'Accountant',
@@ -157,6 +174,7 @@ Suspect = function() {
                     },
                     { 
                         id         : 17,
+                        alibi      : '',
                         name       : 'Rose Field',
                         questions  : [2,7,10,13,14],
                         occupation : 'Sportscaster',
@@ -166,6 +184,7 @@ Suspect = function() {
                     },
                     { 
                         id         : 18,
+                        alibi      : '',
                         name       : 'Doris Dill',
                         questions  : [1,8,10,13,14],
                         occupation : 'Delivery Driver',
@@ -175,6 +194,7 @@ Suspect = function() {
                     },
                     { 
                         id         : 19,
+                        alibi      : '',
                         name       : 'Candy Roll',
                         questions  : [3,8,10,13,14],
                         occupation : 'Musician',
@@ -184,6 +204,7 @@ Suspect = function() {
                     },
                     { 
                         id         : 20,
+                        alibi      : '',
                         name       : 'Samantha Ling',
                         questions  : [4,8,10,13,14],
                         occupation : 'Restaurant Owner',
@@ -193,6 +214,7 @@ Suspect = function() {
                     },
                     { 
                         id         : 21,
+                        alibi      : '',
                         name       : 'Kurt Schwind',
                         questions  : [0],
                         occupation : 'Software Engineer',
@@ -202,6 +224,7 @@ Suspect = function() {
                     },
                     { 
                         id         : 22,
+                        alibi      : '',
                         name       : 'Jon Bishop',
                         questions  : [0],
                         occupation : 'Software Engineer',
@@ -211,6 +234,7 @@ Suspect = function() {
                     },
                     { 
                         id         : 23,
+                        alibi      : '',
                         name       : 'Dan Salmo',
                         questions  : [0],
                         occupation : 'Bass Player',
@@ -220,6 +244,7 @@ Suspect = function() {
                     },
                     { 
                         id         : 24,
+                        alibi      : '',
                         name       : 'David Atchley',
                         questions  : [0],
                         occupation : 'Graphic Artist',
@@ -242,6 +267,12 @@ Suspect = function() {
             return 0;
         }
         return id;
+    }
+
+    function initialize() {
+        for (index=1;index<21;index++) {
+            suspect[index].alibi = '';
+        }
     }
 
 
@@ -287,6 +318,16 @@ Suspect = function() {
         },
         getImage: function(id) {
             return suspects[safeID(id)].image;
+        },
+        reset: function() {
+            initialize();
+        },
+        getAlibi: function(id) {
+            return suspects[safeID(id)].alibi;
+        },
+        setAlibi: function(id,a) {
+            suspects[safeID(id)].alibi = a;
+            return suspects[safeID(id)].alibi;
         }
     } // end return of public object
 

@@ -109,7 +109,7 @@
 		<div class="row clearfix">
 			<div class="col-md-12 column">
                             <h3 class="text-center">Joe Victim</h3>
-				<img height="150" width="150" class="img-rounded" src="images/male_silhouette.png" />
+				<img id="portrait" height="150" width="150" class="img-rounded" src="images/male_silhouette.png" />
 			</div>
 		</div> <!-- inner row -->
         </div><!-- col-md-2 -->
@@ -128,7 +128,7 @@
                     <tr ng-repeat="male in males">
                         <td> <a href="#">{{male.id}}</a> </td>
                         <td>{{male.name}}</td>
-                        <td> Don't blame me. </td>
+                        <td id="{{'alibi_' + male.id}}">{{male.alibi}}</td>
                     </tr>
                 </tbody>
             </table>
@@ -146,7 +146,7 @@
                     <tr ng-repeat="female in females">
                         <td> <a href="#">{{female.id}}</a> </td>
                         <td>{{female.name}}</td>
-                        <td> It was someone else. </td>
+                        <td id="{{'alibi_' + female.id}}">{{female.alibi}}</td>
                     </tr>
                 </tbody>
             </table>
