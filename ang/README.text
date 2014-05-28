@@ -1,0 +1,20 @@
+70s Detective
+=============
+
+Target Audience for this Document
+---------------------------------
+This document is mostly meant for the developers.  
+
+Software Stack
+--------------
+* SenseOfHumor v1.337
+* Camel_back_naming_convention v1.ronic
+
+Useful Links
+------------
+http://angular-ui.github.io/bootstrap/ 
+
+
+
+User/Pass not working on github from behind a fw?  check your .netrc
+
