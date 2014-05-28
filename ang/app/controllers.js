@@ -21,5 +21,5 @@ detectiveApp.controller('locationCtrl', function($scope) {
 });
 
 detectiveApp.controller('questionCtrl', function($scope) {
-    $scope.questions  = Question.getQuestions([1,2,3,4,5]);
+    $scope.questions  = Question.getQuestions([1,2,3,13,14]);
 });
