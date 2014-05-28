@@ -10,6 +10,7 @@ detectiveApp.controller('maleSuspectCtrl', function($scope) {
 
 detectiveApp.controller('femaleSuspectCtrl', function($scope) {
     $scope.females  = Suspect.getSuspectArray('females');
+    // $('#alibi_18').html("Change");
 });
 
 detectiveApp.controller('allSuspectCtrl', function($scope) {
