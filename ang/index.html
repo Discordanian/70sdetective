@@ -117,7 +117,7 @@
 		</div> <!-- inner row -->
         </div><!-- col-md-2 -->
     </div><!-- row -->
-    <div class="row clearfix">
+    <div class="row clearfix" ng-controller="suspectCtrl">
         <div class="col-md-6 column">
             <table class="table table-bordered">
                 <thead>
@@ -127,8 +127,8 @@
                         <th width="900"> Statement </th>
                     </tr>
                 </thead>
-                <tbody ng-controller="maleSuspectCtrl" >
-                    <tr ng-repeat="male in males">
+                <tbody >
+                    <tr ng-repeat="male in suspects | males">
                         <td> <a href="#">{{male.id}}</a> </td>
                         <td>{{male.name}}</td>
                         <td id="{{'alibi_' + male.id}}">{{male.alibi}}</td>
@@ -145,8 +145,8 @@
                         <th width="900"> Statement </th>
                     </tr>
                 </thead>
-                    <tbody ng-controller="femaleSuspectCtrl" >
-                    <tr ng-repeat="female in females">
+                    <tbody >
+                    <tr ng-repeat="female in suspects | females">
                         <td> <a href="#">{{female.id}}</a> </td>
                         <td>{{female.name}}</td>
                         <td id="{{'alibi_' + female.id}}">{{female.alibi}}</td>

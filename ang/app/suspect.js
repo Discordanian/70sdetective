@@ -284,22 +284,15 @@ Suspect = function() {
         and returns the relevant slice of the suspect array.  If not male or 
         female then it returns all GAME suspects 
         */
-        getSuspectArray: function(gender) {
+        getSuspectArray: function() {
             /* List of male game suspects   */
             var males       = males       ||  suspects.slice(1,11);  
             /* List of female game suspects */
             var females     = females     || suspects.slice(11,21); 
             /* List of all game suspects    */
-            var allsuspects = allsuspects || suspects.slice(1,20);  
-            var retval;
-            if (gender === "males") {
-                return males;
-            } else if (gender === "females") {
-                return females;
-            } else {
-                return allsuspects;
-            }
-            return retval;
+            var allsuspects = allsuspects || suspects.slice(1,21);  
+            return suspects;
+            // return allsuspects;
         },
         getName: function(id) {
             return suspects[safeID(id)].name;
