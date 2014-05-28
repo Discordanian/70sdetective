@@ -44,7 +44,8 @@
             <form role="form">
                     <p class="help-block">
                         Location: {{location.name}}
-                    <img align="center" src={{location.image}} />
+                    <!-- using ng-src for image src tag so browser doesn't try to fetch pre-template tag  -->
+                    <img align="center" ng-src={{location.image}} />
                     </p>
                     <label class="label label-primary">Side of Town</label>
                     <!-- To get justification to work for a group you have to wrap each button in another group -->
