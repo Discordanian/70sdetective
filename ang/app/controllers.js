@@ -35,7 +35,9 @@ detectiveApp.controller('detectiveCtrl', function($scope, $cookies) {
     $scope.detective_level = $cookies.detective_level;
 });
 
-detectiveApp.controller('suspectCtrl', function($scope) {
+detectiveApp.controller('suspectCtrl', function($scope ) {
+    window.suspectCtrl = $scope;
+    
     $scope.suspects  = Suspect.getSuspectArray('all');
 });
 
