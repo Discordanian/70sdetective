@@ -1,5 +1,5 @@
 // Require suspects.js
-var detectiveApp = angular.module('detectiveApp',[]);
+var detectiveApp = angular.module('detectiveApp',['ngCookies']);
 
 detectiveApp.filter('males', function() {
     return function(suspectArray) {
@@ -27,19 +27,13 @@ detectiveApp.filter('females', function() {
     }
 });
 
-detectiveApp.controller('detectiveCtrl', function($scope) {
+/* To manage who the detective is.  Name, level etc... */
+detectiveApp.controller('detectiveCtrl', function($scope, $cookies) {
+    $cookies.detective_name  = $cookies.detective_name  || "Kurt";
+    $cookies.detective_level = $cookies.detective_level || "4";
+    $scope.detective_name  = $cookies.detective_name;
+    $scope.detective_level = $cookies.detective_level;
 });
-
-/*
-detectiveApp.controller('maleSuspectCtrl', function($scope) {
-    $scope.males    = Suspect.getSuspectArray('males');
-});
-
-detectiveApp.controller('femaleSuspectCtrl', function($scope) {
-    $scope.females  = Suspect.getSuspectArray('females');
-    // $('#alibi_18').html("Change");
-});
-*/
 
 detectiveApp.controller('suspectCtrl', function($scope) {
     $scope.suspects  = Suspect.getSuspectArray('all');
