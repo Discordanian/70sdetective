@@ -55,7 +55,7 @@ Suspect = function() {
                     { 
                         id         : 5,
                         alibi      : '',
-                        name       : 'Mickey O\'Malley',
+                        name       : 'Mick McBride',
                         questions  : [1,4,9,13,14],
                         occupation : 'Retired Cop',
                         bio        : 'Single',

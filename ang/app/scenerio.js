@@ -98,6 +98,16 @@ Scenerio = function() {
         return (murderWeaponKnown && handednessKnown && genderKnown);
     }
 
+    // This function returns 'true' if the case was not solvable 
+    function dumbDetective() {
+        var msg = "The murderer smirks at you and requests a lawyer. Since you had inssufficent evidence to accuse, they are free to leave.  Everyone knows you had the right person but sloppy detective work has let a criminal walk free.  The desk sergeant suspends you without pay.";
+        if (!murderWeaponKnown)  { msg += "  You did not even know which gun was used."; }
+        if (!handednessKnown)    { msg += "  You did not even know if the murderer was left or right handed."; }
+        if (!genderKnown)        { msg += "  You did not even know if the murderer was a male or a female."; }
+        msg += "  The desk sergeant suspends you without pay.";
+        return msg;
+    }
+
     // 
     function suspectAnswer(suspectID, questionID) {
         var answer = "I have no idea."; // This should only be returned IFF it's Q 13 or 14 and the suspect wasn't where the weapon was located.
@@ -326,7 +336,7 @@ Scenerio = function() {
 		if (smartDetective()) {
                     alert("Screeching tires","Book \'em!  Congratulations!  You have solved the case and another criminal pays for their crimes.");
 		} else {
-                    alert("Screeching tires","The murderer smirks at you and requests a lawyer. Since you had inssufficent evidence to accuse, they are free to leave.  Everyone knows you had the right person but sloppy detective work has let a criminal walk free.  The desk sergeant suspends you without pay.");
+                    alert("Screaching tires",dumbDetective());
 		}
             } else {
                 alert("(Sad Trombone)", "The desk sergeant has just finished ripping you a new one for accusing an innocent person of murder.  You are dejectedly walking to your vehicle when " + this.suspectName(killerID) + " steps out from the shadows and puts two bullets in your chest.");
