@@ -1,7 +1,5 @@
-var detectiveApp = angular.module('detectiveApp',['ngCookies']);
-
-detectiveApp.factory('SuspectFactory', function () {
-    return {suspects : [
+detectiveApp.service('SuspectService', function () {
+    this.suspects = [
                     { 
                         id         : 0,
                         name       : 'Kurt Schwind',
@@ -253,63 +251,11 @@ detectiveApp.factory('SuspectFactory', function () {
                         handness   : 'right'
                     }
                     ],
-    init : function() {
+    this.init = function() {
         for (index=1;index<21;index++) {
-            this.suspect[index].alibi = '';
+            suspect[index].alibi = '';
         }
     } // end init function
-    } // end returned object
+    } // end SuspectService function
 
-    } // end function()
-
-); // end SuspectFactory factory decl
-
-
-
-
-detectiveApp.filter('males', function() {
-    return function(suspectArray) {
-        var index = 0;
-        var retVal = [];
-        for (index = 0; index < suspectArray.length; index++) {
-            if (suspectArray[index].id > 0 && suspectArray[index].id < 11) {
-                retVal.push(suspectArray[index]);
-            } // end if
-        } // end for
-        return retVal;
-    }
-});
-
-detectiveApp.filter('females', function() {
-    return function(suspectArray) {
-        var index = 0;
-        var retVal = [];
-        for (index = 0; index < suspectArray.length; index++) {
-            if (suspectArray[index].id > 10 && suspectArray[index].id < 21) {
-                retVal.push(suspectArray[index]);
-            } // end if
-        } // end for
-        return retVal;
-    }
-});
-
-/* To manage who the detective is.  Name, level etc... */
-detectiveApp.controller('detectiveCtrl', ['$scope','$cookies', function($scope, $cookies) {
-    $cookies.detective_name  = $cookies.detective_name  || "Kurt";
-    $cookies.detective_level = $cookies.detective_level || "4";
-    $scope.detective_name  = $cookies.detective_name;
-    $scope.detective_level = $cookies.detective_level;
-}]);
-
-detectiveApp.controller('suspectCtrl', function($scope, SuspectFactory ) {
-    
-    $scope.suspects  = SuspectFactory.suspects;
-});
-
-detectiveApp.controller('locationCtrl', ['$scope',function($scope) {
-    $scope.locations  = Location.getLocations();
-}]);
-
-detectiveApp.controller('questionCtrl', ['$scope','SuspectFactory',function($scope,SuspectFactory) {
-    $scope.questions  = Question.getQuestions([1,2,3,13,14]);
-}]);
+); // end SuspectService service decl
