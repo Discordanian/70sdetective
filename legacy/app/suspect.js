@@ -263,6 +263,6 @@ Suspect = function() {
         getImage: function(id) {
             return suspects[safeID(id)].image;
         }
-    } // end return of public object
+    }; // end return of public object
 
 }();

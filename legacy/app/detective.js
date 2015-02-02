@@ -154,6 +154,6 @@ Detective = function() {
             difficultySetting = 0;
         }
         
-    } // end return of public object
+    }; // end return of public object
 
 }();

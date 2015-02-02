@@ -129,9 +129,9 @@ Scenerio = function() {
                     break;
                 case 12:
                     if ((populationMap[suspectPopulationID(suspectID)].sceneID === weaponLocationIDs[0]) || (populationMap[suspectPopulationID(suspectID)].sceneID === weaponLocationIDs[0])) {
-                        answer = "A weapon was found at my location."
+                        answer = "A weapon was found at my location.";
                     } else {
-                        answer = "No weapon was found at my location."
+                        answer = "No weapon was found at my location.";
                     }
                     break;
                 case 13:
@@ -139,14 +139,14 @@ Scenerio = function() {
 			handednessKnown = true;
                         if (((killerID < 11) && (suspectID < 11)) || ((killerID > 10) && (suspectID > 10))) {
                             // suspect is where the weapon was and is the same gender as the killer.  TRUTH.
-                            if (killerID %2 == 0) {
+                            if (killerID %2 === 0) {
                                 answer = "The fingerprints on the " + weapons[0] + " were LEFT handed.";
                             } else {
                                 answer = "The fingerprints on the " + weapons[0] + " were RIGHT handed.";
                             }
                         } else {
                             // suspect is where the weapon was but is a different gender.  LIE.
-                            if (killerID %2 == 0) {
+                            if (killerID %2 === 0) {
                                 answer = "The fingerprints on the " + weapons[0] + " were RIGHT handed.";
                             } else {
                                 answer = "The fingerprints on the " + weapons[0] + " were LEFT handed.";
@@ -159,14 +159,14 @@ Scenerio = function() {
 			handednessKnown = true;
                         if (((killerID < 11) && (suspectID < 11)) || ((killerID > 10) && (suspectID > 10))) {
                             // suspect is where the weapon was and is the same gender as the killer.  TRUTH.
-                            if (killerID %2 == 0) {
+                            if (killerID %2 === 0) {
                                 answer = "The fingerprints on the " + weapons[1] + " were LEFT handed.";
                             } else {
                                 answer = "The fingerprints on the " + weapons[1] + " were RIGHT handed.";
                             }
                         } else {
                             // suspect is where the weapon was but is a different gender.  LIE.
-                            if (killerID %2 == 0) {
+                            if (killerID %2 === 0) {
                                 answer = "The fingerprints on the " + weapons[1] + " were RIGHT handed.";
                             } else {
                                 answer = "The fingerprints on the " + weapons[1] + " were LEFT handed.";
@@ -193,7 +193,7 @@ Scenerio = function() {
         }
 
         return retVal;
-    };
+    }
 
     // If the given suspect is at a location with any other suspect that has the answer to Q 9
     function withSomeoneWithEastWest(suspectID) {
@@ -209,7 +209,7 @@ Scenerio = function() {
         }
 
         return retVal;
-    };
+    }
 
     function suspectAlibi(suspectID) {
         var popID            = suspectPopulationID(suspectID);
@@ -222,7 +222,7 @@ Scenerio = function() {
 
 
 
-        var reply = "I have nothing to say."
+        var reply = "I have nothing to say.";
 
         switch ( (popID + indexID) % 4)
             {
@@ -386,7 +386,7 @@ Scenerio = function() {
             victimID = Math.floor((Math.random() * 20) + 1);
             questionCount = 0;
             questionLimit = 20;
-            alibiLimit    = 19
+            alibiLimit    = 19;
             alibiCount    = 0;
 
             var r_males   = [];
@@ -401,7 +401,7 @@ Scenerio = function() {
                 if (i != victimID) { l_males.push(i); }
                 i++;
             }
-            for ( var i=11; i < 21;) {
+            for ( i=11; i < 21;) {
                 if (i != victimID) { r_females.push(i); }
                 i++;
                 if (i != victimID) { l_females.push(i); }
@@ -444,7 +444,7 @@ Scenerio = function() {
             UpMidDownArray.shuffle();
             // This leaves 5 scene IDs left which we will map to the locations.
             populationMap = [];
-            for (var i = 0; i < 5; i++) {
+            for (i = 0; i < 5; i++) {
                 populationMap.push({ 
                     populationID : i, 
                     sceneID : sceneIDs[i], 
@@ -462,7 +462,7 @@ Scenerio = function() {
             // For each populationMap push suspects on there if the sceneID is still in the available sceneIDs array.
             // In other words.  Suspects come from locations other than the murder location or where a weapon was found.
             var shortlist = []; //shortlist will hold the remaining eligible suspects.  (can't be found where there is a weapon).
-            for (var i = 0; i < populationMap.length; i++) {
+            for (i = 0; i < populationMap.length; i++) {
                 if (sceneIDs.indexOf(populationMap[i].sceneID,0) > -1) {
                     // Ext.log("No murder or weapon at location " + populationMap[i].sceneID + " so load suspects from this group in shortlist");
                     for (var j = 0; j< population[i].length;j++) {
@@ -482,6 +482,6 @@ Scenerio = function() {
             handednessKnown   = false;
             genderKnown       = false;
         } // end init
-    } // end return of public object
+    }; // end return of public object
 
 }();
