@@ -15,7 +15,7 @@ fi
 
 if [ "`hostname`" == "tdcsbatchlab" ]
 then
-	cp -rv . /var/www/html/KURT/70s/
+	cp -rv . /var/www/html/KURT/
 	echo "At work, use KURT web directory"
 else
 	echo "Not at work.  SCP this to DreamHost"
