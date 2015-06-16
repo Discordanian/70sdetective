@@ -1,4 +1,4 @@
-Suspect = function() {
+var Suspect = function() {
     var suspects = [
                     { 
                         id         : 0,
@@ -199,24 +199,6 @@ Suspect = function() {
                         handness   : 'right'
                     },
                     { 
-                        id         : 22,
-                        name       : 'Jon Bishop',
-                        questions  : [0],
-                        occupation : 'Software Engineer',
-                        bio        : 'Jon Bishop Bio',
-                        image      : 'resources/images/male_silhouette_x.png',
-                        handness   : 'right'
-                    },
-                    { 
-                        id         : 23,
-                        name       : 'Dan Salmo',
-                        questions  : [0],
-                        occupation : 'Bass Player',
-                        bio        : 'Dan Salmo Bio ',
-                        image      : 'resources/images/male_silhouette_x.png',
-                        handness   : 'right'
-                    },
-                    { 
                         id         : 24,
                         name       : 'David Atchley',
                         questions  : [0],
@@ -224,7 +206,7 @@ Suspect = function() {
                         bio        : 'I art graphics',
                         image      : 'resources/images/male_silhouette_x.png',
                         handness   : 'right'
-                    },
+                    }
                     ];
 
     // ---------------------- Some private methods ----------------------------------
@@ -232,13 +214,10 @@ Suspect = function() {
         if (typeof id === 'undefined') {
             return 0;
         } 
-        if (id < 0) {
-            return 0;
-        }
-        if (id > 24) {
-            return 0;
-        }
-        return id;
+	if (id > 0 && id < suspects.length) {
+	    return id;
+	} 
+        return 0;
     }
 
 
@@ -248,7 +227,7 @@ Suspect = function() {
         getName: function(id) {
             return suspects[safeID(id)].name;
         },
-        getQuestions: function (id) {
+        getQuestionIds: function (id) {
             return suspects[safeID(id)].questions;
         },
         getOccupation: function(id) {
@@ -265,4 +244,4 @@ Suspect = function() {
         }
     }; // end return of public object
 
-}();
+};
