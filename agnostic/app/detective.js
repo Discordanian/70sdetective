@@ -80,12 +80,12 @@ Detective = function() {
         },
         setName: function(n) {
             name = n;
-            Ext.util.Cookies.set("Detective_Name", name);
+            setCookie("Detective_Name", name);
             return name;
         },
         setDifficultySetting: function(s) {
             difficultySetting = s;
-            Ext.util.Cookies.set("Detective_DifficultySetting", difficultySetting);
+            setCookie("Detective_DifficultySetting", difficultySetting);
             return difficultySetting;
         },
         getDifficultySetting: function() {
@@ -93,12 +93,12 @@ Detective = function() {
         },
         win: function() {
             wins++;
-            Ext.util.Cookies.set("Detective_Wins", wins);
+            setCookie("Detective_Wins", wins);
             return wins;
         },
         lose: function() {
             losses++;
-            Ext.util.Cookies.set("Detective_Wins", losses);
+            setCookie("Detective_Wins", losses);
             return losses;
         },
         clear: function() {
