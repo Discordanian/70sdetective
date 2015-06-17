@@ -81,7 +81,6 @@ Detective = function() {
         setName: function(n) {
             name = n;
             setCookie("Detective_Name", name);
-            broadcast("name");
             return name;
         },
         setDifficultySetting: function(s) {
