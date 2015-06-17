@@ -220,4 +220,4 @@ var Suspect = function() {
         }
     }; // end return of public object
 
-};
+}();
