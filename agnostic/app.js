@@ -1,10 +1,3 @@
-Ext.Loader.setConfig({
-	enabled: true,
-	disableCaching: false
-});
-Ext.Loader.setPath('Ext', 'extjs/src');
-Ext.Loader.setPath('Ext.ux', 'extjs/examples/ux');
-
 // Add shuffle function to all array objects
 Array.prototype.shuffle = function (){ 
     for(var rnd, tmp, i=this.length; i; rnd=parseInt(Math.random()*i), tmp=this[--i], this[i]=this[rnd], this[rnd]=tmp);
@@ -14,9 +7,6 @@ Array.prototype.shuffle = function (){
 Number.prototype.zeroPad = function (zeros){
     var str = String(this); for(var n = str.length; n < zeros; n++) {str = '0' + str;} return str;
 };
-
-// Application specific components and extensions
-Ext.Loader.setPath('Edetect', 'app');
 
 /* Define a 'console' object for IE */
 if (typeof console !== 'object') {

@@ -15,7 +15,7 @@ Ext.define('Edetect.card', {
         questions: []
     },
 
-    initComponent: function () {
+    initComponent: function() {
         this.reset();
         this.isInit = true;
         this.callParent();
@@ -34,10 +34,10 @@ Ext.define('Edetect.card', {
         this.renderHTML();
     },
 
-    renderHTML: function () {
+    renderHTML: function() {
         var self = this;
 
-        if (self.isInit === true ) {
+        if (self.isInit === true) {
             self.remove('suspectBox' + self.suspectId);
         }
 
@@ -55,7 +55,7 @@ Ext.define('Edetect.card', {
         });
 
         var questions = [];
-        if ( Scenerio.victim() === self.suspectId ) {
+        if (Scenerio.victim() === self.suspectId) {
             questions.push(Ext.create('Ext.container.Container', {
                 html: '<h1>' + self.data.name + ' is DEAD!  Click the numbers above to interrogate suspects.</h1>'
             }));
@@ -118,8 +118,9 @@ Ext.define('Edetect.card', {
         if (self.isInit === true) {
             self.add(suspectBox);
         } else {
-            Ext.apply(self, { items: [suspectBox] });
+            Ext.apply(self, {
+                items: [suspectBox]
+            });
         }
     }
 });
-

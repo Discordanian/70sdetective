@@ -8,7 +8,7 @@ Ext.require('Ext.ux.Spotlight');
 Ext.require('Edetect.card');
 
 
-Ext.onReady(function () {
+Ext.onReady(function() {
     // Hopefully fixes the non-secure warnings in IE
     Ext.BLANK_IMAGE_URL = 'resources/images/s.gif';
 
@@ -19,27 +19,25 @@ Ext.onReady(function () {
         html: "Take an assignment already!"
     }];
 
-    var tb_items = [
-            {
-                text: 'Get Assignment',
-                id:  'init',
-                handler: function() {
-                    reset_game();
-                }
-            }, {
-                text: 'Register',
-                id:  'register',
-                // scope: this,
-                handler: function() {
-                    registerDetective();
-                }
-            }
-    ];
+    var tb_items = [{
+        text: 'Get Assignment',
+        id: 'init',
+        handler: function() {
+            reset_game();
+        }
+    }, {
+        text: 'Register',
+        id: 'register',
+        // scope: this,
+        handler: function() {
+            registerDetective();
+        }
+    }];
 
-    for ( var s = 1; s <= 20; s++ ) {
+    for (var s = 1; s <= 20; s++) {
         tb_items.push({
             text: s,
-            id:  'nav' + Number(s).zeroPad(2),
+            id: 'nav' + Number(s).zeroPad(2),
             handler: function() {
                 Ext.getCmp(getSuspectExtID(this.text)).setValue(Scenerio.getSuspectAlibi(this.text));
                 suspect_picture.getLayout().setActiveItem(Number(this.text));
@@ -84,7 +82,7 @@ Ext.onReady(function () {
     var suspect_nav = Ext.create('Ext.panel.Panel', {
         // title: 'suspect_nav',
         // width: 300,
-        layout :'fit',
+        layout: 'fit',
         // renderTo: document.body,
         // bodyPadding: 10,
         // html: 'HTML Panel Content',
@@ -93,10 +91,12 @@ Ext.onReady(function () {
             dock: 'top',
             columns: 4,
             title: 'Suspects',
-            defaults: { align: 'center' },
+            defaults: {
+                align: 'center'
+            },
             items: tb_items
         }],
-        items: [ suspect_picture ]
+        items: [suspect_picture]
     }); // end suspect_nav
 
     var registerDetective = function() {
@@ -106,7 +106,7 @@ Ext.onReady(function () {
 
     // Utility function to get ext-id based on a suspect id
     var getSuspectExtID = function(id) {
-        if(id < 10) {
+        if (id < 10) {
             id = '0' + id;
         }
         var suspect = 'suspect' + id;
@@ -114,7 +114,7 @@ Ext.onReady(function () {
     };
 
     var getNavExtID = function(id) {
-        if(id < 10) {
+        if (id < 10) {
             id = '0' + id;
         }
         var suspect = 'nav' + id;
@@ -126,31 +126,33 @@ Ext.onReady(function () {
     var level2questions = function(level) {
         // 95 -> total number of people/questions available
         // In the original game the levels were lowest (3 Qs per suspect) to highest (1 Q per suspect).  
-        var questions = 60  - (level * 23);  // levels are 0,1,2
+        var questions = 60 - (level * 23); // levels are 0,1,2
         return questions;
     };
-    
+
     // Function to convert difficulty Setting to an alibi limit
     var level2alibis = function(level) {
         // At the EASIEST setting, you can ask EVERYONE EVERY question that they have.  So that's 20 people at 5 questions.   (less 1 person who's dead).
         // 95 -> total number of people/questions available
         // In the original game the levels were lowest (3 Qs per suspect) to highest (1 Q per suspect).  
-        var alibis = 30 - (level * 9); 
+        var alibis = 30 - (level * 9);
         return questions;
     };
 
     // Kill off this suspect.  It will disable there statements box and have a small animation
     var kill_suspect = function(id) {
-       var spot = Ext.create('Ext.ux.Spotlight', {
+        var spot = Ext.create('Ext.ux.Spotlight', {
             easing: 'easeOut',
             duration: 300
-            });
+        });
 
         var suspect = getSuspectExtID(id);
 
         spot.show(suspect);
         Ext.getCmp(suspect).setValue(Scenerio.getDeadMessage());
-        Ext.get(suspect).fadeIn({ duration: 4000});
+        Ext.get(suspect).fadeIn({
+            duration: 4000
+        });
         /*
         Ext.get(suspect).highlight("fffffff", {
             attr: "backgroundColor", //can be any valid CSS property (attribute) that supports a color value
@@ -164,7 +166,7 @@ Ext.onReady(function () {
         Ext.getCmp(suspect).disable();
         Ext.getCmp(getNavExtID(id)).disable();
         spot.hide();
-        
+
     };
 
     var reset_suspect = function(id) {
@@ -179,7 +181,7 @@ Ext.onReady(function () {
     var suspectFieldLabel = function(id) {
         var retVal;
         var did; // 'display id' should have used 'smoke'
-        if(id < 10) {
+        if (id < 10) {
             did = '0' + id;
         } else {
             did = id;
@@ -197,7 +199,7 @@ Ext.onReady(function () {
 
         kill_suspect(Scenerio.victim());
         suspect_picture.getLayout().setActiveItem(Scenerio.victim());
-        Ext.Msg.alert("(ALERT)  Incoming SMS message for the Detective! (ALERT)", Scenerio.getScenerioMessage()); 
+        Ext.Msg.alert("(ALERT)  Incoming SMS message for the Detective! (ALERT)", Scenerio.getScenerioMessage());
         Scenerio.solution();
         Scenerio.setQuestionLimit(level2questions(Detective.getDifficultySetting())); // set question limit
         Scenerio.setAlibiLimit(level2alibis(Detective.getDifficultySetting())); // set alibi limit
@@ -216,14 +218,17 @@ Ext.onReady(function () {
         },
         items: [{
             // Fieldset in Column 1 - collapsible via toggle button
-            xtype:'fieldset',
+            xtype: 'fieldset',
             columnWidth: 0.5,
             title: 'Men',
             collapsible: false,
             defaultType: 'textareafield',
-            defaults: {height: 20, anchor: '100%'},
+            defaults: {
+                height: 20,
+                anchor: '100%'
+            },
             layout: 'anchor',
-            items :[{
+            items: [{
                 fieldLabel: suspectFieldLabel(1),
                 name: 'suspect01',
                 id: 'suspect01'
@@ -263,16 +268,19 @@ Ext.onReady(function () {
                 fieldLabel: suspectFieldLabel(10),
                 name: 'suspect10',
                 id: 'suspect10'
-            } ]
+            }]
         }, {
-            xtype:'fieldset',
+            xtype: 'fieldset',
             columnWidth: 0.5,
             title: 'Women',
             collapsible: false,
             defaultType: 'textareafield',
-            defaults: {height: 20, anchor: '100%'},
+            defaults: {
+                height: 20,
+                anchor: '100%'
+            },
             layout: 'anchor',
-            items :[{
+            items: [{
                 fieldLabel: suspectFieldLabel(11),
                 name: 'suspect11',
                 id: 'suspect11'
@@ -312,7 +320,7 @@ Ext.onReady(function () {
                 fieldLabel: suspectFieldLabel(20),
                 name: 'suspect20',
                 id: 'suspect20'
-            } ]
+            }]
         }]
     });
 
@@ -343,17 +351,17 @@ Ext.onReady(function () {
             autoScroll: true,
             border: true,
             width: 450
-            // could use a TreePanel or AccordionLayout for navigational items
+                // could use a TreePanel or AccordionLayout for navigational items
         }, {
             region: 'south',
             title: 'Statements from Suspects',
             collapsible: true,
-            items: [ statements_form ],
+            items: [statements_form],
             layout: 'fit'
         }, {
             region: 'center',
             layout: 'fit',
-            items: [  suspect_nav ]
+            items: [suspect_nav]
         }]
     });
 
@@ -363,7 +371,7 @@ Ext.onReady(function () {
         params: {
             id: 1
         },
-        success: function (response) {
+        success: function(response) {
             about_html = response.responseText;
             Ext.getCmp('north').update(about_html);
         }
@@ -375,7 +383,7 @@ Ext.onReady(function () {
         params: {
             id: 1
         },
-        success: function (response) {
+        success: function(response) {
             rules_html = response.responseText;
             Ext.getCmp('west').update(rules_html);
         }
@@ -384,7 +392,7 @@ Ext.onReady(function () {
     registerDetective();
 
     // Test stuff.
-    if(1===0) {
+    if (1 === 0) {
         console.groupCollapsed("Alibis");
         for (var suspectID = 1; suspectID < 21; suspectID++) {
             Ext.log("Get Alibi for " + suspectID);
@@ -395,17 +403,17 @@ Ext.onReady(function () {
         for (var i = 0; i < 5; i++) {
             suspectID = Scenerio.victim();
             while (suspectID === Scenerio.victim()) {
-                suspectID = Math.floor((Math.random() * 20) + 1); 
+                suspectID = Math.floor((Math.random() * 20) + 1);
             }
             // We have a suspect who isn't dead.
-            
+
             Ext.getCmp(getSuspectExtID(suspectID)).setValue(Scenerio.getSuspectAlibi(suspectID));
             var questions = Suspect.getQuestions(suspectID);
             Ext.log("Interview suspect " + Scenerio.suspectName(suspectID));
             for (var j = 0; j < questions.length; j++) {
-                Ext.log("The answer to [" + Scenerio.questionText(questions[j]) + "] was [" + Scenerio.getSuspectAnswer(suspectID,questions[j]) + "]");
+                Ext.log("The answer to [" + Scenerio.questionText(questions[j]) + "] was [" + Scenerio.getSuspectAnswer(suspectID, questions[j]) + "]");
             } // for each question in their ID list
-            
+
         } // for 5 suspects
         console.groupEnd(); // end Question Test
     }

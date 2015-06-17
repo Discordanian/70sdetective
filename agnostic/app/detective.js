@@ -6,104 +6,61 @@ Detective = function() {
     var difficultySetting;
     var wins = 0;
     var losses = 0;
+    var exdays = 30; // Number of days to default cookie life span
 
-    var difficultyStore = Ext.create('Ext.data.Store', {
-        fields : [ 'level','desc' ],
-        data: [
-            {"level": "0", "desc": "Cadet"},
-            {"level": "1", "desc": "Detective"},
-            {"level": "2", "desc": "Master Sleuth"}
-        ]
-    });
-
-    var difficultyCombo = Ext.create('Ext.form.ComboBox', {
-        fieldLabel: 'Choose Difficulty',
-        store: difficultyStore,
-        queryMode: 'local',
-        displayField: 'desc',
-        valueField: 'level',
-        emptyValue: 0
-    });
-
-    // Being a bit pedantic here and declaring the field
-    var nameField = Ext.create('Ext.form.field.Text', {
-        name: 'detective_name',
-        fieldLabel: 'Detective Name',
-        allowBlank: false,
-        defaultText: 'Enter Your Name Here, Gumshoe'
-    });
-
-    // Create a registration form
-    var registerForm = Ext.create('Ext.form.Panel', {
-        frame:false,
-        bodyStyle:'padding:5px 5px 0',
-        width: 350,
-        fieldDefaults: {
-            msgTarget: 'side',
-            labelWidth: 75
-        },
-        defaultType: 'textfield',
-        defaults: {
-            anchor: '100%'
-        },
-        items: [
-                nameField, difficultyCombo
-            ],
-        buttons: [{
-            text: 'Register/Close',
-            handler: function() {
-                if (nameField.isValid()) {
-                    Ext.util.Cookies.set("Detective_Name", nameField.getValue());
-                    Ext.util.Cookies.set("Detective_DifficultySetting", difficultyCombo.getValue());
-                    regWin.hide();
-                } else {
-                    var msg = "The desk sergant bellows, \"I'm not sure how they do things where you're from, but here we do it by the book!  Sign your name and get your assignment.\"";
-                    Ext.Msg.alert("GUMSHOE!", msg);
-                }
-            }
-        },{
-            text: 'Clear',
-            handler: function() {
-                clearCookies();
-                nameField.setValue("");
-            }
+    var difficultyStore = {
+        fields: ['level', 'desc'],
+        data: [{
+            "level": "0",
+            "desc": "Cadet"
+        }, {
+            "level": "1",
+            "desc": "Detective"
+        }, {
+            "level": "2",
+            "desc": "Master Sleuth"
         }]
-    });
+    };
 
-    var regWin = Ext.create('widget.window', {
-        height: 400,
-        width: 400,
-        x: 150,
-        y: 150,
-        title: 'Detective Registration',
-        closable: false,
-        plain: true,
-        layout: 'fit',
-        border: true,
-        items: [ registerForm ]
-    });
-    
+
     // ---------------------- Some private methods ----------------------------------
+    function setCookie(cname, cvalue) {
+        var d = new Date();
+        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+        var expires = "expires=" + d.toUTCString();
+        document.cookie = cname + "=" + cvalue + "; " + expires;
+    }
+
+
     function clearCookies() {
-        Ext.util.Cookies.clear("Detective_Name");
-        Ext.util.Cookies.clear("Detective_DifficultySetting");
-        Ext.util.Cookies.clear("Detective_Wins");
-        Ext.util.Cookies.clear("Detective_Losses");
-    
+        setCookie("Detective_Name", "");
+        setCookie("Detective_DifficultySetting", "");
+        setCookie("Detective_Wins", "");
+        setCookie("Detective_Losses", "");
+
+    }
+
+    function getCookie(cname) {
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') c = c.substring(1);
+            if (c.indexOf(name) === 0) return c.substring(name.length, c.length);
+        }
+        return "";
     }
 
     function getCookies() {
-            name                = Ext.util.Cookies.get("Detective_Name");
-            nameField.setValue(name);
-            Ext.log("Retrieved Cookie for name " + name);
-            difficultySetting   = Ext.util.Cookies.get("Detective_DifficultySetting");
-            difficultySetting   = (difficultySetting)? difficultySetting : '0';
-            Ext.log("Retrieved Cookie for difficulty " + difficultySetting);
-            difficultyCombo.setValue(difficultySetting);
-            wins                = Ext.util.Cookies.get("Detective_Wins");
-            Ext.log("Retrieved Cookie for wins " + wins);
-            losses              = Ext.util.Cookies.get("Detective_Losses");
-            Ext.log("Retrieved Cookie for losses " + losses);
+        name = getCookie("Detective_Name");
+        console.log("Retrieved Cookie for name " + name);
+        difficultySetting = getCookie("Detective_DifficultySetting");
+        difficultySetting = (difficultySetting) ? difficultySetting : '0';
+        console.log("Retrieved Cookie for difficulty " + difficultySetting);
+        wins = getCookie("Detective_Wins");
+        console.log("Retrieved Cookie for wins " + wins);
+        losses = getCookie("Detective_Losses");
+        console.log("Retrieved Cookie for losses " + losses);
     }
 
 
@@ -116,8 +73,7 @@ Detective = function() {
         register: function() {
             // Pop up a window with registration.  
             getCookies();
-            regWin.show();
-            
+
         },
         getName: function() {
             return name;
@@ -153,7 +109,7 @@ Detective = function() {
             name = "";
             difficultySetting = 0;
         }
-        
+
     }; // end return of public object
 
 }();
