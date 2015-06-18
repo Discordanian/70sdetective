@@ -5,8 +5,7 @@ describe("Detective Specification", function() {
         Detective.setName("");
     });
 
-    afterEach(function() {
-    });
+    afterEach(function() {});
 
     describe("Detective Name", function() {
         it("Default Name is blank", function() {
@@ -14,7 +13,7 @@ describe("Detective Specification", function() {
         });
 
         it("Set Name and test it", function() {
-	    Detective.setName("Sherlock");
+            Detective.setName("Sherlock");
             expect(Detective.getName()).toBe("Sherlock");
             expect(Detective.getName()).not.toBe("");
         });

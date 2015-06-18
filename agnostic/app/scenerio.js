@@ -184,7 +184,7 @@ Scenerio = function() {
         var suspects = population[suspectPopulationID(suspectID)];
         for (var i = 0; i < suspects.length; i++) {
             // See if any suspect has Q 10 in their list.
-            if (Suspect.getQuestions(suspects[i]).indexOf(10, 0)) {
+            if (Suspect.getQuestionIds(suspects[i]).indexOf(10, 0)) {
                 console.log("Suspect " + suspectID + " is with " + suspects[i] + " so no U/M/D");
                 retVal = true;
             }
@@ -200,7 +200,7 @@ Scenerio = function() {
         var suspects = population[suspectPopulationID(suspectID)];
         for (var i = 0; i < suspects.length; i++) {
             // See if any suspect has Q 9 in their list.
-            if (Suspect.getQuestions(suspects[i]).indexOf(9, 0) > -1) {
+            if (Suspect.getQuestionIds(suspects[i]).indexOf(9, 0) > -1) {
                 console.log("Suspect " + suspectID + " is with " + suspects[i] + " so no E/W");
                 retVal = true;
             }
@@ -224,7 +224,7 @@ Scenerio = function() {
 
             switch ((popID + indexID) % 4) {
                 case 0:
-                    if (Suspect.getQuestions(suspectID).indexOf(9, 0) > -1) {
+                    if (Suspect.getQuestionIds(suspectID).indexOf(9, 0) > -1) {
                         console.log("Suspect " + suspectID + " is with-holding E/W information.");
                         reply = "I was with " + withName;
                     } else {
@@ -232,7 +232,7 @@ Scenerio = function() {
                     }
                     break;
                 case 1:
-                    if (Suspect.getQuestions(suspectID).indexOf(10, 0) > -1) {
+                    if (Suspect.getQuestionIds(suspectID).indexOf(10, 0) > -1) {
                         console.log("Suspect " + suspectID + " is with-holding U/M/D information.");
                         reply = "I was with " + withName;
                     } else {
@@ -343,7 +343,7 @@ Scenerio = function() {
             if (suspectID === victimID) {
                 return [];
             }
-            return Suspect.getQuestions(suspectID);
+            return Suspect.getQuestionIds(suspectID);
         },
         questionText: function(questionID) {
             return questions[questionID];
