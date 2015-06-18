@@ -15,7 +15,7 @@ var SuspectView = function(num) {
     // Return public interface
     return {
         interrogate: function(id) {
-	    // Make suspect card visible
+            // Make suspect card visible
             return true;
         },
         kill: function(id) {
