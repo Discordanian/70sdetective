@@ -1,13 +1,12 @@
 #!/bin/sh
 
 
-if [ -f /Users/kurtschwind/src/webster/cosc5030/CardTable/push.sh ]
+if [ -f /Users/kurtschwind ]
 then
 	echo "Mac Laptop Directory"
-	cd /Users/kurtschwind/src/webster/cosc5030/CardTable
 fi
 
-if [ -f /home/n620911/src/70sdetective/push.sh ]
+if [ -f /home/n620911 ]
 then
 	echo "TDCSBATCHLAB detected"
 	cd /home/n620911/src/70sdetective
