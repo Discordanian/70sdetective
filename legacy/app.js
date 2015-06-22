@@ -43,3 +43,4 @@ if (typeof console !== 'object') {
         table:          function() { }
     };
 }
+
