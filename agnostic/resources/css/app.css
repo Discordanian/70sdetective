@@ -14,3 +14,16 @@
 	text-align: center;
 }
 
+#location1,#location3,#location5 {
+	background-color: #DDDDDD
+}
+
+#location2,#location4,#location6 {
+	background-color: #BBBBBB
+}
+
+.location {
+	border-style: groove none none;
+	border-width: 5px;
+}
+
