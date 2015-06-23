@@ -1,2 +1,12 @@
 /* app.css  */
+.locationGrid {
+	display: table;
+}
+
+.locationRow {
+	display: table-row;
+}
+.locationLeft, .locationRight, .locationMid {
+	display: table-cell;
+}
 
