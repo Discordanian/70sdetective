@@ -9,87 +9,50 @@
     <title>Stone Sun</title>
 
     <!-- Stylesheets to handle CSS -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
     <link href="resources/css/app.css" rel="stylesheet">
-    <link href="src/css/bootstrap.min.css" rel="stylesheet">
-    <link href="src/css/style.css" rel="stylesheet">
 
     <!-- Javascript for the applications -->
-    <script src="src/js/jquery.min.js"></script>
-    <script src="src/js/bootstrap.min.js"></script>
-    <script src="src/js/scripts.js"></script>
-    <script type="text/javascript" src="app.js"></script>
-    <script type="text/javascript" src="app/suspect.js"></script>
-    <script type="text/javascript" src="app/detective.js"></script>
-    <script type="text/javascript" src="app/detectiveView.js"></script>
-    <script type="text/javascript" src="app/scenerio.js"></script>
-    <script type="text/javascript" src="app/publisher.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.js"></script>
-    <!--
-        <script type="text/javascript" src="app/edetect.js"></script>
-    -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="app/app.js"></script>
 </head>
 <body>
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <nav class="navbar navbar-default" role="navigation">
                         <div class="navbar-header">
                              
                             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                                  <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-                            </button> <a class="navbar-brand" href="#">Brand</a>
+                            </button> <a class="navbar-brand" href="#">StoneSun</a>
                         </div>
                         
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav">
-                                <li class="active">
-                                    <a href="#">Link</a>
-                                </li>
-                                <li>
-                                    <a href="#">Link</a>
-                                </li>
-                                <li class="dropdown">
-                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown<strong class="caret"></strong></a>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <a href="#">Action</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Another action</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Something else here</a>
-                                        </li>
-                                        <li class="divider">
-                                        </li>
-                                        <li>
-                                            <a href="#">Separated link</a>
-                                        </li>
-                                        <li class="divider">
-                                        </li>
-                                        <li>
-                                            <a href="#">One more separated link</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                                </li>
+                                <li class="active"><a href="#">How to play</a></li>
+                                <li><a href="#">About</a></li>
                             </ul>
                         </div>
-                        
                     </nav>
                 </div>
             </div>
             <div class="row">
-                <div id="interogate" class="col-md-6">
-			int
-                </div>
-                <div id="murderer" class="col-md-6">
-			mur
-                </div>
-            </div>
+                <div id="sslocal" class="col-md-6">
+			Local
+		</div><!-- sslocal -->
+                <div id="ssglobal" class="col-md-6">
+			Global
+		</div><!-- ssglobal -->
+	</div><!-- row with local/global -->
         </div>
     </div>
 </div>
