@@ -1,14 +1,14 @@
 var Band = function () {
 
     // Private vars
-    var name = "";
+    var bandname = "Splurvy and the Splurve Tones";
     var masterid = 0; // Just a unique key
 
     // personal
-    var health = 0;
+    var health     = 0;
     var creativity = 0;
-    var happiness = 0;
-    var altertness = 0;
+    var happiness  = 0;
+    var alertness  = 0;
 
     // time
     var daycount = 1;
@@ -27,12 +27,12 @@ var Band = function () {
     var nationalp = 0;
     var globalp = 0;
 
-    var drugs = [
-            { "name": "lsd",        "addiction" : 0,  "factors" : { "addiction": 10, "health" : 5, "creativity": 20, "happiness" : 0, "alertness" : 20 }},
-            { "name": "alcohol",    "addiction" : 0,  "factors" : { "addiction": 10, "health" : 5, "creativity": 20, "happiness" : 0, "alertness" : 20 }},
-            { "name": "marijuanna", "addiction" : 0,  "factors" : { "addiction": 10, "health" : 5, "creativity": 20, "happiness" : 0, "alertness" : 20 }},
-            { "name": "herion",     "addiction" : 0,  "factors" : { "addiction": 10, "health" : 5, "creativity": 20, "happiness" : 0, "alertness" : 20 }}
-            ];
+    var drugs = {
+            "lsd"        : { "addiction" : 0,  "factors" : { "addiction": 10, "health" : 5, "creativity": 20, "happiness" : 3, "alertness" : 20 }},
+            "alcohol"    : { "addiction" : 0,  "factors" : { "addiction": 10, "health" : 5, "creativity": 20, "happiness" : 0, "alertness" : 20 }},
+            "marijuanna" : { "addiction" : 0,  "factors" : { "addiction": 10, "health" : 5, "creativity": 20, "happiness" : 0, "alertness" : 20 }},
+            "herion"     : { "addiction" : 0,  "factors" : { "addiction": 10, "health" : 5, "creativity": 20, "happiness" : 0, "alertness" : 20 }}
+            };
 
 
     var singles = [];  // Line items in 
@@ -70,11 +70,34 @@ var Band = function () {
 
     // Return public interface
     return {
+        setName : function(str) {
+            bandname = str;
+            $("#bandname").html(bandname);
+        },
         refreshAll: function() {
                 refreshPersonal();
                 refreshPopularity();
         },
         drugoffer: function(drugname, taken) {
+            switch(drugname) {
+                    case "lsd":
+                            if(taken) {
+                                happiness += drugs.lsd.factors.happiness;
+                            } else {
+                                happiness -= drugs.lsd.factors.happiness;
+                            }
+                            refreshPersonal();
+                            break;
+                    case "alcohol":
+                            break;
+                    case "marijuanna":
+                            break;
+                    case "herion":
+                            break;
+                    default:
+                           console.log("Unknown drug,taken : " + drugname + " , " + taken ); 
+            }
+            
         },
         restart: function() {
             return init();
