@@ -27,13 +27,12 @@ var Band = function () {
     var nationalp = 0;
     var globalp = 0;
 
-    // addictions
-    var lsd = 0;
-    var alcohol = 0;
-    var herion = 0;
-    var marijuanna = 0;
-
-
+    var drugs = [
+            { "name": "lsd",        "addiction" : 0,  "factors" : { "addiction": 10, "health" : 5, "creativity": 20, "happiness" : 0, "alertness" : 20 }},
+            { "name": "alcohol",    "addiction" : 0,  "factors" : { "addiction": 10, "health" : 5, "creativity": 20, "happiness" : 0, "alertness" : 20 }},
+            { "name": "marijuanna", "addiction" : 0,  "factors" : { "addiction": 10, "health" : 5, "creativity": 20, "happiness" : 0, "alertness" : 20 }},
+            { "name": "herion",     "addiction" : 0,  "factors" : { "addiction": 10, "health" : 5, "creativity": 20, "happiness" : 0, "alertness" : 20 }}
+            ];
 
 
     var singles = [];  // Line items in 
@@ -49,22 +48,42 @@ var Band = function () {
 
     function init() {
             localp = nationalp = globalp = 0;
-            happiness = alertness = creativeness = 50;
+            happiness = alertness = creativity = 50;
             health = 80;
             daycount = 1;
+            score = 0;
+    }
+
+    function refreshPersonal() {
+            $("#player_health").html(health);
+            $("#player_creativity").html(creativity);
+            $("#player_happiness").html(happiness);
+            $("#player_alertness").html(alertness);
+    }
+
+    function refreshPopularity() {
+            $("#local_pop").html(localp);
+            $("#national_pop").html(nationalp);
+            $("#global_pop").html(globalp);
     }
 
 
     // Return public interface
     return {
+        refreshAll: function() {
+                refreshPersonal();
+                refreshPopularity();
+        },
+        drugoffer: function(drugname, taken) {
+        },
         restart: function() {
             return init();
         },
         incDate: function() {
             daycount++;
-            var wk = Math.floor((daycount / 7) + 1);
-            var yr = Math.floor((wk / 52) + 1);
-            $("#time_dow").html(dow[daycount]);
+            var wk = Math.floor((daycount / 7) + 1) % 52;
+            var yr = Math.floor((daycount / 365) + 1);
+            $("#time_dow").html(dow[daycount % 7]);
             $("#time_year").html(yr);
             $("#time_week").html(wk);
             return daycount;
