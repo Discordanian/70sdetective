@@ -26,7 +26,7 @@ var Grapevine = function () {
     // ---------------------- Some private methods ----------------------------------
     // This function returns 'true' if the case was not solvable 
     function formatLine(str) {
-        var retval = "<p class=\"" + classtypes[mastercount] + "\">" + str + "</p>";
+        var retval = "<p class=\"" + classtypes[(mastercount % classtypes.length)] + "\">" + str + "</p>";
         mastercount++;
         return retval;
     }
@@ -45,7 +45,7 @@ var Grapevine = function () {
             var i = 0;
             console.log("items length " + items.length);
             for ( ; i < items.length; i++) { 
-                console.log("Preparing to write string to Grapevine : " + items[i]);
+                // console.log("Preparing to write string to Grapevine : " + items[i]);
                     htmlstr = htmlstr.concat(items[i]); 
             }
             $("#ssglobal").html(htmlstr);
