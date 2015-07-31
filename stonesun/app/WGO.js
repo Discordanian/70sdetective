@@ -40,7 +40,7 @@ var WGO = function () {
                  }
             return true;
         },
-        refreshItems: function() {
+        refresh: function() {
             var htmlstr = "";
             var i = 0;
             for ( ; i < items.length; i++) { 
@@ -51,7 +51,7 @@ var WGO = function () {
         },
         clear: function() {
             items = [];
-            this.refreshItems();
+            this.refresh();
             return true;
         }
     }; // end return of public object
