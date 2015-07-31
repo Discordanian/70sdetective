@@ -52,6 +52,8 @@ var Band = function () {
             health = 80;
             daycount = 1;
             score = 0;
+            refreshPersonal();
+            refreshPopularity();
     }
 
     function refreshPersonal() {
