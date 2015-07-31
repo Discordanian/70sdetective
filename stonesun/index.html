@@ -21,6 +21,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="app/app.js"></script>
     <script src="app/Grapevine.js"></script>
     <script src="app/WGO.js"></script>
     <script src="app/Band.js"></script>
@@ -41,10 +42,13 @@
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">How to play</a>
-                    </li>
-                    <li><a href="#">About</a>
-                    </li>
+                    <li class="active"><a href="#">How to play</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">New Game</a></li>
+                    <li><a href="#">Tours</a></li>
+                    <li><a href="#">Charts</a></li>
+                    <li><a href="#">Releases</a></li>
+                    <li><a href="#">Drugs</a></li>
                 </ul>
                 <!-- collapse navbar -->
             </div>
@@ -149,6 +153,12 @@
                             <td>Score</td>
                             <td>
                                 <div id="score">0</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Money</td>
+                            <td>
+                                <div id="money">0</div>
                             </td>
                         </tr>
                     </tbody>

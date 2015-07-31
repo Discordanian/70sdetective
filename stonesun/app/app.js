@@ -1,61 +1,48 @@
-var Grapevine = function () {
+// Add shuffle function to all array objects
+Array.prototype.shuffle = function (){ 
+    for(var rnd, tmp, i=this.length; i; rnd=parseInt(Math.random()*i), tmp=this[--i], this[i]=this[rnd], this[rnd]=tmp);
+};
 
-    // Private vars
-    var impaired = false;
-    var maxitems = 12;
-    var mastercount = 0;
-    var items = [];  // Line items in 
+// Add zeroPad to all numbers
+Number.prototype.zeroPad = function (zeros){
+    var str = String(this); for(var n = str.length; n < zeros; n++) {str = '0' + str;} return str;
+};
 
-    var classtypes = [
-        "text-muted",
-        "text-primary",
-        "text-warning",
-        "text-primary",
-        "text-info",
-        "text-warning",
-        "text-danger",
-        "text-success",
-        "text-warning",
-        "text-primary",
-        "text-warning",
-        "text-info",
-        "text-danger",
-        "text-success",
-        "text-info"
-    ];
-    // ---------------------- Some private methods ----------------------------------
-    // This function returns 'true' if the case was not solvable 
-    function formatLine(str) {
-        var retval = "<p class=\"" + classtypes[mastercount] + "\">" + str + "</p>";
-        mastercount++;
-        return retval;
-    }
+/* Define a 'console' object for IE */
+if (typeof console !== 'object') {
+    console = {
+        log:            function() { },
+        debug:          function() { },
+        info:           function() { },
+        warn:           function() { },
+        error:          function() { },
+        assert:         function() { },
+        clear:          function() { },
+        dir:            function() { },
+        dirxml:         function() { },
+        trace:          function() { },
+        group:          function() { },
+        groupCollapsed: function() { },
+        groupEnd:       function() { },
+        time:           function() { },
+        timeEnd:        function() { },
+        profile:        function() { },
+        profileEnd:     function() { },
+        count:          function() { },
+        exception:      function() { },
+        table:          function() { }
+    };
+}
 
-    // Return public interface
-    return {
-        addItem: function(str) {
-                 items.push(formatLine(str));
-                 if ( items.length > maxitems) {
-                         items.shift();
-                 }
-            return true;
-        },
-        refreshItems: function() {
-            var htmlstr = "";
-            var i = 0;
-            console.log("items length " + items.length);
-            for ( ; i < items.length; i++) { 
-                console.log("Preparing to write string to Grapevine : " + items[i]);
-                    htmlstr = htmlstr.concat(items[i]); 
-            }
-            $("#ssglobal").html(htmlstr);
-            return htmlstr;
-        },
-        clear: function() {
-            items = [];
-            refreshItems();
-            return true;
-        }
-    }; // end return of public object
+function setDiv(name,value) {
+	if (document.getElementById(name)) {
+		document.getElementById(name).innerHTML = value;
+		return value;
+	} else  { return ""; }
+}
+function getDiv(name) {
+	if (document.getElementById(name)) {
+		return document.getElementById(name).innerHTML;
+	} else  { return ""; }
+}
 
-}();

@@ -23,6 +23,22 @@ var Grapevine = function () {
         "text-success",
         "text-info"
     ];
+
+
+    var artists = [
+            "The Bing Bangs",
+            "Modern Shoe",
+            "Team Gordon",
+            "Corey Doctorow",
+            "Kurt (not that one, the other one)"
+            ];
+
+    var songtitles = [
+            "This is a Tune",
+            "Yodels make me happy",
+            "It's a will roll dammit"
+            ];
+
     // ---------------------- Some private methods ----------------------------------
     // This function returns 'true' if the case was not solvable 
     function formatLine(str) {
@@ -33,6 +49,12 @@ var Grapevine = function () {
 
     // Return public interface
     return {
+        otherSong: function() {
+            var artist_index = mastercount % artists.length;
+            var song_index = mastercount % songtitles.length;
+            var release_notice = "New single released by '"+ artists[artist_index] +"' called '" + songtitles[song_index] + "'";
+            return this.addItem(release_notice);
+        },
         addItem: function(str) {
                  items.push(formatLine(str));
                  if ( items.length > maxitems) {
@@ -49,10 +71,12 @@ var Grapevine = function () {
                     htmlstr = htmlstr.concat(items[i]); 
             }
             $("#ssglobal").html(htmlstr);
-            return htmlstr;
+            return true;
         },
         clear: function() {
             items = [];
+            artists.shuffle();
+            songtitles.shuffle();
             this.refreshItems();
             return true;
         }
