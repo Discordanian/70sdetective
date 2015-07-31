@@ -43,9 +43,7 @@ var WGO = function () {
         refreshItems: function() {
             var htmlstr = "";
             var i = 0;
-            console.log("items length " + items.length);
             for ( ; i < items.length; i++) { 
-                console.log("Preparing to write string to Grapevine : " + items[i]);
                     htmlstr = htmlstr.concat(items[i]); 
             }
             $("#sslocal").html(htmlstr);
@@ -53,7 +51,7 @@ var WGO = function () {
         },
         clear: function() {
             items = [];
-            refreshItems();
+            this.refreshItems();
             return true;
         }
     }; // end return of public object

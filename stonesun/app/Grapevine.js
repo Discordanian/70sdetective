@@ -53,7 +53,7 @@ var Grapevine = function () {
         },
         clear: function() {
             items = [];
-            refreshItems();
+            this.refreshItems();
             return true;
         }
     }; // end return of public object
