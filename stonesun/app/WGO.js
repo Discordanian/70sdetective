@@ -1,4 +1,4 @@
-var Grapevine = function () {
+var WGO = function () {
 
     // Private vars
     var impaired = false;
@@ -48,7 +48,7 @@ var Grapevine = function () {
                 console.log("Preparing to write string to Grapevine : " + items[i]);
                     htmlstr = htmlstr.concat(items[i]); 
             }
-            $("#ssglobal").html(htmlstr);
+            $("#sslocal").html(htmlstr);
             return htmlstr;
         },
         clear: function() {
