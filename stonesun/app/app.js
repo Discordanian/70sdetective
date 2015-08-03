@@ -3,6 +3,14 @@ Array.prototype.shuffle = function (){
     for(var rnd, tmp, i=this.length; i; rnd=parseInt(Math.random()*i), tmp=this[--i], this[i]=this[rnd], this[rnd]=tmp);
 };
 
+function rot13(s) {
+  return s.replace(/[A-Za-z]/g, function (c) {
+    return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz".charAt(
+           "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm".indexOf(c)
+    );
+  } );
+};
+
 // Add zeroPad to all numbers
 Number.prototype.zeroPad = function (zeros){
     var str = String(this); for(var n = str.length; n < zeros; n++) {str = '0' + str;} return str;
