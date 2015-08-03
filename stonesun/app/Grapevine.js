@@ -77,14 +77,41 @@ var Grapevine = function () {
 
     // ---------------------- Some private methods ----------------------------------
     // This function returns 'true' if the case was not solvable 
-    function formatLine(str) {
-        var retval = "<p class=\"" + classtypes[(mastercount % classtypes.length)] + "\">" + str + "</p>";
-        mastercount++;
+    function formatLine(obj) {
+        var retval;
+        if (impaired) {
+                switch(random(4)) {
+                        case 0: retval = "<p class=\"" + obj.classtype + " lead\">" + rot13(obj.str) + "</p>";
+                                break;
+                        case 1: retval = "<p class=\"" + obj.classtype + "\"><mark>" + rot13(obj.str) + "</mark></p>";
+                                break;
+                        case 2: retval = "<p class=\"" + obj.classtype + "\"><del>" + rot13(obj.str) + "</del></p>";
+                                break;
+                        case 3: retval = "<p class=\"" + obj.classtype + "\"><s>" + rot13(obj.str) + "</s></p>";
+                                break;
+                        default: retval = "<p class=\"" + obj.classtype + "\">" + rot13(obj.str) + "</p>";
+                                break;
+
+                }
+        } else {
+            retval = "<p class=\"" + obj.classtype + "\">" + obj.str + "</p>";
+        }
         return retval;
     }
 
+    function createItem(str) {
+        mastercount++;
+        var ct = classtypes[mastercount % classtypes.length];
+        var retval = { 'classtype' : ct , 'str' : str };
+        return retval;
+    }
+
+
     // Return public interface
     return {
+        impair: function(b) {
+            impaired = !!b;
+        },
         otherSong: function() {
             var artist_index = mastercount % artists.length;
             var song_index = mastercount % songtitles.length;
@@ -92,7 +119,7 @@ var Grapevine = function () {
             return this.addItem(release_notice);
         },
         addItem: function(str) {
-                 items.push(formatLine(str));
+                 items.push(createItem(str));
                  if ( items.length > maxitems) {
                          items.shift();
                  }
@@ -101,10 +128,8 @@ var Grapevine = function () {
         refresh: function() {
             var htmlstr = "";
             var i = 0;
-            console.log("items length " + items.length);
             for ( ; i < items.length; i++) { 
-                // console.log("Preparing to write string to Grapevine : " + items[i]);
-                    htmlstr = htmlstr.concat(items[i]); 
+                    htmlstr = htmlstr.concat(formatLine(items[i])); 
             }
             $("#ssglobal").html(htmlstr);
             return true;

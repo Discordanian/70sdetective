@@ -28,7 +28,19 @@ var WGO = function () {
     function formatLine(obj) {
         var retval;
         if (impaired) {
-            retval = "<p class=\"" + obj.classtype + "\">" + rot13(obj.str) + "</p>";
+                switch(random(4)) {
+                        case 0: retval = "<p class=\"" + obj.classtype + " lead\">" + rot13(obj.str) + "</p>";
+                                break;
+                        case 1: retval = "<p class=\"" + obj.classtype + "\"><mark>" + rot13(obj.str) + "</mark></p>";
+                                break;
+                        case 2: retval = "<p class=\"" + obj.classtype + "\"><del>" + rot13(obj.str) + "</del></p>";
+                                break;
+                        case 3: retval = "<p class=\"" + obj.classtype + "\"><s>" + rot13(obj.str) + "</s></p>";
+                                break;
+                        default: retval = "<p class=\"" + obj.classtype + "\">" + rot13(obj.str) + "</p>";
+                                break;
+
+                }
         } else {
             retval = "<p class=\"" + obj.classtype + "\">" + obj.str + "</p>";
         }
@@ -37,7 +49,7 @@ var WGO = function () {
 
     function createItem(str) {
         mastercount++;
-        var ct = classtypes[mastercount];
+        var ct = classtypes[mastercount % classtypes.length];
         var retval = { 'classtype' : ct , 'str' : str };
         return retval;
     }

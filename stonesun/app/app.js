@@ -11,6 +11,11 @@ function rot13(s) {
   } );
 };
 
+// Return random number 0 -> target
+function random(target) {
+        return Math.floor(Math.random() *target);
+};
+
 // Add zeroPad to all numbers
 Number.prototype.zeroPad = function (zeros){
     var str = String(this); for(var n = str.length; n < zeros; n++) {str = '0' + str;} return str;

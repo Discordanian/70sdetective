@@ -29,6 +29,12 @@ var GameManager = function () {
         },
         init: function() {
             return restart();
+        },
+        impair: function(b) {
+            WGO.impair(!!b);
+            WGO.refresh();
+            Grapevine.impair(!!b);
+            Grapevine.refresh();
         }
     }; // end return of public object
 
