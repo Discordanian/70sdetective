@@ -1,8 +1,9 @@
 var Band = function () {
 
     // Private vars
-    var bandname = "Splurvy and the Splurve Tones";
+    var bandname = "Abjurer Nowhere";
     var masterid = 0; // Just a unique key
+    var impaired = false;
 
     // personal
     var health     = 0;
@@ -69,6 +70,14 @@ var Band = function () {
             $("#global_pop").html(globalp);
     }
 
+    function refreshName() {
+            if (impaired) {
+                $("#bandname").html(rot13(bandname));
+            } else {
+                $("#bandname").html(bandname);
+            }
+    }
+
 
     // Return public interface
     return {
@@ -76,9 +85,13 @@ var Band = function () {
             bandname = str;
             $("#bandname").html(bandname);
         },
-        refreshAll: function() {
+        impair: function(b) {
+            impaired = !!b;
+        },
+        refresh: function() {
                 refreshPersonal();
                 refreshPopularity();
+                refreshName();
         },
         drugoffer: function(drugname, taken) {
             switch(drugname) {

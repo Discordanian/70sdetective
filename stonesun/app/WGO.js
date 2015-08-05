@@ -25,16 +25,42 @@ var WGO = function () {
     ];
     // ---------------------- Some private methods ----------------------------------
     // This function returns 'true' if the case was not solvable 
-    function formatLine(str) {
-        var retval = "<p class=\"" + classtypes[mastercount] + "\">" + str + "</p>";
+    function formatLine(obj) {
+        var retval;
+        if (impaired) {
+                switch(random(4)) {
+                        case 0: retval = "<p class=\"" + obj.classtype + " lead\">" + rot13(obj.str) + "</p>";
+                                break;
+                        case 1: retval = "<p class=\"" + obj.classtype + "\"><mark>" + rot13(obj.str) + "</mark></p>";
+                                break;
+                        case 2: retval = "<p class=\"" + obj.classtype + "\"><del>" + rot13(obj.str) + "</del></p>";
+                                break;
+                        case 3: retval = "<p class=\"" + obj.classtype + "\"><s>" + rot13(obj.str) + "</s></p>";
+                                break;
+                        default: retval = "<p class=\"" + obj.classtype + "\">" + rot13(obj.str) + "</p>";
+                                break;
+
+                }
+        } else {
+            retval = "<p class=\"" + obj.classtype + "\">" + obj.str + "</p>";
+        }
+        return retval;
+    }
+
+    function createItem(str) {
         mastercount++;
+        var ct = classtypes[mastercount % classtypes.length];
+        var retval = { 'classtype' : ct , 'str' : str };
         return retval;
     }
 
     // Return public interface
     return {
+        impair: function(b) {
+            impaired = !!b;
+        },
         addItem: function(str) {
-                 items.push(formatLine(str));
+                 items.push(createItem(str));
                  if ( items.length > maxitems) {
                          items.shift();
                  }
@@ -44,7 +70,7 @@ var WGO = function () {
             var htmlstr = "";
             var i = 0;
             for ( ; i < items.length; i++) { 
-                    htmlstr = htmlstr.concat(items[i]); 
+                    htmlstr = htmlstr.concat(formatLine(items[i])); 
             }
             $("#sslocal").html(htmlstr);
             return htmlstr;
