@@ -1,5 +1,4 @@
-module.export = {
-	GameManager : function () {
+module.export = function () {
 		var first = true;
 		var impaired = false;
         var Band = require('./Band.js');
@@ -50,5 +49,4 @@ module.export = {
 		}
 	    }; // end return of public object
 
-	}
 };
