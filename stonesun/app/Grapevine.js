@@ -1,5 +1,4 @@
-module.exports = {
-	grapevine : function () {
+module.exports = function(){
 
 	    // Private vars
 	    var impaired = false;
@@ -144,5 +143,4 @@ module.exports = {
 		}
 	    }; // end return of public object
 
-	}
 };

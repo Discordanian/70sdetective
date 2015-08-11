@@ -2,8 +2,8 @@ module.exports = function () {
 		var first = true;
 		var impaired = false;
 		var Band = require('./Band.js').band();
-		var WGO = require('./WGO.js').wgo();
-		var Grapevine = require('./Grapevine.js').grapevine();
+		var WGO = require('./WGO.js')();
+		var Grapevine = require('./Grapevine.js')();
 
 		var impairl = function(b) {
 		    WGO.impair(!!b);

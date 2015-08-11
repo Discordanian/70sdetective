@@ -1,5 +1,4 @@
-module.exports = {
-	wgo : function () {
+module.exports = function(){
 
 	    // Private vars
 	    var impaired = false;
@@ -82,6 +81,4 @@ module.exports = {
 		    return true;
 		}
 	    }; // end return of public object
-
-	}
 };
