@@ -1,5 +1,4 @@
-module.exports = {
-        band : function () {
+module.exports = function(){
 
             // Private vars
             var bandname = "Abjurer Nowhere";
@@ -132,5 +131,4 @@ module.exports = {
                 }
             }; // end return of public object
 
-        }
 };

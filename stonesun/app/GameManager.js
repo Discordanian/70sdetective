@@ -1,7 +1,7 @@
 module.exports = function () {
 		var first = true;
 		var impaired = false;
-		var Band = require('./Band.js').band();
+		var Band = require('./Band.js')();
 		var WGO = require('./WGO.js')();
 		var Grapevine = require('./Grapevine.js')();
 
