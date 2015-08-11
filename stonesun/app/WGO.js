@@ -5,6 +5,7 @@ module.exports = function(){
 	    var maxitems = 12;
 	    var mastercount = 0;
 	    var items = [];  // Line items in 
+        var random = require('./random.js');
 
 	    var classtypes = [
 		"text-muted",

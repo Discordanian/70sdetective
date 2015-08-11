@@ -11,16 +11,6 @@ function rot13(s) {
   } );
 };
 
-// Return random number 0 -> target
-function random(target) {
-        return Math.floor(Math.random() *target);
-};
-
-// Add zeroPad to all numbers
-Number.prototype.zeroPad = function (zeros){
-    var str = String(this); for(var n = str.length; n < zeros; n++) {str = '0' + str;} return str;
-};
-
 /* Define a 'console' object for IE */
 if (typeof console !== 'object') {
     console = {
@@ -46,16 +36,3 @@ if (typeof console !== 'object') {
         table:          function() { }
     };
 }
-
-function setDiv(name,value) {
-	if (document.getElementById(name)) {
-		document.getElementById(name).innerHTML = value;
-		return value;
-	} else  { return ""; }
-}
-function getDiv(name) {
-	if (document.getElementById(name)) {
-		return document.getElementById(name).innerHTML;
-	} else  { return ""; }
-}
-
