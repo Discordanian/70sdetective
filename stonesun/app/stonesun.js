@@ -1,6 +1,5 @@
 // stonesun.js
-var GameManager = require('./GameManager.js');
-console.dir(GameManager);
+var GameManager = require('./GameManager.js')();
 
 $(window).load(GameManager.init);
 

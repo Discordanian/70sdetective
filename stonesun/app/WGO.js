@@ -1,4 +1,4 @@
-modules.export = {
+module.exports = {
 	wgo : function () {
 
 	    // Private vars
