@@ -1,1 +1,2 @@
 browserify -d -o app.js app/stonesun.js
+uglify -s app.js -o app.min.js
