@@ -58,6 +58,9 @@ module.exports = function() {
 
     // Return public interface
     return {
+        incDate: function() {
+            Band.incDate();
+        },
         whatever: function() {
             return true;
         },
