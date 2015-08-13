@@ -141,16 +141,58 @@ module.exports = function() {
                 case "lsd":
                     if (taken) {
                         happiness += drugs.lsd.factors.happiness;
+                        alertness += drugs.lsd.factors.alertness;
+                        creativity += drugs.lsd.factors.creativity;
+                        health += drugs.lsd.factors.health;
                     } else {
                         happiness -= drugs.lsd.factors.happiness;
+                        alertness -= drugs.lsd.factors.alertness;
+                        creativity -= drugs.lsd.factors.creativity;
+                        health -= drugs.lsd.factors.health;
                     }
                     refreshPersonal();
                     break;
                 case "alcohol":
+                    if (taken) {
+                        happiness += drugs.alcohol.factors.happiness;
+                        alertness += drugs.alcohol.factors.alertness;
+                        creativity += drugs.alcohol.factors.creativity;
+                        health += drugs.alcohol.factors.health;
+                    } else {
+                        happiness -= drugs.alcohol.factors.happiness;
+                        alertness -= drugs.alcohol.factors.alertness;
+                        creativity -= drugs.alcohol.factors.creativity;
+                        health -= drugs.alcohol.factors.health;
+                    }
+                    refreshPersonal();
                     break;
                 case "marijuanna":
+                    if (taken) {
+                        happiness += drugs.marijuanna.factors.happiness;
+                        alertness += drugs.marijuanna.factors.alertness;
+                        creativity += drugs.marijuanna.factors.creativity;
+                        health += drugs.marijuanna.factors.health;
+                    } else {
+                        happiness -= drugs.marijuanna.factors.happiness;
+                        alertness -= drugs.marijuanna.factors.alertness;
+                        creativity -= drugs.marijuanna.factors.creativity;
+                        health -= drugs.marijuanna.factors.health;
+                    }
+                    refreshPersonal();
                     break;
                 case "herion":
+                    if (taken) {
+                        happiness += drugs.herion.factors.happiness;
+                        alertness += drugs.herion.factors.alertness;
+                        creativity += drugs.herion.factors.creativity;
+                        health += drugs.herion.factors.health;
+                    } else {
+                        happiness -= drugs.herion.factors.happiness;
+                        alertness -= drugs.herion.factors.alertness;
+                        creativity -= drugs.herion.factors.creativity;
+                        health -= drugs.herion.factors.health;
+                    }
+                    refreshPersonal();
                     break;
                 default:
                     console.log("Unknown drug,taken : " + drugname + " , " + taken);
