@@ -4,6 +4,7 @@ module.exports = function() {
     var Band = require('./Band.js')();
     var WGO = require('./WGO.js')();
     var Grapevine = require('./Grapevine.js')();
+    var DrugPrompt = require('./DrugPrompt.js')();
 
     var impairl = function(b) {
         WGO.impair(!!b);
@@ -30,7 +31,8 @@ module.exports = function() {
                 Band.drugoffer("lsd", true);
             });
             $("#new_game").click(function() {
-                restart();
+                // restart();
+                DrugPrompt.offer("lsd", Band.drugoffer);
             });
             $("#tours").click(function() {
                 Grapevine.otherSong();

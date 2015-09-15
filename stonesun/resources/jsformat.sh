@@ -35,5 +35,9 @@ do
 		echo "No change between before and after.  Remove before file."
 		rm $JSFILE.before
 	fi
+    if [ "$JSFILE"  == "bootbox.min.js" ]
+    then
+            mv -v bootbox.min.js.before bootbox.min.js
+    fi
 done
 
