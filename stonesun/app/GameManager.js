@@ -32,7 +32,7 @@ module.exports = function() {
             });
             $("#new_game").click(function() {
                 // restart();
-                DrugPrompt.offer("lsd", Band.drugoffer);
+                DrugPrompt.offer("lsd", impaired, Band.drugoffer);
             });
             $("#tours").click(function() {
                 Grapevine.otherSong();
