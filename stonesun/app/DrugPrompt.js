@@ -17,10 +17,24 @@ module.exports = function() {
         'bartender',
         'friend the aspiring \"actor\"'
     ];
+    var locations = [
+        'the supermarket',
+        'the rave',
+        'the romance section at the local library',
+        'the alley behind that taco bell you tell everyone you\'d never eat at',
+        'the bowling alley you go to ironically',
+        'the train station',
+        'the rest area where they caught that one dude doing that one thing',
+        'the bar',
+        'the party',
+        'the Bar Mitzvah for that one kid of your cousin\'s that you only see',
+        'the wedding of your Ex'
+    ];
+
 
 
     function makeOffer(drug, impInd, drugFn) {
-        var msg = "Your " + pushers[drugid++ % pushers.length] + " offers you " + drug + ".";
+        var msg = "Your " + pushers[drugid++ % pushers.length] + " offers you some " + drug + " at " + locations[drugid % locations.length] + ".";
         if (impInd) {
             msg = rot13(msg);
         }
@@ -64,6 +78,7 @@ module.exports = function() {
         },
         clear: function() {
             pushers.shuffle();
+            locations.shuffle();
             return true;
         }
     }; // end return of public object

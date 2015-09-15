@@ -5,6 +5,7 @@ module.exports = function() {
     var WGO = require('./WGO.js')();
     var Grapevine = require('./Grapevine.js')();
     var DrugPrompt = require('./DrugPrompt.js')();
+    var BandPrompt = require('./BandPrompt.js')();
 
     var impairl = function(b) {
         WGO.impair(!!b);
@@ -31,8 +32,8 @@ module.exports = function() {
                 Band.drugoffer("lsd", true);
             });
             $("#new_game").click(function() {
+                BandPrompt.name(Band.setName);
                 // restart();
-                DrugPrompt.offer("lsd", impaired, Band.drugoffer);
             });
             $("#tours").click(function() {
                 Grapevine.otherSong();
@@ -51,7 +52,7 @@ module.exports = function() {
                 WGO.refresh();
             });
             $("#drugs").click(function() {
-                Band.drugoffer("lsd", false);
+                DrugPrompt.offer("lsd", impaired, Band.drugoffer);
             });
         }
 
