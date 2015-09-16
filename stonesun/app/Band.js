@@ -125,7 +125,9 @@ module.exports = function() {
     // Return public interface
     return {
         setName: function(str) {
-            bandname = str;
+            if (str.trim() !== "") {
+                bandname = str;
+            }
             $("#bandname").html(bandname);
         },
         impair: function(b) {

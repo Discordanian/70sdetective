@@ -32,7 +32,7 @@ do
         cmp $JSFILE $JSFILE.before >/dev/null 2>&1
         if [ $? -eq 0 ]
 	then
-		echo "No change between before and after.  Remove before file."
+		echo "No change between before and after.  Remove temp file [$JSFILE]."
 		rm $JSFILE.before
 	fi
     if [ "$JSFILE"  == "bootbox.min.js" ]
