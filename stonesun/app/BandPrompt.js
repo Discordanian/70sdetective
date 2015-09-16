@@ -5,6 +5,7 @@ module.exports = function() {
         CANCEL: 'Bugger Off',
         CONFIRM: 'Alrighty Then'
     });
+
     bootbox.setLocale("rock");
 
     // Private vars
@@ -22,13 +23,26 @@ module.exports = function() {
         });
     }
 
+    function recordSingle() {
+        return true;
+    }
+
+    function promptTour() {
+        return true;
+    }
+
 
     // Return public interface
     return {
         name: function(fn) {
             getName(fn);
         },
-        tour: function() {},
+        tour: function() {
+            return promptTour();
+        },
+        recordSingle: function() {
+            return recordSingle();
+        },
         clear: function() {
             return true;
         }

@@ -77,7 +77,6 @@ module.exports = function() {
     var tours = [];
 
     // ---------------------- Some private methods ----------------------------------
-    // This function returns 'true' if the case was not solvable 
     function addSingle(name) {
         var retval = {
             'id': masterid++,
