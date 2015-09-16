@@ -141,7 +141,7 @@ module.exports = function() {
         if (pop < 16) {
             retval = "virtually unknown.";
         }
-        retval = "At the " + loc + " level you are " + retval;
+        retval = "<em>At the " + loc + " level you are " + retval + "</em>";
         return retval;
 
     }

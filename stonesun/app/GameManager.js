@@ -70,9 +70,13 @@ module.exports = function() {
     // Return public interface
     return {
         incDate: function() {
-            var x = Band.incDate() % 30;
-            if (x == 0) {
+            var x = Band.incDate();
+            if ((x % 30) == 0) {
                 showPopularity();
+            }
+            if ((x % 3) == 0) {
+                Grapevine.otherSong();
+                Grapevine.refresh();
             }
         },
         whatever: function() {
