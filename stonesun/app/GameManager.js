@@ -60,10 +60,20 @@ module.exports = function() {
         return true;
     };
 
+    function showPopularity() {
+        Grapevine.addItem(Band.getPop("local"));
+        Grapevine.addItem(Band.getPop("national"));
+        Grapevine.addItem(Band.getPop("global"));
+        Grapevine.refresh();
+    }
+
     // Return public interface
     return {
         incDate: function() {
-            Band.incDate();
+            var x = Band.incDate() % 30;
+            if (x == 0) {
+                showPopularity();
+            }
         },
         whatever: function() {
             return true;

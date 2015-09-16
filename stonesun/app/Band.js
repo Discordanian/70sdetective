@@ -121,6 +121,31 @@ module.exports = function() {
         }
     }
 
+    function flavorPop(pop, loc) {
+        var retval = "";
+        if (pop > 85) {
+            retval = "worshipped as the rock diety that you are!";
+        }
+        if (pop < 86) {
+            retval = "known to even casual fans";
+        }
+        if (pop < 65) {
+            retval = "getting your music pirated by scores of youth";
+        }
+        if (pop < 45) {
+            retval = "getting some air-play on radio stations.";
+        }
+        if (pop < 25) {
+            retval = "known to a few die-hard fans.";
+        }
+        if (pop < 16) {
+            retval = "virtually unknown.";
+        }
+        retval = "At the " + loc + " level you are " + retval;
+        return retval;
+
+    }
+
 
     // Return public interface
     return {
@@ -214,6 +239,19 @@ module.exports = function() {
         },
         getDrugs: function() {
             return drugs;
+        },
+        getPop: function(popType) {
+            var retval = 'No one cares about you.';
+            if (popType === "local") {
+                retval = flavorPop(localp, popType);
+            }
+            if (popType === "national") {
+                retval = flavorPop(nationalp, popType);
+            }
+            if (popType === "global") {
+                retval = flavorPop(globalp, popType);
+            }
+            return retval;
         },
         incDate: function() {
             daycount++;
