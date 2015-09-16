@@ -33,41 +33,41 @@ module.exports = function() {
         "lsd": {
             "addiction": 0,
             "factors": {
-                "addiction": 10,
-                "health": 5,
-                "creativity": 20,
+                "addiction": 1,
+                "health": 3,
+                "creativity": 10,
                 "happiness": 3,
-                "alertness": 20
+                "alertness": 5
             }
         },
         "alcohol": {
             "addiction": 0,
             "factors": {
-                "addiction": 10,
+                "addiction": 5,
                 "health": 5,
-                "creativity": 20,
-                "happiness": 0,
-                "alertness": 20
+                "creativity": 2,
+                "happiness": 5,
+                "alertness": 10
             }
         },
         "marijuanna": {
             "addiction": 0,
             "factors": {
-                "addiction": 10,
-                "health": 5,
-                "creativity": 20,
-                "happiness": 0,
-                "alertness": 20
+                "addiction": 3,
+                "health": 3,
+                "creativity": 3,
+                "happiness": 7,
+                "alertness": 11
             }
         },
         "herion": {
             "addiction": 0,
             "factors": {
                 "addiction": 10,
-                "health": 5,
-                "creativity": 20,
+                "health": 9,
+                "creativity": 10,
                 "happiness": 0,
-                "alertness": 20
+                "alertness": 12
             }
         }
     };
@@ -146,11 +146,13 @@ module.exports = function() {
                         alertness += drugs.lsd.factors.alertness;
                         creativity += drugs.lsd.factors.creativity;
                         health += drugs.lsd.factors.health;
+                        drugs.lsd.addiction += drugs.lsd.factors.addiction;
                     } else {
                         happiness -= drugs.lsd.factors.happiness;
                         alertness -= drugs.lsd.factors.alertness;
                         creativity -= drugs.lsd.factors.creativity;
                         health -= drugs.lsd.factors.health;
+                        drugs.lsd.addiction -= (drugs.lsd.factors.addiction / 2);
                     }
                     refreshPersonal();
                     break;
@@ -160,11 +162,13 @@ module.exports = function() {
                         alertness += drugs.alcohol.factors.alertness;
                         creativity += drugs.alcohol.factors.creativity;
                         health += drugs.alcohol.factors.health;
+                        drugs.alcohol.addiction += drugs.alcohol.factors.addiction;
                     } else {
                         happiness -= drugs.alcohol.factors.happiness;
                         alertness -= drugs.alcohol.factors.alertness;
                         creativity -= drugs.alcohol.factors.creativity;
                         health -= drugs.alcohol.factors.health;
+                        drugs.alcohol.addiction -= (drugs.alcohol.factors.addiction / 2);
                     }
                     refreshPersonal();
                     break;
@@ -174,11 +178,13 @@ module.exports = function() {
                         alertness += drugs.marijuanna.factors.alertness;
                         creativity += drugs.marijuanna.factors.creativity;
                         health += drugs.marijuanna.factors.health;
+                        drugs.marijuanna.addiction += drugs.marijuanna.factors.addiction;
                     } else {
                         happiness -= drugs.marijuanna.factors.happiness;
                         alertness -= drugs.marijuanna.factors.alertness;
                         creativity -= drugs.marijuanna.factors.creativity;
                         health -= drugs.marijuanna.factors.health;
+                        drugs.marijuanna.addiction -= (drugs.marijuanna.factors.addiction / 2);
                     }
                     refreshPersonal();
                     break;
@@ -188,11 +194,13 @@ module.exports = function() {
                         alertness += drugs.herion.factors.alertness;
                         creativity += drugs.herion.factors.creativity;
                         health += drugs.herion.factors.health;
+                        drugs.herion.addiction += drugs.herion.factors.addiction;
                     } else {
                         happiness -= drugs.herion.factors.happiness;
                         alertness -= drugs.herion.factors.alertness;
                         creativity -= drugs.herion.factors.creativity;
                         health -= drugs.herion.factors.health;
+                        drugs.herion.addiction -= (drugs.herion.factors.addiction / 2);
                     }
                     refreshPersonal();
                     break;
@@ -203,6 +211,9 @@ module.exports = function() {
         },
         restart: function() {
             return init();
+        },
+        getDrugs: function() {
+            return drugs;
         },
         incDate: function() {
             daycount++;

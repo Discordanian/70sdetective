@@ -29,9 +29,10 @@ module.exports = function() {
                 Band.incDate();
             });
             $("#about").click(function() {
-                Band.drugoffer("lsd", true);
+                Band.drugoffer("herion", true);
             });
             $("#new_game").click(function() {
+                restart();
                 BandPrompt.name(Band.setName);
                 // restart();
             });
@@ -52,7 +53,7 @@ module.exports = function() {
                 WGO.refresh();
             });
             $("#drugs").click(function() {
-                DrugPrompt.offer("lsd", impaired, Band.drugoffer);
+                BandPrompt.drugPreferences(Band.getDrugs());
             });
         }
 
