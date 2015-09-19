@@ -150,7 +150,7 @@ module.exports = function() {
     // Return public interface
     return {
         setName: function(str) {
-            if (str.trim() !== "") {
+            if ((str == null) || (str.trim() !== "")) {
                 bandname = str;
             }
             $("#bandname").html(bandname);

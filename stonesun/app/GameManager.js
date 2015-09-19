@@ -1,11 +1,13 @@
 module.exports = function() {
     var first = true;
     var impaired = false;
+    var eventOpen = false;
     var Band = require('./Band.js')();
     var WGO = require('./WGO.js')();
     var Grapevine = require('./Grapevine.js')();
     var DrugPrompt = require('./DrugPrompt.js')();
     var BandPrompt = require('./BandPrompt.js')();
+    var About = require('./About.js')();
 
     var impairl = function(b) {
         WGO.impair(!!b);
@@ -29,12 +31,11 @@ module.exports = function() {
                 Band.incDate();
             });
             $("#about").click(function() {
-                Band.drugoffer("herion", true);
+                About.showSplash();
             });
             $("#new_game").click(function() {
                 restart();
                 BandPrompt.name(Band.setName);
-                // restart();
             });
             $("#tours").click(function() {
                 Grapevine.otherSong();
@@ -45,8 +46,7 @@ module.exports = function() {
                 Grapevine.refresh();
             });
             $("#how_to_play").click(function() {
-                impaired = !impaired;
-                impairl(impaired);
+                About.howToPlay();
             });
             $("#releases").click(function() {
                 WGO.addItem("Releases selected");
@@ -61,10 +61,10 @@ module.exports = function() {
     };
 
     function showPopularity() {
-        Grapevine.addItem(Band.getPop("local"));
-        Grapevine.addItem(Band.getPop("national"));
-        Grapevine.addItem(Band.getPop("global"));
-        Grapevine.refresh();
+        WGO.addItem(Band.getPop("local"));
+        WGO.addItem(Band.getPop("national"));
+        WGO.addItem(Band.getPop("global"));
+        WGO.refresh();
     }
 
     // Return public interface
