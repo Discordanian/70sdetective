@@ -74,6 +74,9 @@ module.exports = function() {
             if ((x % 30) == 0) {
                 showPopularity();
             }
+            if ((x % 11) == 0) {
+                DrugPrompt.offer(DrugPrompt.drugName(x), impaired, Band.drugoffer);
+            }
             if ((x % 3) == 0) {
                 Grapevine.otherSong();
                 Grapevine.refresh();

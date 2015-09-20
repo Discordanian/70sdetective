@@ -5,6 +5,12 @@ module.exports = function() {
     // Private vars
     var impaired = false;
     var drugid = 0;
+    var drugs = [
+        'lsd',
+        'alcohol',
+        'marijuanna',
+        'herion'
+    ];
     var pushers = [
         'bassist',
         'drummer',
@@ -70,6 +76,9 @@ module.exports = function() {
 
     // Return public interface
     return {
+        drugName: function(i) {
+            return drugs[(i % drugs.length)];
+        },
         impair: function(b) {
             impaired = !!b;
         },

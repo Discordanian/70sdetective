@@ -98,6 +98,10 @@ module.exports = function() {
         score = 0;
         refreshPersonal();
         refreshPopularity();
+        drugs.lsd.addiction = 0;
+        drugs.alcohol.addiction = 0;
+        drugs.marijuanna.addiction = 0;
+        drugs.herion.addiction = 0;
     }
 
     function refreshPersonal() {
