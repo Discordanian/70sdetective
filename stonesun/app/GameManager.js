@@ -71,15 +71,23 @@ module.exports = function() {
     return {
         incDate: function() {
             var x = Band.incDate();
-            if ((x % 30) == 0) {
-                showPopularity();
-            }
-            if ((x % 11) == 0) {
-                DrugPrompt.offer(DrugPrompt.drugName(x), impaired, Band.drugoffer);
-            }
-            if ((x % 3) == 0) {
-                Grapevine.otherSong();
-                Grapevine.refresh();
+            if (!eventOpen) {
+                if ((x % 30) == 0) {
+                    showPopularity();
+                }
+                if ((x % 11) == 0) {
+                    eventOpen = true;
+                    var promise = new Promise(function(resolve, reject) {
+                        DrugPrompt.offer(DrugPrompt.drugName(x), impaired, Band.drugoffer);
+                    });
+                    promise.then(function(response) {
+                        eventOpen = false;
+                    });
+                }
+                if ((x % 3) == 0) {
+                    Grapevine.otherSong();
+                    Grapevine.refresh();
+                }
             }
         },
         whatever: function() {
