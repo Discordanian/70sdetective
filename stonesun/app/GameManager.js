@@ -21,6 +21,8 @@ module.exports = function() {
 
     var impairAdd = function(x) {
         impaired += x;
+        WGO.addItem("Drugs can alter your sense of perception.")
+        WGO.refresh();
         return impaired;
     };
 
@@ -93,6 +95,8 @@ module.exports = function() {
                 }
                 if ((x % 11) == 0) {
                     setEvent(true);
+                    WGO.addItem("You have been offered drugs.")
+                    WGO.refresh();
                     DrugPrompt.offer(DrugPrompt.drugName(x), impaired, Band.drugoffer, impairAdd, setEvent);
                 }
                 if ((x % 3) == 0) {
