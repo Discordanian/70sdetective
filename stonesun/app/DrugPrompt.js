@@ -39,11 +39,28 @@ module.exports = function() {
 
 
 
-    function makeOffer(drug, impInd, drugFn) {
+    function makeOffer(drug, impInd, drugFn, impairFn, mutexFn) {
         var msg = "Your " + pushers[drugid++ % pushers.length] + " offers you some " + drug + " at " + locations[drugid % locations.length] + ".";
         if (impInd) {
             msg = rot13(msg);
         }
+
+        function impairmentTicks(drug) {
+            var retval = 0;
+            if (drug == "lsd") {
+                retval = 6;
+            }
+            if (drug == "alcohol") {
+                retval = 0;
+            }
+            if (drug == "marijuanna") {
+                retval = 0;
+            }
+            if (drug == "herion") {
+                retval = 16;
+            }
+            return retval;
+        };
 
 
         var takeit = {
@@ -51,6 +68,8 @@ module.exports = function() {
             className: "btn-success",
             callback: function() {
                 drugFn(drug, true);
+                mutexFn(false);
+                impairFn(impairmentTicks(drug))
             }
         };
         var denyit = {
@@ -58,6 +77,7 @@ module.exports = function() {
             className: "btn-danger",
             callback: function() {
                 drugFn(drug, impInd); // If impaired, this is true too.   oops! :)
+                mutexFn(false);
             }
         };
 
@@ -82,8 +102,8 @@ module.exports = function() {
         impair: function(b) {
             impaired = !!b;
         },
-        offer: function(drug, imp, drugFn) {
-            makeOffer(drug, imp, drugFn);
+        offer: function(drug, imp, drugFn, impairFn, mutexFn) {
+            makeOffer(drug, imp, drugFn, impairFn, mutexFn);
         },
         clear: function() {
             pushers.shuffle();

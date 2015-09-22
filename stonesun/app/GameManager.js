@@ -1,6 +1,6 @@
 module.exports = function() {
     var first = true;
-    var impaired = false;
+    var impaired = 0; //  Using a counter instead of a strict boolean.
     var eventOpen = false;
     var Band = require('./Band.js')();
     var WGO = require('./WGO.js')();
@@ -16,6 +16,11 @@ module.exports = function() {
         Grapevine.refresh();
         Band.impair(!!b);
         Band.refresh();
+        return impaired;
+    };
+
+    var impairAdd = function(x) {
+        impaired += x;
         return impaired;
     };
 
@@ -67,28 +72,34 @@ module.exports = function() {
         WGO.refresh();
     }
 
+    function setEvent(b) {
+        eventOpen = !!b;
+    }
+
     // Return public interface
     return {
         incDate: function() {
-            var x = Band.incDate();
             if (!eventOpen) {
+                if (impaired > 0) {
+                    impaired -= 1;
+                    impairl(true);
+                } else {
+                    impaired = 0;
+                    impairl(false);
+                }
+                var x = Band.incDate();
                 if ((x % 30) == 0) {
                     showPopularity();
                 }
                 if ((x % 11) == 0) {
-                    eventOpen = true;
-                    var promise = new Promise(function(resolve, reject) {
-                        DrugPrompt.offer(DrugPrompt.drugName(x), impaired, Band.drugoffer);
-                    });
-                    promise.then(function(response) {
-                        eventOpen = false;
-                    });
+                    setEvent(true);
+                    DrugPrompt.offer(DrugPrompt.drugName(x), impaired, Band.drugoffer, impairAdd, setEvent);
                 }
                 if ((x % 3) == 0) {
                     Grapevine.otherSong();
                     Grapevine.refresh();
                 }
-            }
+            } // if !eventOpen
         },
         whatever: function() {
             return true;
