@@ -21,8 +21,10 @@ module.exports = function() {
 
     var impairAdd = function(x) {
         impaired += x;
-        WGO.addItem("Drugs can alter your sense of perception.")
-        WGO.refresh();
+        if (x > 0) {
+            WGO.addItem("Drugs can alter your sense of perception.")
+            WGO.refresh();
+        }
         return impaired;
     };
 
