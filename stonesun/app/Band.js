@@ -29,45 +29,47 @@ module.exports = function() {
     var nationalp = 0;
     var globalp = 0;
 
+    // All values are in the affirmative.
+    // That is, these are added when drug is taken.
     var drugs = {
         "lsd": {
             "addiction": 0,
             "factors": {
                 "addiction": 1,
-                "health": 3,
+                "health": -2,
                 "creativity": 10,
                 "happiness": 3,
-                "alertness": 5
+                "alertness": -5
             }
         },
         "alcohol": {
             "addiction": 0,
             "factors": {
                 "addiction": 5,
-                "health": 5,
+                "health": -3,
                 "creativity": 2,
                 "happiness": 5,
-                "alertness": 10
+                "alertness": -10
             }
         },
         "marijuanna": {
             "addiction": 0,
             "factors": {
                 "addiction": 3,
-                "health": 3,
+                "health": -2,
                 "creativity": 3,
                 "happiness": 7,
-                "alertness": 11
+                "alertness": -11
             }
         },
         "herion": {
             "addiction": 0,
             "factors": {
                 "addiction": 10,
-                "health": 9,
+                "health": -9,
                 "creativity": 10,
                 "happiness": 0,
-                "alertness": 12
+                "alertness": -12
             }
         }
     };
