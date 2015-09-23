@@ -7,7 +7,13 @@ module.exports = function() {
     var drugid = 0;
     var drugs = [
         'lsd',
+        'lsd',
         'alcohol',
+        'alcohol',
+        'alcohol',
+        'alcohol',
+        'marijuanna',
+        'marijuanna',
         'marijuanna',
         'herion'
     ];
@@ -33,7 +39,7 @@ module.exports = function() {
         'the rest area where they caught that one dude doing that one thing',
         'the bar',
         'the party',
-        'the Bar Mitzvah for that one kid of your cousin\'s that you only see',
+        'the Bar Mitzvah for that one kid of your cousin\'s that you only see once every few years',
         'the wedding of your Ex'
     ];
 
@@ -108,6 +114,7 @@ module.exports = function() {
         clear: function() {
             pushers.shuffle();
             locations.shuffle();
+            drugs.shuffle();
             return true;
         }
     }; // end return of public object

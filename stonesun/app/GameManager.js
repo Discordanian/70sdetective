@@ -19,9 +19,11 @@ module.exports = function() {
         return impaired;
     };
 
+    // Impair for up to x ticks
     var impairAdd = function(x) {
-        impaired += x;
-        if (x > 0) {
+        var z = Math.floor(Math.random() * x);
+        if (z > 0) {
+            impaired += z;
             WGO.addItem("Drugs can alter your sense of perception.")
             WGO.refresh();
         }
@@ -32,6 +34,7 @@ module.exports = function() {
         Band.clear();
         WGO.clear();
         Grapevine.clear();
+        DrugPrompt.clear();
 
         /* Only bind these events on first pass */
         if (first) {
