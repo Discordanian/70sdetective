@@ -22,6 +22,8 @@ module.exports = function() {
         'drummer',
         'guitarist',
         'flat mate',
+        'room mate',
+        'friend with benefits'
         'mother',
         'landlord',
         'hair dresser',
@@ -38,6 +40,9 @@ module.exports = function() {
         'the train station',
         'the rest area where they caught that one dude doing that one thing',
         'the bar',
+        'the pub',
+        'the coffee shop',
+        'the book store you go to when you want to pretend you have been to college',
         'the party',
         'the Bar Mitzvah for that one kid of your cousin\'s that you only see once every few years',
         'the wedding of your Ex'
