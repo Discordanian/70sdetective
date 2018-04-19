@@ -7,8 +7,6 @@ This document is mostly meant for the developers.
 
 Software Stack
 --------------
-* angularJs v1.2.10
-* angularJs-Cookies v1.2.10
 * UI-bootstrap-tpls-0.11.0.min.js  v0.11    (bootstrap UI in AngularJS)
 * SenseOfHumor v1.337
 * Camel_back_naming_convention v1.ronic
